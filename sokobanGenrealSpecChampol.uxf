@@ -1,0 +1,13 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>196</x><y>330</y><w>110</w><h>30</h></coordinates><panel_attributes>Board
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>56</x><y>390</y><w>100</w><h>30</h></coordinates><panel_attributes>Player
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>136</x><y>100</y><w>100</w><h>40</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+BoardBuilder
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>66</x><y>210</y><w>100</w><h>30</h></coordinates><panel_attributes>FileBoardBuilder
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>96</x><y>130</y><w>80</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>60;10;60;40;10;40;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>186</x><y>210</y><w>100</w><h>30</h></coordinates><panel_attributes>TextBoardBuilder
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>176</x><y>130</y><w>80</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;40;60;40;60;80</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>26</x><y>60</y><w>290</w><h>200</h></coordinates><panel_attributes>BoardBuildingPackage</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>386</x><y>320</y><w>100</w><h>50</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Moves
+
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
