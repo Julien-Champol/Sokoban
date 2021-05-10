@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>7</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>371</x>
-      <y>224</y>
-      <w>238</w>
-      <h>196</h>
+      <x>448</x>
+      <y>176</y>
+      <w>272</w>
+      <h>232</h>
     </coordinates>
     <panel_attributes>Board
 --
@@ -15,18 +15,20 @@
 - WIDTH : int
 - HEIGHT : int
 - board : char[ ][ ]
+- playerPosition : Point
 - winningPositions : ArrayList&lt;Point&gt;
-- allPositions : ArrayList&lt;Point&gt;
+- wallPositions : ArrayList&lt;Point&gt;
+- boxPositions : ArrayList&lt;Point&gt;
 --
 + Board(String, int, int)
 + addHorizontalWall(int, int, int) : void
 + addVerticalWall(int, int, int) : void
 + addBox(int, int) : void
++ moveBox(int, int) : void
 + addTarget(int, int) : void
-+ setPosition(int, int) : void
++ setPlayerPosition(int, int) : void
 + displayBoard() : void
-+ getBoardState() : HashSet
-+ setBoardState() : void
+
 
 </panel_attributes>
     <additional_attributes/>
@@ -34,18 +36,23 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>462</x>
-      <y>469</y>
-      <w>189</w>
-      <h>84</h>
+      <x>552</x>
+      <y>472</y>
+      <w>216</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>Player
 --
-- inGame : Boolean
+_- inGame : Boolean_
+_- in : Scanner_
+_- currentBoard : Board_
 --
 _+ main() : void_
+_+ readPlayerEntry() : String_
++ analyseSequence() : void
 + winDialog() : void
-+ quitDialog() : void
++ quitWithDialog() : void
++ nextBoard() : Board
 
 
 
@@ -55,10 +62,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>469</x>
-      <y>91</y>
-      <w>91</w>
-      <h>49</h>
+      <x>560</x>
+      <y>24</y>
+      <w>104</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 BoardBuilder
@@ -71,10 +78,10 @@ BoardBuilder
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>392</x>
-      <y>175</y>
-      <w>77</w>
-      <h>21</h>
+      <x>472</x>
+      <y>120</y>
+      <w>88</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>FileBoardBuilder
 
@@ -84,21 +91,21 @@ BoardBuilder
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>427</x>
-      <y>133</y>
-      <w>70</w>
-      <h>56</h>
+      <x>504</x>
+      <y>72</y>
+      <w>88</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>80.0;10.0;80.0;40.0;10.0;40.0;10.0;60.0</additional_attributes>
+    <additional_attributes>90.0;10.0;90.0;40.0;10.0;40.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>525</x>
-      <y>175</y>
-      <w>98</w>
-      <h>21</h>
+      <x>624</x>
+      <y>120</y>
+      <w>112</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>TextBoardBuilder
 
@@ -108,10 +115,10 @@ BoardBuilder
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>497</x>
-      <y>133</y>
-      <w>77</w>
-      <h>56</h>
+      <x>592</x>
+      <y>72</y>
+      <w>88</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0;90.0;40.0;90.0;60.0</additional_attributes>
@@ -119,10 +126,10 @@ BoardBuilder
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>224</x>
-      <y>70</y>
-      <w>434</w>
-      <h>385</h>
+      <x>336</x>
+      <y>0</y>
+      <w>432</w>
+      <h>456</h>
     </coordinates>
     <panel_attributes>BoardBuildingPackage
 bg=red</panel_attributes>
@@ -131,10 +138,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>28</x>
-      <y>497</y>
-      <w>70</w>
-      <h>77</h>
+      <x>56</x>
+      <y>520</y>
+      <w>80</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 Moves
@@ -150,23 +157,23 @@ D
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>483</x>
-      <y>413</y>
-      <w>77</w>
-      <h>70</h>
+      <x>576</x>
+      <y>400</y>
+      <w>88</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1..*
 r1=gameBoards</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>420</x>
-      <y>189</y>
-      <w>77</w>
-      <h>49</h>
+      <x>504</x>
+      <y>136</y>
+      <w>88</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -175,10 +182,10 @@ r1=gameBoards</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>497</x>
-      <y>189</y>
-      <w>77</w>
-      <h>49</h>
+      <x>592</x>
+      <y>136</y>
+      <w>88</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -187,10 +194,10 @@ r1=gameBoards</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>329</x>
-      <y>525</y>
-      <w>147</w>
-      <h>35</h>
+      <x>400</x>
+      <y>552</y>
+      <w>168</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=*
@@ -198,30 +205,15 @@ r1=allMoves</panel_attributes>
     <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>14</x>
-      <y>455</y>
-      <w>378</w>
-      <h>147</h>
-    </coordinates>
-    <panel_attributes>PlayerMovesPackage
-bg=black</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>203</x>
-      <y>490</y>
-      <w>133</w>
-      <h>91</h>
+      <x>248</x>
+      <y>536</y>
+      <w>160</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>PlayerMoves
 --
-_- in : Scanner_
---
-_+ readPlayerEntry() : String_
 _+ moveLeft(Board) : void_
 _+ moveRight(Board) : void_
 _+ moveUp(Board) : void_
@@ -232,23 +224,10 @@ _+ moveDown(Board) : void_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>91</x>
-      <y>532</y>
-      <w>126</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-r1=possibleMoves
-m1=*</panel_attributes>
-    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>602</x>
-      <y>273</y>
-      <w>252</w>
-      <h>231</h>
+      <x>712</x>
+      <y>232</y>
+      <w>288</w>
+      <h>264</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -257,15 +236,12 @@ m1=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>749</x>
-      <y>490</y>
-      <w>147</w>
-      <h>77</h>
+      <x>880</x>
+      <y>480</y>
+      <w>168</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>BoardChecker
---
-- gameOver : Boolean
-- legitMove : Boolean
 --
 _+ winCheck(Board) : Boolean_
 _+ legitMove(Board) : Boolean_
@@ -275,10 +251,10 @@ _+ legitMove(Board) : Boolean_
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>686</x>
-      <y>455</y>
-      <w>238</w>
-      <h>126</h>
+      <x>808</x>
+      <y>440</y>
+      <w>272</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>BoardAnalysisPackage
 bg=magenta</panel_attributes>
@@ -287,100 +263,181 @@ bg=magenta</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>462</x>
-      <y>567</y>
-      <w>203</w>
-      <h>63</h>
+      <x>792</x>
+      <y>608</y>
+      <w>232</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>Note..
 We put a letter corresponding to 
 the move right after the player made 
 it. This is why we use the allMoves container.
-(ArrayList) beacause of the double values.
-</panel_attributes>
+(ArrayList) because of the double values.
+
+bg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>665</x>
-      <y>210</y>
-      <w>154</w>
-      <h>49</h>
+      <x>784</x>
+      <y>160</y>
+      <w>176</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Note..
 displayBoard must act like
-a refresh method too.</panel_attributes>
+a refresh method too.
+bg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>385</x>
-      <y>105</y>
-      <w>98</w>
-      <h>28</h>
+      <x>216</x>
+      <y>64</y>
+      <w>360</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;throws&gt;&gt;</panel_attributes>
-    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>430.0;10.0;70.0;10.0;70.0;250.0;10.0;250.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>301</x>
-      <y>98</y>
-      <w>91</w>
-      <h>35</h>
+      <x>120</x>
+      <y>240</y>
+      <w>104</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Exception&gt;&gt;
-BuilderException</panel_attributes>
+BuilderException </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>665</x>
-      <y>301</y>
-      <w>154</w>
-      <h>63</h>
+      <x>784</x>
+      <y>264</y>
+      <w>176</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>Note..
 addTarget() automatically 
 creates a point with the 
 target's coordinates and adds it 
-to the winningposition ArrayList.
-</panel_attributes>
+to the winningPositions ArrayList.
+
+bg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>665</x>
-      <y>385</y>
-      <w>168</w>
-      <h>56</h>
+      <x>784</x>
+      <y>360</y>
+      <w>192</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>Note..
 Whenever a position is settled, 
 setPosition(int, int) checks in 
-allPositions if it doesn't already exists</panel_attributes>
+allPositions if it doesn't already exists
+bg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>945</x>
-      <y>497</y>
-      <w>147</w>
-      <h>77</h>
+      <x>1104</x>
+      <y>432</y>
+      <w>176</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>Note..
 WinCheck shall use 
 the ArrayList retainAll() 
 boolean method. To check
 what's common between 
-allPositions and winningPosition.</panel_attributes>
+allPositions and winningPosition.
+bg=light_gray</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1104</x>
+      <y>544</y>
+      <w>208</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>Note..
+legitMove uses the same principle 
+but between the player's position and 
+the boxPositions list.
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>56</x>
+      <y>304</y>
+      <w>168</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Exception&gt;&gt;
+GamePlayerLeavesException
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>320</y>
+      <w>352</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;throws&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0;70.0;210.0;420.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>0</x>
+      <y>184</y>
+      <w>256</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>SokobanExceptionsPackage
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>40</x>
+      <y>488</y>
+      <w>440</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>PlayerMovesPackage
+bg=black</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>128</x>
+      <y>560</y>
+      <w>136</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
   </element>
 </diagram>
