@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>790</x>
-      <y>440</y>
+      <x>500</x>
+      <y>240</y>
       <w>110</w>
       <h>30</h>
     </coordinates>
@@ -16,8 +16,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>650</x>
-      <y>500</y>
+      <x>510</x>
+      <y>360</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -28,8 +28,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>730</x>
-      <y>210</y>
+      <x>520</x>
+      <y>50</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -42,9 +42,9 @@ BoardBuilder
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>660</x>
-      <y>320</y>
-      <w>100</w>
+      <x>410</x>
+      <y>160</y>
+      <w>110</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>FileBoardBuilder
@@ -55,20 +55,20 @@ BoardBuilder
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>690</x>
-      <y>240</y>
-      <w>80</w>
+      <x>450</x>
+      <y>80</y>
+      <w>110</w>
       <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>60.0;10.0;60.0;40.0;10.0;40.0;10.0;80.0</additional_attributes>
+    <additional_attributes>90.0;10.0;90.0;40.0;10.0;40.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>780</x>
-      <y>320</y>
-      <w>100</w>
+      <x>600</x>
+      <y>160</y>
+      <w>140</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>TextBoardBuilder
@@ -79,21 +79,21 @@ BoardBuilder
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
-      <y>240</y>
-      <w>80</w>
+      <x>560</x>
+      <y>80</y>
+      <w>110</w>
       <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0;60.0;40.0;60.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;90.0;40.0;90.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>620</x>
-      <y>170</y>
-      <w>290</w>
-      <h>200</h>
+      <x>380</x>
+      <y>10</y>
+      <w>380</w>
+      <h>320</h>
     </coordinates>
     <panel_attributes>BoardBuildingPackage</panel_attributes>
     <additional_attributes/>
@@ -101,8 +101,8 @@ BoardBuilder
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>980</x>
-      <y>430</y>
+      <x>60</x>
+      <y>420</y>
       <w>100</w>
       <h>50</h>
     </coordinates>
@@ -110,6 +110,138 @@ BoardBuilder
 Moves
 
 </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>260</y>
+      <w>110</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1..*
+r1=gameBoards</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>180</y>
+      <w>90</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;70.0;40.0;70.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>180</y>
+      <w>90</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>70.0;10.0;70.0;40.0;10.0;40.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>380</y>
+      <w>160</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=*
+r1=allMoves</panel_attributes>
+    <additional_attributes>10.0;80.0;140.0;80.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1150</x>
+      <y>310</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>EmptyPackage
+--
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>50</x>
+      <y>350</y>
+      <w>390</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>PlayerMovesPackage</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>440</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>PlayerMoves</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>150</x>
+      <y>430</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=possibleMoves
+m1=*</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>240</y>
+      <w>260</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;240.0;20.0;240.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>460</y>
+      <w>140</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>BoardChecker</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>650</x>
+      <y>360</y>
+      <w>340</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>BoardAnalysisPackage</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
