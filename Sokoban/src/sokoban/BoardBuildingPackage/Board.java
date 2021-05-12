@@ -34,7 +34,7 @@ public class Board {
     /**
      * Parameterized constructor of the Board class.
      *
-     * @param description the description of the board, simple, hard ...
+     * @param description the description of the board : simple, hard ...
      * @param width the width of the board.
      * @param height the height of the board.
      */
@@ -52,75 +52,74 @@ public class Board {
      * @param length the size of the wall
      */
     public void addHorizontalWall(int x, int y, int length) {
-        
+
     }
-    
+
     /**
      * Method adding a length sized vertical wall from a given point.
-     * 
+     *
      * @param x the point's absciss
      * @param y the point's ordinate
      * @param length the size of the wall
      */
     public void addVerticalWall(int x, int y, int length) {
-        
+
     }
-    
+
     /**
      * Method adding a box at a given point.
-     * 
+     *
      * @param x the point's absciss
      * @param y the point's ordinate
      */
-    public void addBox(int x, int y)
-    {
-        
+    public void addBox(int x, int y) {
+
     }
-    
+
     /**
-     *  Method moving a box to a given point.
-     * 
+     * Method moving a box to a given point.
+     *
      * @param x the point's absciss
      * @param y the point's ordinate
      */
     public void moveBox(int x, int y) {
-        
+
     }
-    
+
     /**
      * Method adding a target at a given point.
-     * 
+     *
      * @param x the point's absciss
      * @param y the point's ordinate
      */
     public void addTarget(int x, int y) {
-        
+
     }
-    
+
     /**
      * Method seting the player's initial position at a given point.
-     * 
+     *
      * @param x the point's absciss
      * @param y the point's ordinate
      */
     public void setPlayerPosition(int x, int y) {
-        
+
     }
-    
+
     /**
      * Method used to move the player to a given point.
-     * 
+     *
      * @param x the point's absciss
      * @param y the point's ordinate
      */
     public void movePlayer(int x, int y) {
-        
+
     }
-    
+
     /**
      * Method used to display the game board at screen.
      */
     public void displayBoard() {
-        
+
     }
 }

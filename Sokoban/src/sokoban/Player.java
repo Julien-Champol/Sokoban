@@ -5,19 +5,42 @@
  */
 package sokoban;
 
+import java.util.HashSet;
 import java.util.Scanner;
 import sokoban.BoardBuildingPackage.Board;
+import sokoban.PlayerMovesPackage.PlayerMoves;
 
 /**
  * Class representing data about a Player.
- * 
+ *
  * @author jchampol
  */
 public class Player {
 
+    /**
+     * True if a game is being completed false otherwise.
+     */
     private static boolean inGame;
+    /**
+     * The user's command line entry.
+     */
     private static Scanner in = new Scanner(System.in);
+
+    /**
+     * This the Board that is being currently completed by the player.
+     */
     private static Board currentBoard;
+    /**
+     * The HashSet is containing all the Boards that will be played during the
+     * game.
+     */
+    private HashSet gameBoards = new HashSet<Board>();
+
+    /**
+     * All the moves of the player are stored in this HashSet. So that it's
+     * easier to display them in the end of the game.
+     */
+    private HashSet allMoves = new HashSet<PlayerMoves>();
 
     /**
      * Main method of the player class.
@@ -27,45 +50,48 @@ public class Player {
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
+
     /**
      * Method used to read the Player entry and to return it.
-     * 
+     *
      * @return the player's entry to uppercase.
      */
     public static String readPlayerEntry() {
         return "";
     }
-    
+
     /**
-     * Method used to analyse the sequence entered by the player and call the corresponding method.
+     * Method used to analyse the sequence entered by the player and call the
+     * corresponding method.
      */
     public static void analyseSequence() {
-        
+
     }
-    
+
     /**
-     * Method used to display a message and switch the attributes to the good value in case of winning.
+     * Method used to display a message and switch the attributes to the good
+     * value in case of winning.
      */
     public static void winDialog() {
-        
+
     }
-    
+
     /**
-     * Method used to display a message and switch the attributes to the good value in case of loosing.
+     * Method used to display a message and switch the attributes to the good
+     * value in case of loosing.
      */
     public static void quiWithDialog() {
         //NOTE : Quit will be turnt into QUIT with the sequence analysis method.
     }
-    
+
     /**
      * Method used to switch to the nextBoard if the current one is complete.
-     * 
+     *
      * @return the next board the player will complete
      */
     public static Board nextBoard() {
-       Board a = new Board(" ", 0, 0);
-       return a;
+        Board a = new Board(" ", 0, 0);
+        return a;
     }
 
 }

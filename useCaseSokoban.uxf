@@ -6,9 +6,9 @@
     <id>UMLGeneric</id>
     <coordinates>
       <x>200</x>
-      <y>70</y>
-      <w>270</w>
-      <h>380</h>
+      <y>80</y>
+      <w>440</w>
+      <h>420</h>
     </coordinates>
     <panel_attributes>UC sokobanGame</panel_attributes>
     <additional_attributes/>
@@ -17,7 +17,7 @@
     <id>UMLActor</id>
     <coordinates>
       <x>30</x>
-      <y>180</y>
+      <y>190</y>
       <w>80</w>
       <h>110</h>
     </coordinates>
@@ -28,7 +28,7 @@
     <id>UMLUseCase</id>
     <coordinates>
       <x>280</x>
-      <y>120</y>
+      <y>130</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -39,7 +39,7 @@
     <id>Relation</id>
     <coordinates>
       <x>90</x>
-      <y>130</y>
+      <y>140</y>
       <w>210</w>
       <h>130</h>
     </coordinates>
@@ -50,7 +50,7 @@
     <id>UMLUseCase</id>
     <coordinates>
       <x>250</x>
-      <y>260</y>
+      <y>250</y>
       <w>160</w>
       <h>50</h>
     </coordinates>
@@ -62,18 +62,18 @@ an empty neighbor</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>90</x>
-      <y>230</y>
+      <y>240</y>
       <w>180</w>
-      <h>70</h>
+      <h>50</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;160.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;160.0;30.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>280</x>
-      <y>350</y>
+      <x>250</x>
+      <y>340</y>
       <w>120</w>
       <h>60</h>
     </coordinates>
@@ -86,18 +86,18 @@ push a pack serie
     <id>Relation</id>
     <coordinates>
       <x>90</x>
-      <y>230</y>
-      <w>210</w>
-      <h>170</h>
+      <y>240</y>
+      <w>180</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;190.0;147.0</additional_attributes>
+    <additional_attributes>10.0;10.0;160.0;127.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>280</x>
-      <y>180</y>
+      <x>290</x>
+      <y>190</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -108,11 +108,122 @@ push a pack serie
     <id>Relation</id>
     <coordinates>
       <x>90</x>
-      <y>190</y>
-      <w>210</w>
+      <y>200</y>
+      <w>220</w>
       <h>70</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;50.0;190.0;10.0</additional_attributes>
+    <additional_attributes>10.0;50.0;200.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>680</x>
+      <y>200</y>
+      <w>140</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>:ADMINISTRATOR</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>440</x>
+      <y>150</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Create new database</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>460</x>
+      <y>210</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>List Boards</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>450</x>
+      <y>270</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Show Board</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>420</x>
+      <y>320</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Add board from file</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>380</x>
+      <y>390</y>
+      <w>230</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Remove board from the database 
+with caution</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>170</y>
+      <w>230</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;210.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>520</x>
+      <y>220</y>
+      <w>210</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;190.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>260</y>
+      <w>220</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>15.0;60.0;200.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>270</y>
+      <w>210</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>15.0;120.0;190.0;10.0</additional_attributes>
   </element>
 </diagram>
