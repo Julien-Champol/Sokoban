@@ -91,6 +91,16 @@ public class Board {
     }
 
     /**
+     * Method returning a copy of wallPositions, useful in the BoardChecker
+     * class.
+     *
+     * @return a copy of wallPositions ArrayList.
+     */
+    public ArrayList<Point> getWallPositions() {
+        return (ArrayList<Point>) this.wallPositions.clone();
+    }
+
+    /**
      * Method adding a length sized horizontal wall from a given point.
      *
      * @param x the point's absciss
@@ -99,7 +109,8 @@ public class Board {
      */
     public void addHorizontalWall(int x, int y, int length) {
         Point startingPoint = new Point(x, y);
-        if ((winningPositions.isEmpty() || boxPositions.isEmpty()) || !winningPositions.contains(startingPoint)
+        if (this.inTheBoardCheck(startingPoint) && (winningPositions.isEmpty()
+                || boxPositions.isEmpty()) || !winningPositions.contains(startingPoint)
                 && !boxPositions.contains(startingPoint)) {
             wallPositions.add(startingPoint);
         } else {
@@ -107,7 +118,8 @@ public class Board {
         }
         for (int i = 1; i <= length; i++) {
             Point newPoint = new Point(x + i, y);
-            if (!winningPositions.contains(newPoint) && !boxPositions.contains(newPoint)) {
+            if (this.inTheBoardCheck(newPoint) && !winningPositions.contains(newPoint)
+                    && !boxPositions.contains(newPoint)) {
                 wallPositions.add(newPoint);
             }
         }
@@ -122,17 +134,16 @@ public class Board {
      */
     public void addVerticalWall(int x, int y, int length) {
         Point startingPoint = new Point(x, y);
-        if ((winningPositions.isEmpty() || boxPositions.isEmpty()) || !winningPositions.contains(startingPoint)
-                && !boxPositions.contains(startingPoint)) {
+        if (this.inTheBoardCheck(startingPoint) && (winningPositions.isEmpty() || boxPositions.isEmpty())
+                || !winningPositions.contains(startingPoint) && !boxPositions.contains(startingPoint)) {
             wallPositions.add(startingPoint);
         } else {
             out.println("Cette position est déjà occupée.");
         }
         for (int i = 1; i <= length; i++) {
             Point newPoint = new Point(x, y + i);
-            if (winningPositions.isEmpty() || boxPositions.isEmpty()) {
-                wallPositions.add(newPoint);
-            } else if (!winningPositions.contains(newPoint) && !boxPositions.contains(newPoint)) {
+            if (this.inTheBoardCheck(newPoint) && winningPositions.isEmpty() || boxPositions.isEmpty()
+                    && !winningPositions.contains(newPoint) && !boxPositions.contains(newPoint)) {
                 wallPositions.add(newPoint);
             }
         }
@@ -146,8 +157,8 @@ public class Board {
      */
     public void addBox(int x, int y) {
         Point boxPoint = new Point(x, y);
-        if ((winningPositions.isEmpty() || wallPositions.isEmpty()) || !winningPositions.contains(boxPoint)
-                && !wallPositions.contains(boxPoint)) {
+        if (this.inTheBoardCheck(boxPoint) && (winningPositions.isEmpty() || wallPositions.isEmpty())
+                || !winningPositions.contains(boxPoint) && !wallPositions.contains(boxPoint)) {
             boxPositions.add(boxPoint);
         }
     }
@@ -163,9 +174,9 @@ public class Board {
     public void moveBox(int x, int y, int z, int a) {
         Point toMove = new Point(x, y);
         Point moved = new Point(z, a);
-        if (((wallPositions.isEmpty() || winningPositions.isEmpty()) && !boxPositions.isEmpty())
-                || !wallPositions.contains(toMove) && !winningPositions.contains(toMove)
-                && !wallPositions.contains(moved)) { // No !winningPositions.contains(moved), the player can move a box to a winning pos.
+        if (this.inTheBoardCheck(toMove) && this.inTheBoardCheck(moved) && ((wallPositions.isEmpty()
+                || winningPositions.isEmpty()) && !boxPositions.isEmpty()) || !wallPositions.contains(toMove)
+                && !winningPositions.contains(toMove) && !wallPositions.contains(moved)) { // No !winningPositions.contains(moved), the player can move a box to a winning pos.
             boxPositions.set(boxPositions.indexOf(toMove), moved);
         }
     }
@@ -178,7 +189,7 @@ public class Board {
      */
     public void addTarget(int x, int y) {
         Point newTarget = new Point(x, y);
-        if ((boxPositions.isEmpty() || wallPositions.isEmpty()) || !boxPositions.contains(newTarget)
+        if (this.inTheBoardCheck(newTarget) && (boxPositions.isEmpty() || wallPositions.isEmpty()) || !boxPositions.contains(newTarget)
                 && !wallPositions.contains(newTarget)) {
             winningPositions.add(newTarget);
         }
@@ -192,10 +203,20 @@ public class Board {
      */
     public void setPlayerPosition(int x, int y) {
         Point newPosition = new Point(x, y);
-        if ((winningPositions.isEmpty() || wallPositions.isEmpty() || boxPositions.isEmpty())
+        if (this.inTheBoardCheck(newPosition) && (winningPositions.isEmpty() || wallPositions.isEmpty() || boxPositions.isEmpty())
                 || !winningPositions.contains(newPosition) && !wallPositions.contains(newPosition) && !boxPositions.contains(newPosition)) {
-            playerPosition = newPosition;
+            playerPosition.setLocation(newPosition);
         }
+    }
+
+    /**
+     * Method checking the presence of a Point in the board.
+     *
+     * @param check the point we want to analyse
+     * @return true iff the point is in the board, false otherwise
+     */
+    public boolean inTheBoardCheck(Point check) {
+        return (check.getX() < this.WIDTH && check.getY() < this.HEIGHT);
     }
 
     /**

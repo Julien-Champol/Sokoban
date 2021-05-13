@@ -7,7 +7,7 @@
       <x>672</x>
       <y>312</y>
       <w>408</w>
-      <h>408</h>
+      <h>420</h>
     </coordinates>
     <panel_attributes>Board
 --
@@ -22,12 +22,14 @@
 + Board(String, int, int)
 + getWinningPositions() : ArrayList&lt;Point&gt;
 + getBoxPositions(): ArrayList&lt;Point&gt;
++ getWallPositions() : Arrylist&lt;Point&gt;
 + addHorizontalWall(int, int, int) : void
 + addVerticalWall(int, int, int) : void
 + addBox(int, int) : void
 + moveBox(int, int, int, int) : void
 + addTarget(int, int) : void
 + setPlayerPosition(int, int) : void
++ inTheBoardCheck(Point) : Boolean
 + displayBoard() : void
 
 
@@ -159,14 +161,14 @@ D
     <id>Relation</id>
     <coordinates>
       <x>864</x>
-      <y>708</y>
+      <y>720</y>
       <w>132</w>
-      <h>120</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1..*
 r1=gameBoards</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -237,15 +239,15 @@ _+ moveDown(Board) : void_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1284</x>
+      <x>1260</x>
       <y>792</y>
-      <w>288</w>
+      <w>324</w>
       <h>96</h>
     </coordinates>
     <panel_attributes>BoardChecker
 --
 _+ winCheck(Board) : Boolean_
-_+ legitMove(Board, Point) : Boolean_
+_+ legitMove(Board, Point, Point) : Boolean_
 </panel_attributes>
     <additional_attributes/>
   </element>

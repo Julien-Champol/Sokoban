@@ -31,11 +31,20 @@ public class BoardChecker {
      * point.
      *
      * @param analysed the board we want to analyse
-     * @param destination the point the player wants to join.
+     * @param start the point the player/box comes from
+     * @param destination the point the player/box wants to join.
      * @return
      */
-    public static boolean legitMove(Board analysed, Point destination) {
-        return true || false;
+    public static boolean legitMove(Board analysed, Point start, Point destination) {
+        return ( //First case, moving a player to an empty case.
+                (analysed.inTheBoardCheck(destination) && !analysed.getWallPositions().contains(destination)
+                && !analysed.getWinningpositions().contains(destination) // A player can't go on a winning position
+                && !analysed.getBoxPositions().contains(destination) //Nor on a box
+                && (analysed.inTheBoardCheck(start) && (!analysed.getBoxPositions().contains(start)))) // we are not moving a box but a player
+
+                || (analysed.inTheBoardCheck(start)
+                && analysed.getBoxPositions().contains(start) // we are moving a box not a player
+                && !analysed.getWallPositions().contains(destination)));
     }
-    
+
 }
