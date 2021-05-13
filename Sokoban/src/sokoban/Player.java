@@ -48,7 +48,11 @@ public class Player {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Board testNuméro1 = new Board("Test.", 6, 6);
+        testNuméro1.addBox(0, 3);
+        testNuméro1.addBox(0, 2);
+        testNuméro1.addHorizontalWall(0, 4, 3);
+        testNuméro1.displayBoard();
     }
 
     /**

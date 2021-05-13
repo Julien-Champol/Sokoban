@@ -37,11 +37,6 @@ public class Board {
     private final int HEIGHT;
 
     /**
-     * The board the game is runing on
-     */
-    private char[][] board;
-
-    /**
      * The player's position on the board
      */
     private Point playerPosition;
@@ -49,17 +44,17 @@ public class Board {
     /**
      * A list of all the winning positions, the one containing targets.
      */
-    private ArrayList<Point> winningPositions;
+    private ArrayList winningPositions = new ArrayList<Point>();
 
     /**
      * A list of all the walls' positions, the points that cannot be reached.
      */
-    private ArrayList<Point> wallPositions;
+    private ArrayList<Point> wallPositions = new ArrayList<Point>();
 
     /**
      * The list of all the boxs' positions, the ones that can be moved.
      */
-    private ArrayList<Point> boxPositions;
+    private ArrayList<Point> boxPositions = new ArrayList<Point>();
 
     /**
      * Parameterized constructor of the Board class.
@@ -83,8 +78,11 @@ public class Board {
      */
     public void addHorizontalWall(int x, int y, int length) {
         Point startingPoint = new Point(x, y);
-        if (!winningPositions.contains(startingPoint) && !boxPositions.contains(startingPoint)) {
+        if ((winningPositions.isEmpty() || boxPositions.isEmpty()) || !winningPositions.contains(startingPoint)
+                && !boxPositions.contains(startingPoint)) {
             wallPositions.add(startingPoint);
+        } else {
+            out.println("Cette position est déjà occupée.");
         }
         for (int i = 1; i <= length; i++) {
             Point newPoint = new Point(x + i, y);
@@ -103,14 +101,17 @@ public class Board {
      */
     public void addVerticalWall(int x, int y, int length) {
         Point startingPoint = new Point(x, y);
-        if (!winningPositions.contains(startingPoint) && !boxPositions.contains(startingPoint)) {
+        if ((winningPositions.isEmpty() || boxPositions.isEmpty()) || !winningPositions.contains(startingPoint)
+                && !boxPositions.contains(startingPoint)) {
             wallPositions.add(startingPoint);
         } else {
             out.println("Cette position est déjà occupée.");
         }
         for (int i = 1; i <= length; i++) {
             Point newPoint = new Point(x, y + i);
-            if (!winningPositions.contains(newPoint) && !boxPositions.contains(newPoint)) {
+            if (winningPositions.isEmpty() || boxPositions.isEmpty()) {
+                wallPositions.add(newPoint);
+            } else if (!winningPositions.contains(newPoint) && !boxPositions.contains(newPoint)) {
                 wallPositions.add(newPoint);
             }
         }
@@ -124,7 +125,8 @@ public class Board {
      */
     public void addBox(int x, int y) {
         Point boxPoint = new Point(x, y);
-        if (!winningPositions.contains(boxPoint) && !wallPositions.contains(boxPoint)) {
+        if ((winningPositions.isEmpty() || wallPositions.isEmpty()) || !winningPositions.contains(boxPoint)
+                && !wallPositions.contains(boxPoint)) {
             boxPositions.add(boxPoint);
         }
     }
@@ -140,7 +142,8 @@ public class Board {
     public void moveBox(int x, int y, int z, int a) {
         Point toMove = new Point(x, y);
         Point moved = new Point(z, a);
-        if (!wallPositions.contains(toMove) && !winningPositions.contains(toMove)
+        if (((wallPositions.isEmpty() || winningPositions.isEmpty()) && !boxPositions.isEmpty())
+                || !wallPositions.contains(toMove) && !winningPositions.contains(toMove)
                 && !wallPositions.contains(moved) && !winningPositions.contains(moved)) {
             boxPositions.set(boxPositions.indexOf(toMove), moved);
         }
@@ -154,7 +157,8 @@ public class Board {
      */
     public void addTarget(int x, int y) {
         Point newTarget = new Point(x, y);
-        if (!boxPositions.contains(newTarget) && !wallPositions.contains(newTarget)) {
+        if ((boxPositions.isEmpty() || wallPositions.isEmpty()) || !boxPositions.contains(newTarget)
+                && !wallPositions.contains(newTarget)) {
             winningPositions.add(newTarget);
         }
     }
@@ -167,7 +171,8 @@ public class Board {
      */
     public void setPlayerPosition(int x, int y) {
         Point newPosition = new Point(x, y);
-        if (!winningPositions.contains(newPosition) && !wallPositions.contains(newPosition) && !boxPositions.contains(newPosition)) {
+        if ((winningPositions.isEmpty() || wallPositions.isEmpty() || boxPositions.isEmpty())
+                || !winningPositions.contains(newPosition) && !wallPositions.contains(newPosition) && !boxPositions.contains(newPosition)) {
             playerPosition = newPosition;
         }
     }
@@ -176,14 +181,29 @@ public class Board {
      * Method used to display the game board at screen.
      */
     public void displayBoard() {
-        board = new char[WIDTH][HEIGHT];
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
+        out.println(DESCRIPTION);
+        out.print(" ");
+        for (int j = 0; j < WIDTH; j++) { //First line display, the one with the numbers.
+            out.print(" " + j);
+        }
+        out.println();
+        for (int i = 0; i < HEIGHT; i++) { //We are filling the board in the height direction, from the top to the bottom, line by line
+            out.print(i);
+            for (int j = 0; j < WIDTH; j++) {
                 Point courant = new Point(i, j);
                 if (winningPositions.contains(courant)) {
-                    out.println();
+                    out.print(" " + "X");
+                } else if (wallPositions.contains(courant)) {
+                    out.print(" " + "#");
+                } else if (boxPositions.contains(courant)) {
+                    out.print(" " + "C");
+                } else if (courant == playerPosition) {
+                    out.print(" " + "P");
+                } else {
+                    out.print(" " + ".");
                 }
             }
+            out.println();
         }
     }
 }
