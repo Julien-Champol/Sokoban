@@ -69,6 +69,27 @@ public class Board {
         this.HEIGHT = height;
     }
 
+    // The accessors :
+    /**
+     * Method returning a copy of winning positions, useful in the BoardChecker
+     * class. We don't want to be able to modify this list outside of the class.
+     *
+     * @return a copy of winningPositions ArrayList.
+     */
+    public ArrayList<Point> getWinningpositions() {
+        return (ArrayList<Point>) this.winningPositions.clone();
+    }
+
+    /**
+     * Method returning a copy of BoxPositions, useful in the BoardChecker
+     * class. We don't want to be able to modify this list outside of the class.
+     *
+     * @return a copy of boxPositions ArrayList.
+     */
+    public ArrayList<Point> getBoxPositions() {
+        return (ArrayList<Point>) this.boxPositions.clone();
+    }
+
     /**
      * Method adding a length sized horizontal wall from a given point.
      *
@@ -144,7 +165,7 @@ public class Board {
         Point moved = new Point(z, a);
         if (((wallPositions.isEmpty() || winningPositions.isEmpty()) && !boxPositions.isEmpty())
                 || !wallPositions.contains(toMove) && !winningPositions.contains(toMove)
-                && !wallPositions.contains(moved) && !winningPositions.contains(moved)) {
+                && !wallPositions.contains(moved)) { // No !winningPositions.contains(moved), the player can move a box to a winning pos.
             boxPositions.set(boxPositions.indexOf(toMove), moved);
         }
     }

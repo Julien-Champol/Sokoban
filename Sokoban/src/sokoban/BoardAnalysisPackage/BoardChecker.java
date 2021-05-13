@@ -23,12 +23,13 @@ public class BoardChecker {
      * @return
      */
     public static boolean winCheck(Board analysed) {
-        return true || false;
+        return (analysed.getWinningpositions().containsAll(analysed.getBoxPositions()));
     }
 
     /**
-     * Method used to tell if the player will be able to move to the given point.
-     * 
+     * Method used to tell if the player will be able to move to the given
+     * point.
+     *
      * @param analysed the board we want to analyse
      * @param destination the point the player wants to join.
      * @return
@@ -36,5 +37,5 @@ public class BoardChecker {
     public static boolean legitMove(Board analysed, Point destination) {
         return true || false;
     }
-
+    
 }
