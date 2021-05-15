@@ -101,6 +101,15 @@ public class Board {
     }
 
     /**
+     * Method the current player's position.
+     *
+     * @return a point, the position of the player.
+     */
+    public Point getPlayerPosition() {
+        return this.playerPosition;
+    }
+
+    /**
      * Method adding a length sized horizontal wall from a given point.
      *
      * @param x the point's absciss
@@ -198,11 +207,9 @@ public class Board {
     /**
      * Method seting the player's initial position at a given point.
      *
-     * @param x the point's absciss
-     * @param y the point's ordinate
+     * @param newPosition the new Point.
      */
-    public void setPlayerPosition(int x, int y) {
-        Point newPosition = new Point(x, y);
+    public void setPlayerPosition(Point newPosition) {
         if (this.inTheBoardCheck(newPosition) && (winningPositions.isEmpty() || wallPositions.isEmpty() || boxPositions.isEmpty())
                 || !winningPositions.contains(newPosition) && !wallPositions.contains(newPosition) && !boxPositions.contains(newPosition)) {
             playerPosition.setLocation(newPosition);
