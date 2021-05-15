@@ -39,12 +39,15 @@ public class BoardChecker {
         return ( //First case, moving a player to an empty case.
                 (analysed.inTheBoardCheck(destination) && !analysed.getWallPositions().contains(destination)
                 && !analysed.getWinningpositions().contains(destination) // A player can't go on a winning position
-                && !analysed.getBoxPositions().contains(destination) //Nor on a box
-                && (analysed.inTheBoardCheck(start) && (!analysed.getBoxPositions().contains(start)))) // we are not moving a box but a player
+                && (analysed.inTheBoardCheck(start) && (!analysed.getBoxPositions().contains(start))
+                && (!analysed.getWallPositions().contains(start)) && !analysed.getWinningpositions().contains(start)))
+                // we are not moving a box (nor a wall or a target) but a player.
 
-                || (analysed.inTheBoardCheck(start)
-                && analysed.getBoxPositions().contains(start) // we are moving a box not a player
-                && !analysed.getWallPositions().contains(destination)));
+                || (analysed.inTheBoardCheck(destination) && !analysed.getWallPositions().contains(destination)
+                //Can go anywhere but not on a wall
+                && (analysed.inTheBoardCheck(start) && (analysed.getBoxPositions().contains(start)
+                && (!analysed.getWallPositions().contains(start)) && !analysed.getWinningpositions().contains(start)))));
+        // we are not moving a player but a box
     }
 
 }
