@@ -29,8 +29,15 @@ public class PlayerMoves {
         int x = (int) (theBoard.getPlayerPosition().getX() - 1);
         int y = (int) theBoard.getPlayerPosition().getY();
         Point newPosition = new Point(x, y);
-        if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)) {
+        if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
+                && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)) {
             theBoard.setPlayerPosition(newPosition);
+            int z = x - 1; // The box has new coordinates
+            Point newBoxPosition = new Point(z, y);
+            theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+        } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
+                && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)) {
+            theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
         }
     }
 
@@ -43,8 +50,15 @@ public class PlayerMoves {
         int x = (int) (theBoard.getPlayerPosition().getX() + 1);
         int y = (int) theBoard.getPlayerPosition().getY();
         Point newPosition = new Point(x, y);
-        if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)) {
+        if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
+                && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.R)) {
             theBoard.setPlayerPosition(newPosition);
+            int z = x + 1; // The box has new coordinates
+            Point newBoxPosition = new Point(z, y);
+            theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+        } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
+                && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.R)) {
+            theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
         }
     }
 
@@ -57,8 +71,15 @@ public class PlayerMoves {
         int x = (int) theBoard.getPlayerPosition().getX();
         int y = (int) (theBoard.getPlayerPosition().getY() + 1);
         Point newPosition = new Point(x, y);
-        if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)) {
+        if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
+                && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.U)) {
             theBoard.setPlayerPosition(newPosition);
+            int a = y + 1; // The box has new coordinates
+            Point newBoxPosition = new Point(x, a);
+            theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+        } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
+                && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.U)) {
+            theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
         }
     }
 
@@ -71,8 +92,15 @@ public class PlayerMoves {
         int x = (int) theBoard.getPlayerPosition().getX();
         int y = (int) (theBoard.getPlayerPosition().getY() - 1);
         Point newPosition = new Point(x, y);
-        if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)) {
+        if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
+                && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.D)) {
             theBoard.setPlayerPosition(newPosition);
+            int a = y - 1; // The box has new coordinates
+            Point newBoxPosition = new Point(x, a);
+            theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+        } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
+                && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.D)) {
+            theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
         }
     }
 }
