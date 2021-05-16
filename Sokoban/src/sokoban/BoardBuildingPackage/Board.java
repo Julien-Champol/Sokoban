@@ -175,14 +175,10 @@ public class Board {
     /**
      * Method moving a box to a given point.
      *
-     * @param x the point's actual absciss
-     * @param y the point's actual ordinate
-     * @param z the point's new absciss
-     * @param a the point's new ordinate
+     * @param toMove starting point
+     * @param moved destination point
      */
-    public void moveBox(int x, int y, int z, int a) {
-        Point toMove = new Point(x, y);
-        Point moved = new Point(z, a);
+    public void moveBox(Point toMove, Point moved) {
         if (this.inTheBoardCheck(toMove) && this.inTheBoardCheck(moved) && ((wallPositions.isEmpty()
                 || winningPositions.isEmpty()) && !boxPositions.isEmpty()) || !wallPositions.contains(toMove)
                 && !winningPositions.contains(toMove) && !wallPositions.contains(moved)) { // No !winningPositions.contains(moved), the player can move a box to a winning pos.

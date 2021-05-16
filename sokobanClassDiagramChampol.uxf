@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>9</zoom_level>
+  <zoom_level>11</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>234</y>
-      <w>306</w>
-      <h>324</h>
+      <x>616</x>
+      <y>286</y>
+      <w>374</w>
+      <h>396</h>
     </coordinates>
     <panel_attributes>Board
 --
@@ -27,7 +27,7 @@
 + addHorizontalWall(int, int, int) : void
 + addVerticalWall(int, int, int) : void
 + addBox(int, int) : void
-+ moveBox(int, int, int, int) : void
++ moveBox(Point, Point) : void
 + addTarget(int, int) : void
 + setPlayerPosition(int, int) : void
 + inTheBoardCheck(Point) : Boolean
@@ -40,10 +40,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>621</x>
-      <y>621</y>
-      <w>243</w>
-      <h>180</h>
+      <x>759</x>
+      <y>759</y>
+      <w>297</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>Player
 --
@@ -66,10 +66,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>27</y>
-      <w>117</w>
-      <h>63</h>
+      <x>770</x>
+      <y>33</y>
+      <w>143</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 BoardBuilder
@@ -82,10 +82,10 @@ BoardBuilder
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>531</x>
-      <y>153</y>
-      <w>99</w>
-      <h>27</h>
+      <x>649</x>
+      <y>187</y>
+      <w>121</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>FileBoardBuilder
 
@@ -95,10 +95,10 @@ BoardBuilder
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>81</y>
-      <w>99</w>
-      <h>90</h>
+      <x>693</x>
+      <y>99</y>
+      <w>121</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>90.0;10.0;90.0;60.0;10.0;60.0;10.0;80.0</additional_attributes>
@@ -106,10 +106,10 @@ BoardBuilder
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>702</x>
-      <y>153</y>
-      <w>126</w>
-      <h>27</h>
+      <x>858</x>
+      <y>187</y>
+      <w>154</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>TextBoardBuilder
 
@@ -119,10 +119,10 @@ BoardBuilder
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>666</x>
-      <y>81</y>
-      <w>99</w>
-      <h>90</h>
+      <x>814</x>
+      <y>99</y>
+      <w>121</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0;90.0;60.0;90.0;80.0</additional_attributes>
@@ -130,10 +130,10 @@ BoardBuilder
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>378</x>
+      <x>462</x>
       <y>0</y>
-      <w>486</w>
-      <h>603</h>
+      <w>594</w>
+      <h>737</h>
     </coordinates>
     <panel_attributes>BoardBuildingPackage
 bg=red</panel_attributes>
@@ -142,10 +142,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
-      <y>684</y>
-      <w>90</w>
-      <h>99</h>
+      <x>88</x>
+      <y>836</y>
+      <w>110</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 Moves
@@ -161,10 +161,10 @@ D
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
-      <y>549</y>
-      <w>99</w>
-      <h>90</h>
+      <x>792</x>
+      <y>671</y>
+      <w>121</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1..*
@@ -174,10 +174,10 @@ r1=gameBoards</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>171</y>
-      <w>99</w>
-      <h>81</h>
+      <x>693</x>
+      <y>209</y>
+      <w>121</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -186,10 +186,10 @@ r1=gameBoards</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>666</x>
-      <y>171</y>
-      <w>99</w>
-      <h>81</h>
+      <x>814</x>
+      <y>209</y>
+      <w>121</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -198,10 +198,10 @@ r1=gameBoards</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>468</x>
-      <y>720</y>
-      <w>171</w>
-      <h>45</h>
+      <x>572</x>
+      <y>880</y>
+      <w>209</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=*
@@ -211,10 +211,10 @@ r1=allMoves</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>297</x>
-      <y>702</y>
-      <w>180</w>
-      <h>108</h>
+      <x>363</x>
+      <y>858</y>
+      <w>220</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>PlayerMoves
 --
@@ -228,10 +228,10 @@ _+ moveDown(Board) : void_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>801</x>
-      <y>315</y>
-      <w>324</w>
-      <h>297</h>
+      <x>979</x>
+      <y>385</y>
+      <w>396</w>
+      <h>363</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -240,25 +240,26 @@ _+ moveDown(Board) : void_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>945</x>
-      <y>594</y>
-      <w>243</w>
-      <h>72</h>
+      <x>1100</x>
+      <y>726</y>
+      <w>385</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>BoardChecker
 --
 _+ winCheck(Board) : Boolean_
 _+ legitMove(Board, Point, Point) : Boolean_
+_+ movableBoxCheck(Board, Point, Moves) : Boolean_
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>909</x>
-      <y>549</y>
-      <w>306</w>
-      <h>162</h>
+      <x>1089</x>
+      <y>671</y>
+      <w>407</w>
+      <h>198</h>
     </coordinates>
     <panel_attributes>BoardAnalysisPackage
 bg=magenta</panel_attributes>
@@ -267,10 +268,10 @@ bg=magenta</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>891</x>
-      <y>738</y>
-      <w>261</w>
-      <h>81</h>
+      <x>1089</x>
+      <y>902</y>
+      <w>319</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Note..
 We put a letter corresponding to 
@@ -284,10 +285,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>882</x>
-      <y>234</y>
-      <w>198</w>
-      <h>63</h>
+      <x>1078</x>
+      <y>286</y>
+      <w>242</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>Note..
 displayBoard must act like
@@ -298,10 +299,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>243</x>
-      <y>72</y>
-      <w>405</w>
-      <h>297</h>
+      <x>297</x>
+      <y>88</y>
+      <w>495</w>
+      <h>363</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;throws&gt;&gt;</panel_attributes>
@@ -310,10 +311,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>135</x>
-      <y>324</y>
-      <w>117</w>
-      <h>45</h>
+      <x>165</x>
+      <y>396</y>
+      <w>143</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Exception&gt;&gt;
 BuilderException </panel_attributes>
@@ -322,10 +323,10 @@ BuilderException </panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>882</x>
-      <y>351</y>
-      <w>198</w>
-      <h>81</h>
+      <x>1078</x>
+      <y>429</y>
+      <w>242</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Note..
 addTarget() automatically 
@@ -339,10 +340,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>882</x>
-      <y>459</y>
-      <w>216</w>
-      <h>72</h>
+      <x>1078</x>
+      <y>561</y>
+      <w>264</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>Note..
 Whenever a position is settled, 
@@ -354,10 +355,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1242</x>
-      <y>540</y>
-      <w>198</w>
-      <h>99</h>
+      <x>1518</x>
+      <y>660</y>
+      <w>242</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>Note..
 WinCheck shall use 
@@ -371,10 +372,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1242</x>
-      <y>666</y>
-      <w>234</w>
-      <h>72</h>
+      <x>1518</x>
+      <y>814</y>
+      <w>286</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>Note..
 legitMove uses the same principle 
@@ -386,10 +387,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>63</x>
-      <y>396</y>
-      <w>189</w>
-      <h>45</h>
+      <x>77</x>
+      <y>484</y>
+      <w>231</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Exception&gt;&gt;
 GamePlayerLeavesException
@@ -399,10 +400,10 @@ GamePlayerLeavesException
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>243</x>
-      <y>414</y>
-      <w>396</w>
-      <h>243</h>
+      <x>297</x>
+      <y>506</y>
+      <w>484</w>
+      <h>297</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;throws&gt;&gt;</panel_attributes>
@@ -412,9 +413,9 @@ GamePlayerLeavesException
     <id>UMLPackage</id>
     <coordinates>
       <x>0</x>
-      <y>261</y>
-      <w>288</w>
-      <h>216</h>
+      <y>319</y>
+      <w>352</w>
+      <h>264</h>
     </coordinates>
     <panel_attributes>SokobanExceptionsPackage
 bg=green</panel_attributes>
@@ -423,10 +424,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>45</x>
-      <y>639</y>
-      <w>495</w>
-      <h>207</h>
+      <x>55</x>
+      <y>781</y>
+      <w>605</w>
+      <h>253</h>
     </coordinates>
     <panel_attributes>PlayerMovesPackage
 bg=black</panel_attributes>
@@ -435,10 +436,10 @@ bg=black</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>153</x>
-      <y>729</y>
-      <w>162</w>
-      <h>36</h>
+      <x>187</x>
+      <y>891</y>
+      <w>198</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -447,10 +448,10 @@ bg=black</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>1152</x>
-      <y>54</y>
-      <w>297</w>
-      <h>378</h>
+      <x>1408</x>
+      <y>66</y>
+      <w>363</w>
+      <h>462</h>
     </coordinates>
     <panel_attributes>TestPackage</panel_attributes>
     <additional_attributes/>
@@ -458,10 +459,10 @@ bg=black</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1179</x>
-      <y>117</y>
-      <w>189</w>
-      <h>135</h>
+      <x>1441</x>
+      <y>143</y>
+      <w>231</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>BoardTest
 --
