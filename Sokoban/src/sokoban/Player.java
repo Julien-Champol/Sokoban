@@ -48,11 +48,15 @@ public class Player {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Board testNuméro1 = new Board("Test.", 6, 6);
-        testNuméro1.addBox(0, 3);
-        testNuméro1.addBox(0, 2);
-        testNuméro1.addHorizontalWall(0, 4, 3);
-        testNuméro1.displayBoard();
+        /* Board initialization */
+        Board analysed = new Board("TestBoard", 8, 8);
+        analysed.addHorizontalWall(0, 0, 8);
+        analysed.addHorizontalWall(0, 7, 8);
+        analysed.addVerticalWall(7, 0, 8);
+        analysed.addVerticalWall(0, 0, 8);
+        analysed.addTarget(1, 2);
+        analysed.addBox(3, 2);
+        analysed.displayBoard();
     }
 
     /**
@@ -61,7 +65,7 @@ public class Player {
      * @return the player's entry to uppercase.
      */
     public static String readPlayerEntry() {
-        return "";
+        return in.nextLine().trim().toUpperCase();
     }
 
     /**
@@ -69,7 +73,22 @@ public class Player {
      * corresponding method.
      */
     public static void analyseSequence() {
-
+        for (char actu : readPlayerEntry().toCharArray()) {
+            switch (actu) {
+                case 'L':
+                    PlayerMoves.moveLeft(currentBoard);
+                    break;
+                case 'R':
+                    PlayerMoves.moveRight(currentBoard);
+                    break;
+                case 'U':
+                    PlayerMoves.moveUp(currentBoard);
+                    break;
+                case 'D':
+                    PlayerMoves.moveDown(currentBoard);
+                    break;
+            }
+        }
     }
 
     /**
