@@ -198,7 +198,7 @@ public class Board {
         if (this.inTheBoardCheck(newTarget) && (boxPositions.isEmpty() || wallPositions.isEmpty()) || !boxPositions.contains(newTarget)
                 && !wallPositions.contains(newTarget)) {
             winningPositions.add(newTarget);
-        }   
+        }
     }
 
     /**
@@ -208,7 +208,7 @@ public class Board {
      */
     public void setPlayerPosition(Point newPosition) {
         if (this.inTheBoardCheck(newPosition) && (winningPositions.isEmpty() || wallPositions.isEmpty() || boxPositions.isEmpty())
-                || !winningPositions.contains(newPosition) && !wallPositions.contains(newPosition) && !boxPositions.contains(newPosition)) {
+                || !wallPositions.contains(newPosition) && !boxPositions.contains(newPosition)) {
             playerPosition.setLocation(newPosition);
         }
     }

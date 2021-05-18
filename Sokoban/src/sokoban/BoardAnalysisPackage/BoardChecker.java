@@ -39,9 +39,8 @@ public class BoardChecker {
     public static boolean legitMove(Board analysed, Point start, Point destination) {
         return ( //First case, moving a player to an empty case (only option).
                 (analysed.inTheBoardCheck(destination) && !analysed.getWallPositions().contains(destination)
-                && !analysed.getWinningpositions().contains(destination) // A player can't go on a winning position
                 && (analysed.inTheBoardCheck(start) && (!analysed.getBoxPositions().contains(start))
-                && (!analysed.getWallPositions().contains(start)) && !analysed.getWinningpositions().contains(start)))
+                && (!analysed.getWallPositions().contains(start))))
                 //Second case, moving a board to an empty case or a target.
                 || (analysed.inTheBoardCheck(destination) && !analysed.getWallPositions().contains(destination)
                 //Can go anywhere but not on a wall
