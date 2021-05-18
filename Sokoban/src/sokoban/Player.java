@@ -5,6 +5,7 @@
  */
 package sokoban;
 
+import java.awt.Point;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -59,13 +60,15 @@ public class Player {
         analysed.addVerticalWall(0, 0, 8);
         analysed.addTarget(1, 2);
         analysed.addBox(3, 2);
+        Point player = new Point(4, 2);
+        analysed.setPlayerPosition(player);
         currentBoard = analysed;
+        inGame = true;
+        currentBoard.displayBoard();
         try {
             while (inGame) {
                 /* Test du reste */
-                readPlayerEntry();
                 analyseSequence();
-                currentBoard.displayBoard();
                 winDialog();
             }
         } catch (GamePlayerLeavesException e) {
@@ -149,5 +152,5 @@ public class Player {
         Board a = new Board(" ", 0, 0);
         return a;
     }
-
+    
 }

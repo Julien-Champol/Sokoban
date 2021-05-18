@@ -67,6 +67,7 @@ public class Board {
         this.DESCRIPTION = description;
         this.WIDTH = width;
         this.HEIGHT = height;
+        playerPosition = new Point(-1, -1); //Initialized in  aposition that doesn't exist, conevntionnally.
     }
 
     // The accessors :
