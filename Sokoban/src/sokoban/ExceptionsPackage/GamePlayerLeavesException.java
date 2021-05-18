@@ -13,7 +13,7 @@ package sokoban.ExceptionsPackage;
  */
 public class GamePlayerLeavesException extends Exception {
 
-    GamePlayerLeavesException(String message) {
+    public GamePlayerLeavesException(String message) {
         super(message);
     }
 

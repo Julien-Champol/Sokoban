@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="1" failures="0" hostname="LAPTOP-EA2V22UR" name="sokoban.BoardAnalysisPackage.BoardCheckerTest" skipped="0" tests="1" time="0.141" timestamp="2021-05-17T07:43:13">
+<testsuite errors="2" failures="0" hostname="LAPTOP-EA2V22UR" name="sokoban.BoardAnalysisPackage.BoardCheckerTest" skipped="0" tests="3" time="0.129" timestamp="2021-05-18T07:07:03">
   <properties>
     <property name="libs.spring-framework300.classpath" value="C:\Program Files\NetBeans-11.3\netbeans\platform\modules\org-apache-commons-logging.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\cglib-2.2.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-aop-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-aspects-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-beans-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-build-src-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-context-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-context-support-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-core-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-expression-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-framework-bom-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-instrument-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-instrument-tomcat-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-jdbc-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-jms-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-orm-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-oxm-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-struts-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-test-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-tx-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-web-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-webmvc-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-webmvc-portlet-3.2.7.RELEASE.jar" />
-    <property name="javac.test.classpath" value=":build/classes:C:\Program Files\NetBeans-11.3\netbeans\platform\modules\ext\junit-4.12.jar:" />
+    <property name="javac.test.classpath" value=":C:\Program Files\NetBeans-11.3\netbeans\platform\lib\hamcrest-2.2.jar:build/classes:C:\Program Files\NetBeans-11.3\netbeans\platform\modules\ext\junit-4.12.jar:" />
     <property name="java.specification.version" value="11" />
     <property name="libs.spring-framework500.classpath" value="C:\Program Files\NetBeans-11.3\netbeans\platform\modules\org-apache-commons-logging.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\cglib-2.2.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-aop-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-aspects-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-beans-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-context-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-context-indexer-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-context-support-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-core-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-expression-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-instrument-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-jcl-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-jdbc-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-jms-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-messaging-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-orm-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-oxm-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-test-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-tx-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-web-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-webflux-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-webmvc-5.2.2.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-5\spring-websocket-5.2.2.RELEASE.jar" />
     <property name="jar.index.metainf" value="false" />
@@ -20,7 +20,7 @@
     <property name="libs.JWSAntTasks.javadoc" value="" />
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11.0.11\bin" />
     <property name="platform.home" value="C:\Program Files\Java\jdk-11.0.11" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner sokoban.BoardAnalysisPackage.BoardCheckerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\test\results\TEST-sokoban.BoardAnalysisPackage.BoardCheckerTest.xml crashfile=D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\junitvmwatcher5762275324471667577.properties propsfile=D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\junit7550200248756841399.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner sokoban.BoardAnalysisPackage.BoardCheckerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\test\results\TEST-sokoban.BoardAnalysisPackage.BoardCheckerTest.xml crashfile=D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\junitvmwatcher3893235675300293545.properties propsfile=D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\junit7190451328642354840.properties" />
     <property name="jdk.debug" value="release" />
     <property name="libs.spring-framework300.src" value="" />
     <property name="javadoc.use" value="true" />
@@ -44,7 +44,7 @@
     <property name="sun.java2d.noddraw" value="true" />
     <property name="platform.bootcp" value="C:\Program Files\Java\jdk-11.0.11\!/modules/java.base/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.desktop/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.management/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.management.rmi/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.naming/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.rmi/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.scripting/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.security.sasl/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.sql.rowset/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.xml/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.xml.crypto/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.accessibility/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.attach/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.compiler/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.hotspot.agent/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.httpserver/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.jartool/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.javadoc/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.jconsole/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.jdeps/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.jdi/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.management/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.naming.dns/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.naming.ldap/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.naming.rmi/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.sctp/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.security.auth/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.security.jgss/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.unsupported/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.datatransfer/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.instrument/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.logging/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.net.http/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.prefs/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.sql/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.compiler/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.security.jgss/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.smartcardio/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.transaction.xa/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.aot/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.dynalink/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.editpad/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.internal.ed/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.internal.le/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.internal.opt/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.internal.vm.ci/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.internal.vm.compiler/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.jfr/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.jlink/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.jshell/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.jsobject/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.management.agent/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.management.jfr/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.net/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.scripting.nashorn/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.scripting.nashorn.shell/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.unsupported.desktop/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.zipfs/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.internal.vm.compiler.management/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.xml.dom/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.charsets/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.crypto.cryptoki/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.crypto.ec/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.crypto.mscapi/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.internal.jvmstat/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.jcmd/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.jstatd/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.localedata/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.rmic/;C:\Program Files\Java\jdk-11.0.11\!/modules/java.se/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.jdwp.agent/;C:\Program Files\Java\jdk-11.0.11\!/modules/jdk.pack/" />
     <property name="libs.maven-dependencies.maven-pom" value="" />
-    <property name="jnidispatch.path" value="C:\Users\jcdru\AppData\Local\Temp\jna-100942286\jna170043563850355328.dll" />
+    <property name="jnidispatch.path" value="C:\Users\jcdru\AppData\Local\Temp\jna-100942286\jna2133794204372117811.dll" />
     <property name="libs.jsf12.src" value="" />
     <property name="libs.jsp-compilation.javadoc" value="" />
     <property name="libs.primefaces.javadoc" value="" />
@@ -69,7 +69,7 @@
     <property name="libs.testng.maven-pom" value="" />
     <property name="org.openide.version" value="deprecated" />
     <property name="test.includes" value="sokoban/BoardAnalysisPackage/BoardCheckerTest.java" />
-    <property name="run.classpath" value=":build/classes:" />
+    <property name="run.classpath" value=":C:\Program Files\NetBeans-11.3\netbeans\platform\lib\hamcrest-2.2.jar:build/classes:" />
     <property name="libs.jaxb.src" value="" />
     <property name="test.src.dir" value="test" />
     <property name="sun.awt.enableExtraMouseButtons" value="true" />
@@ -161,12 +161,12 @@
     <property name="libs.CopyLibs.classpath" value="C:\Program Files\NetBeans-11.3\netbeans\java\ant\extra\org-netbeans-modules-java-j2seproject-copylibstask.jar" />
     <property name="sun.os.patch.level" value="" />
     <property name="javadoc.html5" value="false" />
-    <property name="javac.test.processorpath" value=":build/classes:C:\Program Files\NetBeans-11.3\netbeans\platform\modules\ext\junit-4.12.jar:" />
+    <property name="javac.test.processorpath" value=":C:\Program Files\NetBeans-11.3\netbeans\platform\lib\hamcrest-2.2.jar:build/classes:C:\Program Files\NetBeans-11.3\netbeans\platform\modules\ext\junit-4.12.jar:" />
     <property name="libs.javaee-web-api-7.0.maven-pom" value="" />
     <property name="libs.javaee-web-api-8.0.maven-pom" value="" />
     <property name="netbeans.dirs" value="C:\Program Files\NetBeans-11.3\netbeans\nb;C:\Program Files\NetBeans-11.3\netbeans\ergonomics;C:\Program Files\NetBeans-11.3\netbeans\ide;C:\Program Files\NetBeans-11.3\netbeans\extide;C:\Program Files\NetBeans-11.3\netbeans\java;C:\Program Files\NetBeans-11.3\netbeans\apisupport;C:\Program Files\NetBeans-11.3\netbeans\webcommon;C:\Program Files\NetBeans-11.3\netbeans\websvccommon;C:\Program Files\NetBeans-11.3\netbeans\enterprise;C:\Program Files\NetBeans-11.3\netbeans\mobility;C:\Program Files\NetBeans-11.3\netbeans\profiler;C:\Program Files\NetBeans-11.3\netbeans\python;C:\Program Files\NetBeans-11.3\netbeans\php;C:\Program Files\NetBeans-11.3\netbeans\identity;C:\Program Files\NetBeans-11.3\netbeans\harness;C:\Program Files\NetBeans-11.3\netbeans\cnd;C:\Program Files\NetBeans-11.3\netbeans\cndext;C:\Program Files\NetBeans-11.3\netbeans\dlight;C:\Program Files\NetBeans-11.3\netbeans\groovy;C:\Program Files\NetBeans-11.3\netbeans\extra;C:\Program Files\NetBeans-11.3\netbeans\javacard;C:\Program Files\NetBeans-11.3\netbeans\javafx" />
     <property name="libs.hamcrest.maven-pom" value="" />
-    <property name="javac.processorpath" value=":" />
+    <property name="javac.processorpath" value=":C:\Program Files\NetBeans-11.3\netbeans\platform\lib\hamcrest-2.2.jar:" />
     <property name="libs.javaee-api-6.0.javadoc" value="C:\Program Files\NetBeans-11.3\netbeans\enterprise\docs\javaee-doc-api.jar" />
     <property name="libs.JWSAntTasks.maven-pom" value="" />
     <property name="platform.javac.tmp" value="${platforms.JDK_11.javac}" />
@@ -215,7 +215,7 @@
     <property name="libs.jsp-compilation.classpath" value="C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant.jar;C:\Program Files\NetBeans-11.3\netbeans\enterprise\modules\ext\servlet3.1-jsp2.3-api.jar;C:\Program Files\NetBeans-11.3\netbeans\enterprise\modules\ext\glassfish-jspparser-4.0.jar;C:\Program Files\NetBeans-11.3\netbeans\enterprise\modules\ext\jsf-2_2\javax.faces.jar;C:\Program Files\NetBeans-11.3\netbeans\enterprise\modules\ext\jstl-api.jar;C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant-launcher.jar" />
     <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_271\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext" />
     <property name="libs.javaee-api-6.0.classpath" value="C:\Program Files\NetBeans-11.3\netbeans\enterprise\modules\ext\javaee-api-6.0.jar" />
-    <property name="javac.includesfile.binary" value="D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\null1437414813" />
+    <property name="javac.includesfile.binary" value="D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\null2070093118" />
     <property name="libs.javaee-api-7.0.classpath" value="C:\Program Files\NetBeans-11.3\netbeans\enterprise\modules\ext\javaee-api-7.0.jar" />
     <property name="sun.cpu.isalist" value="amd64" />
     <property name="libs.restapi.maven-pom" value="" />
@@ -230,6 +230,7 @@
     <property name="libs.jaxb.classpath" value="C:\Program Files\NetBeans-11.3\netbeans\ide\modules\ext\jaxb\jaxb-impl.jar;C:\Program Files\NetBeans-11.3\netbeans\ide\modules\ext\jaxb\jaxb-xjc.jar;C:\Program Files\NetBeans-11.3\netbeans\ide\modules\ext\jaxb\jaxb1-impl.jar;C:\Program Files\NetBeans-11.3\netbeans\ide\modules\ext\jaxb\activation.jar;C:\Program Files\NetBeans-11.3\netbeans\ide\modules\ext\jaxb\api\jaxb-api.jar" />
     <property name="libs.javaee-api-8.0.classpath" value="C:\Program Files\NetBeans-11.3\netbeans\enterprise\modules\ext\javaee-api-8.0.jar" />
     <property name="auxiliary.org-netbeans-spi-editor-hints-projects.perProjectHintSettingsFile" value="nbproject/cfg_hints.xml" />
+    <property name="file.reference.hamcrest-2.2.jar" value="C:\Program Files\NetBeans-11.3\netbeans\platform\lib\hamcrest-2.2.jar" />
     <property name="libs.CopyLibs.src" value="" />
     <property name="platforms.JDK_11.home" value="C:\Program Files\Java\jdk-11.0.11" />
     <property name="java.specification.vendor" value="Oracle Corporation" />
@@ -317,13 +318,13 @@
     <property name="java.vm.info" value="mixed mode" />
     <property name="libs.primefaces.classpath" value="C:\Program Files\NetBeans-11.3\netbeans\enterprise\modules\ext\primefaces\primefaces-5.0.jar" />
     <property name="libs.jaxws21.maven-pom" value="" />
-    <property name="run.test.classpath" value=":build/classes:C:\Program Files\NetBeans-11.3\netbeans\platform\modules\ext\junit-4.12.jar::build/test/classes:" />
+    <property name="run.test.classpath" value=":C:\Program Files\NetBeans-11.3\netbeans\platform\lib\hamcrest-2.2.jar:build/classes:C:\Program Files\NetBeans-11.3\netbeans\platform\modules\ext\junit-4.12.jar::build/test/classes:" />
     <property name="dist.jlink.output" value="dist/jlink/Sokoban" />
     <property name="java.class.version" value="55.0" />
     <property name="javadoc.encoding.used" value="UTF-8" />
     <property name="src.dir" value="src" />
     <property name="ant.project.default-target" value="default" />
-    <property name="debug.classpath" value=":build/classes:" />
+    <property name="debug.classpath" value=":C:\Program Files\NetBeans-11.3\netbeans\platform\lib\hamcrest-2.2.jar:build/classes:" />
     <property name="excludes" value="" />
     <property name="libs.javaee-api-7.0.src" value="" />
     <property name="platform.java.tmp" value="${platforms.JDK_11.java}" />
@@ -369,7 +370,7 @@
     <property name="libs.spring-webmvc3.0.src" value="" />
     <property name="ant.home" value="C:\Program Files\NetBeans-11.3\netbeans\extide\ant" />
     <property name="have.tests" value="true" />
-    <property name="debug.test.classpath" value=":build/classes:C:\Program Files\NetBeans-11.3\netbeans\platform\modules\ext\junit-4.12.jar::build/test/classes:" />
+    <property name="debug.test.classpath" value=":C:\Program Files\NetBeans-11.3\netbeans\platform\lib\hamcrest-2.2.jar:build/classes:C:\Program Files\NetBeans-11.3\netbeans\platform\modules\ext\junit-4.12.jar::build/test/classes:" />
     <property name="javac.external.vm" value="true" />
     <property name="testng.debug.mode" value="" />
     <property name="ant.file.type.Sokoban-impl" value="file" />
@@ -386,7 +387,7 @@
     <property name="javac.includes" value="sokoban/BoardAnalysisPackage/BoardCheckerTest.java" />
     <property name="netbeans.autoupdate.country" value="FR" />
     <property name="file.encoding.pkg" value="sun.io" />
-    <property name="java.class.path" value="D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\classes;C:\Program Files\NetBeans-11.3\netbeans\platform\modules\ext\junit-4.12.jar;D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\test\classes;C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant-launcher.jar;C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant.jar;C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant-junit.jar;C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant-junit4.jar" />
+    <property name="java.class.path" value="C:\Program Files\NetBeans-11.3\netbeans\platform\lib\hamcrest-2.2.jar;D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\classes;C:\Program Files\NetBeans-11.3\netbeans\platform\modules\ext\junit-4.12.jar;D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\test\classes;C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant-launcher.jar;C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant.jar;C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant-junit.jar;C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant-junit4.jar" />
     <property name="libs.javaee-web-api-6.0.maven-pom" value="" />
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="ap.supported.internal" value="true" />
@@ -412,7 +413,7 @@
     <property name="runtime.encoding" value="UTF-8" />
     <property name="libs.jsp-compiler.maven-pom" value="" />
     <property name="jlink.additionalmodules" value="" />
-    <property name="javac.classpath" value="" />
+    <property name="javac.classpath" value=":C:\Program Files\NetBeans-11.3\netbeans\platform\lib\hamcrest-2.2.jar" />
     <property name="dist.jlink.dir" value="dist/jlink" />
     <property name="nb.junit.batch" value="true" />
     <property name="build.test.classes.dir" value="build/test/classes" />
@@ -439,27 +440,28 @@
     <property name="junit.forkmode" value="perTest" />
     <property name="libs.javaee-web-api-7.0.src" value="" />
   </properties>
-  <testcase classname="sokoban.BoardAnalysisPackage.BoardCheckerTest" name="initializationError" time="0.0">
-    <error message="org/hamcrest/SelfDescribing" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/hamcrest/SelfDescribing
-	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
-	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1016)
-	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:174)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:800)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(BuiltinClassLoader.java:698)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:621)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:579)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
-Caused by: java.lang.ClassNotFoundException: org.hamcrest.SelfDescribing
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+  <testcase classname="sokoban.BoardAnalysisPackage.BoardCheckerTest" name="testLegitMove" time="0.007">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at sokoban.BoardAnalysisPackage.BoardChecker.legitMove(BoardChecker.java:41)
+	at sokoban.BoardAnalysisPackage.BoardCheckerTest.testLegitMove(BoardCheckerTest.java:49)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 </error>
   </testcase>
-  <system-out><![CDATA[]]></system-out>
+  <testcase classname="sokoban.BoardAnalysisPackage.BoardCheckerTest" name="testWinCheck" time="0.0" />
+  <testcase classname="sokoban.BoardAnalysisPackage.BoardCheckerTest" name="testMovableBoxCheck" time="0.001">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at sokoban.BoardAnalysisPackage.BoardChecker.movableBoxCheck(BoardChecker.java:66)
+	at sokoban.BoardAnalysisPackage.BoardCheckerTest.testMovableBoxCheck(BoardCheckerTest.java:63)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</error>
+  </testcase>
+  <system-out><![CDATA[legitMove
+winCheck
+movableBoxCheck
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

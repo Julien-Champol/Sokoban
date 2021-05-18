@@ -44,7 +44,7 @@ public class Board {
     /**
      * A list of all the winning positions, the one containing targets.
      */
-    private ArrayList winningPositions = new ArrayList<Point>();
+    private ArrayList<Point> winningPositions = new ArrayList<Point>();
 
     /**
      * A list of all the walls' positions, the points that cannot be reached.

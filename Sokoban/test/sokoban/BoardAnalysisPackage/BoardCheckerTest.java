@@ -19,9 +19,6 @@ import sokoban.PlayerMovesPackage.PlayerMoves;
  */
 public class BoardCheckerTest {
 
-    public BoardCheckerTest() {
-    }
-
     /**
      * Test of winCheck method, of class BoardChecker.
      */

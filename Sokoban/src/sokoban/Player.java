@@ -7,7 +7,10 @@ package sokoban;
 
 import java.util.HashSet;
 import java.util.Scanner;
+import java.util.ArrayList;
+import sokoban.BoardAnalysisPackage.BoardChecker;
 import sokoban.BoardBuildingPackage.Board;
+import sokoban.ExceptionsPackage.GamePlayerLeavesException;
 import sokoban.PlayerMovesPackage.PlayerMoves;
 
 /**
@@ -40,7 +43,7 @@ public class Player {
      * All the moves of the player are stored in this HashSet. So that it's
      * easier to display them in the end of the game.
      */
-    private HashSet allMoves = new HashSet<PlayerMoves>();
+    private static ArrayList<PlayerMoves.Moves> allMoves = new ArrayList<PlayerMoves.Moves>();
 
     /**
      * Main method of the player class.
@@ -56,7 +59,18 @@ public class Player {
         analysed.addVerticalWall(0, 0, 8);
         analysed.addTarget(1, 2);
         analysed.addBox(3, 2);
-        analysed.displayBoard();
+        currentBoard = analysed;
+        try {
+            while (inGame) {
+                /* Test du reste */
+                readPlayerEntry();
+                analyseSequence();
+                currentBoard.displayBoard();
+                winDialog();
+            }
+        } catch (GamePlayerLeavesException e) {
+            e.toString();
+        }
     }
 
     /**
@@ -65,29 +79,41 @@ public class Player {
      * @return the player's entry to uppercase.
      */
     public static String readPlayerEntry() {
+        System.out.println("Bienvenue, vous pouvez entrer une séquence à jouer ou bien l'instruction /quit pour quitter la partie.");
+        System.out.println("Veuillez entrer la commande ici :");
         return in.nextLine().trim().toUpperCase();
     }
 
     /**
      * Method used to analyse the sequence entered by the player and call the
      * corresponding method.
+     *
+     * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
-    public static void analyseSequence() {
-        for (char actu : readPlayerEntry().toCharArray()) {
-            switch (actu) {
-                case 'L':
-                    PlayerMoves.moveLeft(currentBoard);
-                    break;
-                case 'R':
-                    PlayerMoves.moveRight(currentBoard);
-                    break;
-                case 'U':
-                    PlayerMoves.moveUp(currentBoard);
-                    break;
-                case 'D':
-                    PlayerMoves.moveDown(currentBoard);
-                    break;
+    public static void analyseSequence() throws GamePlayerLeavesException {
+        if (!readPlayerEntry().contains("/QUIT")) {
+            for (char actu : readPlayerEntry().toCharArray()) {
+                switch (actu) {
+                    case 'L':
+                        PlayerMoves.moveLeft(currentBoard);
+                        allMoves.add(PlayerMoves.Moves.L);
+                        break;
+                    case 'R':
+                        PlayerMoves.moveRight(currentBoard);
+                        allMoves.add(PlayerMoves.Moves.R);
+                        break;
+                    case 'U':
+                        PlayerMoves.moveUp(currentBoard);
+                        allMoves.add(PlayerMoves.Moves.U);
+                        break;
+                    case 'D':
+                        PlayerMoves.moveDown(currentBoard);
+                        allMoves.add(PlayerMoves.Moves.D);
+                        break;
+                }
             }
+        } else {
+            quiWithDialog();
         }
     }
 
@@ -96,15 +122,22 @@ public class Player {
      * value in case of winning.
      */
     public static void winDialog() {
-
+        if (BoardChecker.winCheck(currentBoard)) {
+            inGame = false;
+            System.out.println("Félicitations, vous avez acheminé toutes les caisses !");
+            System.out.println(allMoves.toString());
+        }
     }
 
     /**
      * Method used to display a message and switch the attributes to the good
      * value in case of loosing.
+     *
+     * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
-    public static void quiWithDialog() {
-        //NOTE : Quit will be turnt into QUIT with the sequence analysis method.
+    public static void quiWithDialog() throws GamePlayerLeavesException {
+        System.out.println("Le joueur a quitté la partie.");
+        throw new GamePlayerLeavesException("Le joueur a quitté la partie");
     }
 
     /**
