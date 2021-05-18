@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="LAPTOP-EA2V22UR" name="sokoban.BoardAnalysisPackage.BoardCheckerTest" skipped="0" tests="3" time="0.132" timestamp="2021-05-18T07:38:07">
+<testsuite errors="11" failures="0" hostname="LAPTOP-EA2V22UR" name="sokoban.BoardBuildingPackage.BoardTest" skipped="0" tests="12" time="0.156" timestamp="2021-05-18T07:45:11">
   <properties>
     <property name="libs.spring-framework300.classpath" value="C:\Program Files\NetBeans-11.3\netbeans\platform\modules\org-apache-commons-logging.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\cglib-2.2.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-aop-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-aspects-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-beans-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-build-src-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-context-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-context-support-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-core-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-expression-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-framework-bom-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-instrument-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-instrument-tomcat-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-jdbc-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-jms-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-orm-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-oxm-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-struts-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-test-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-tx-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-web-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-webmvc-3.2.7.RELEASE.jar;C:\Program Files\NetBeans-11.3\netbeans\java\modules\ext\spring-3.0\spring-webmvc-portlet-3.2.7.RELEASE.jar" />
     <property name="javac.test.classpath" value=":C:\Program Files\NetBeans-11.3\netbeans\platform\lib\hamcrest-2.2.jar:build/classes:C:\Program Files\NetBeans-11.3\netbeans\platform\modules\ext\junit-4.12.jar:" />
@@ -20,7 +20,7 @@
     <property name="libs.JWSAntTasks.javadoc" value="" />
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11.0.11\bin" />
     <property name="platform.home" value="C:\Program Files\Java\jdk-11.0.11" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner sokoban.BoardAnalysisPackage.BoardCheckerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\test\results\TEST-sokoban.BoardAnalysisPackage.BoardCheckerTest.xml crashfile=D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\junitvmwatcher6215645918951593490.properties propsfile=D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\junit1943905835895745180.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner sokoban.BoardBuildingPackage.BoardTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\test\results\TEST-sokoban.BoardBuildingPackage.BoardTest.xml crashfile=D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\junitvmwatcher5748175238965938540.properties propsfile=D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\junit14988416610325408.properties" />
     <property name="jdk.debug" value="release" />
     <property name="libs.spring-framework300.src" value="" />
     <property name="javadoc.use" value="true" />
@@ -68,7 +68,7 @@
     <property name="jlink.additionalparam" value="" />
     <property name="libs.testng.maven-pom" value="" />
     <property name="org.openide.version" value="deprecated" />
-    <property name="test.includes" value="sokoban/BoardAnalysisPackage/BoardCheckerTest.java" />
+    <property name="test.includes" value="sokoban/BoardBuildingPackage/BoardTest.java" />
     <property name="run.classpath" value=":C:\Program Files\NetBeans-11.3\netbeans\platform\lib\hamcrest-2.2.jar:build/classes:" />
     <property name="libs.jaxb.src" value="" />
     <property name="test.src.dir" value="test" />
@@ -215,7 +215,7 @@
     <property name="libs.jsp-compilation.classpath" value="C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant.jar;C:\Program Files\NetBeans-11.3\netbeans\enterprise\modules\ext\servlet3.1-jsp2.3-api.jar;C:\Program Files\NetBeans-11.3\netbeans\enterprise\modules\ext\glassfish-jspparser-4.0.jar;C:\Program Files\NetBeans-11.3\netbeans\enterprise\modules\ext\jsf-2_2\javax.faces.jar;C:\Program Files\NetBeans-11.3\netbeans\enterprise\modules\ext\jstl-api.jar;C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant-launcher.jar" />
     <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_271\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext" />
     <property name="libs.javaee-api-6.0.classpath" value="C:\Program Files\NetBeans-11.3\netbeans\enterprise\modules\ext\javaee-api-6.0.jar" />
-    <property name="javac.includesfile.binary" value="D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\null779550237" />
+    <property name="javac.includesfile.binary" value="D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\null196327010" />
     <property name="libs.javaee-api-7.0.classpath" value="C:\Program Files\NetBeans-11.3\netbeans\enterprise\modules\ext\javaee-api-7.0.jar" />
     <property name="sun.cpu.isalist" value="amd64" />
     <property name="libs.restapi.maven-pom" value="" />
@@ -341,7 +341,7 @@
     <property name="netbeans.autoupdate.version" value="1.23" />
     <property name="empty.dir" value="D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\empty" />
     <property name="netbeans.user" value="C:\Users\jcdru\AppData\Roaming\NetBeans\11.3" />
-    <property name="javac.includes.binary" value="D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\test\classes\sokoban\BoardAnalysisPackage\BoardCheckerTest.class" />
+    <property name="javac.includes.binary" value="D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\test\classes\sokoban\BoardBuildingPackage\BoardTest.class" />
     <property name="file.separator" value="\" />
     <property name="line.separator" value="&#xd;&#xa;" />
     <property name="javadoc.additionalparam" value="" />
@@ -384,7 +384,7 @@
     <property name="libs.spring-framework500.src" value="" />
     <property name="user.properties.file" value="C:\Users\jcdru\AppData\Roaming\NetBeans\11.3\build.properties" />
     <property name="libs.javaee-api-6.0.src" value="" />
-    <property name="javac.includes" value="sokoban/BoardAnalysisPackage/BoardCheckerTest.java" />
+    <property name="javac.includes" value="sokoban/BoardBuildingPackage/BoardTest.java" />
     <property name="netbeans.autoupdate.country" value="FR" />
     <property name="file.encoding.pkg" value="sun.io" />
     <property name="java.class.path" value="C:\Program Files\NetBeans-11.3\netbeans\platform\lib\hamcrest-2.2.jar;D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\classes;C:\Program Files\NetBeans-11.3\netbeans\platform\modules\ext\junit-4.12.jar;D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\test\classes;C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant-launcher.jar;C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant.jar;C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant-junit.jar;C:\Program Files\NetBeans-11.3\netbeans\extide\ant\lib\ant-junit4.jar" />
@@ -434,19 +434,115 @@
     <property name="java.vm.version" value="11.0.11+9-LTS-194" />
     <property name="libs.metro.javadoc" value="C:\Program Files\NetBeans-11.3\netbeans\enterprise\docs\webservices-api-javadoc.jar;C:\Program Files\NetBeans-11.3\netbeans\enterprise\docs\webservices-extra-javadoc.jar;C:\Program Files\NetBeans-11.3\netbeans\enterprise\docs\webservices-extra-api-javadoc.jar;C:\Program Files\NetBeans-11.3\netbeans\enterprise\docs\webservices-rt-javadoc.jar;C:\Program Files\NetBeans-11.3\netbeans\enterprise\docs\webservices-tools-javadoc.jar" />
     <property name="sun.awt.datatransfer.timeout" value="1000" />
-    <property name="test.class" value="sokoban.BoardAnalysisPackage.BoardCheckerTest" />
+    <property name="test.class" value="sokoban.BoardBuildingPackage.BoardTest" />
     <property name="annotation.processing.run.all.processors" value="true" />
     <property name="libs.jsp-compiler.classpath" value="C:\Program Files\NetBeans-11.3\netbeans\enterprise\ant\extra\jspcompile.jar" />
     <property name="junit.forkmode" value="perTest" />
     <property name="libs.javaee-web-api-7.0.src" value="" />
   </properties>
-  <testcase classname="sokoban.BoardAnalysisPackage.BoardCheckerTest" name="testLegitMove" time="0.007" />
-  <testcase classname="sokoban.BoardAnalysisPackage.BoardCheckerTest" name="testWinCheck" time="0.001" />
-  <testcase classname="sokoban.BoardAnalysisPackage.BoardCheckerTest" name="testMovableBoxCheck" time="0.001" />
-  <system-out><![CDATA[legitMove
+  <testcase classname="sokoban.BoardBuildingPackage.BoardTest" name="testSetPlayerPosition" time="0.016">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at sokoban.BoardBuildingPackage.BoardTest.testSetPlayerPosition(BoardTest.java:167)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</error>
+  </testcase>
+  <testcase classname="sokoban.BoardBuildingPackage.BoardTest" name="testDisplayBoard" time="0.0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at sokoban.BoardBuildingPackage.BoardTest.testDisplayBoard(BoardTest.java:194)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</error>
+  </testcase>
+  <testcase classname="sokoban.BoardBuildingPackage.BoardTest" name="testAddHorizontalWall" time="0.0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at sokoban.BoardBuildingPackage.BoardTest.testAddHorizontalWall(BoardTest.java:97)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</error>
+  </testcase>
+  <testcase classname="sokoban.BoardBuildingPackage.BoardTest" name="testGetPlayerPosition" time="0.0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at sokoban.BoardBuildingPackage.BoardTest.testGetPlayerPosition(BoardTest.java:81)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</error>
+  </testcase>
+  <testcase classname="sokoban.BoardBuildingPackage.BoardTest" name="testInTheBoardCheck" time="0.015">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at sokoban.BoardBuildingPackage.BoardTest.testInTheBoardCheck(BoardTest.java:181)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</error>
+  </testcase>
+  <testcase classname="sokoban.BoardBuildingPackage.BoardTest" name="testGetWallPositions" time="0.0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at sokoban.BoardBuildingPackage.BoardTest.testGetWallPositions(BoardTest.java:67)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</error>
+  </testcase>
+  <testcase classname="sokoban.BoardBuildingPackage.BoardTest" name="testAddTarget" time="0.0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at sokoban.BoardBuildingPackage.BoardTest.testAddTarget(BoardTest.java:154)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</error>
+  </testcase>
+  <testcase classname="sokoban.BoardBuildingPackage.BoardTest" name="testMoveBox" time="0.0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at sokoban.BoardBuildingPackage.BoardTest.testMoveBox(BoardTest.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</error>
+  </testcase>
+  <testcase classname="sokoban.BoardBuildingPackage.BoardTest" name="testGetBoxPositions" time="0.0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at sokoban.BoardBuildingPackage.BoardTest.testGetBoxPositions(BoardTest.java:53)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</error>
+  </testcase>
+  <testcase classname="sokoban.BoardBuildingPackage.BoardTest" name="testAddBox" time="0.0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at sokoban.BoardBuildingPackage.BoardTest.testAddBox(BoardTest.java:126)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</error>
+  </testcase>
+  <testcase classname="sokoban.BoardBuildingPackage.BoardTest" name="testGetWinningpositions" time="0.016" />
+  <testcase classname="sokoban.BoardBuildingPackage.BoardTest" name="testAddVerticalWall" time="0.0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at sokoban.BoardBuildingPackage.BoardTest.testAddVerticalWall(BoardTest.java:112)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+</error>
+  </testcase>
+  <system-out><![CDATA[setPlayerPosition
+displayBoard
+addHorizontalWall
+getPlayerPosition
+inTheBoardCheck
+getWallPositions
+addTarget
+moveBox
+getBoxPositions
+addBox
+getWinningpositions
 TestBoard
   0 1 2 3 4 5 6 7
-0 # . X . . . . .
+0 # . X X . . . .
 1 # . . . . . . .
 2 # . . . . . . .
 3 # . C . . . . .
@@ -454,28 +550,7 @@ TestBoard
 5 # . . . . . . .
 6 # . . . . . . .
 7 # # # # # # # #
-winCheck
-TestBoard
-  0 1 2 3 4 5 6 7
-0 # . X . . . . .
-1 # . . . . . . .
-2 # . . . . . . .
-3 # . C . . . . .
-4 # . . . . . . .
-5 # . . . . . . .
-6 # . . . . . . .
-7 # # # # # # # #
-movableBoxCheck
-TestBoard
-  0 1 2 3 4 5 6 7
-0 # . X . . . . .
-1 # . . . . . . .
-2 # . . . . . . .
-3 # . . . . . . C
-4 # . . . . . . .
-5 # . . . . . . .
-6 # . . . . . . .
-7 # # # # # # # #
+addVerticalWall
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
