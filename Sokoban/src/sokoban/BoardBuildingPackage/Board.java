@@ -243,7 +243,7 @@ public class Board {
                     out.print(" " + "#");
                 } else if (boxPositions.contains(courant)) {
                     out.print(" " + "C");
-                } else if (courant == playerPosition) {
+                } else if (courant.equals(playerPosition)) {
                     out.print(" " + "P");
                 } else {
                     out.print(" " + ".");

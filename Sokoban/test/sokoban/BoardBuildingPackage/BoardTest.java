@@ -22,12 +22,18 @@ public class BoardTest {
     @Test
     public void testMoveBox() {
         System.out.println("moveBox");
-        Point toMove = null;
-        Point moved = null;
-        Board instance = null;
-        instance.moveBox(toMove, moved);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Board instance = new Board("TestBoard", 8, 8);
+        instance.addHorizontalWall(0, 0, 8);
+        instance.addHorizontalWall(0, 8, 8);
+        instance.addVerticalWall(7, 0, 8);
+        instance.addTarget(0, 2);
+        instance.addBox(3, 2);
+        Point toMove = new Point(3, 2);
+        Point moved = new Point(3, 3);
+        Point good = new Point(3, 3);
+        instance.moveBox(toMove, moved); //The player can be erased, moveBox isn't triggered by movableBoxCheck.
+        assertEquals(moved, good);
+        instance.displayBoard();
     }
 
     /**
@@ -36,11 +42,16 @@ public class BoardTest {
     @Test
     public void testSetPlayerPosition() {
         System.out.println("setPlayerPosition");
-        Point newPosition = null;
-        Board instance = null;
+        Board instance = new Board("TestBoard", 8, 8);
+        instance.addHorizontalWall(0, 0, 8);
+        instance.addHorizontalWall(0, 8, 8);
+        instance.addVerticalWall(7, 0, 8);
+        instance.addTarget(0, 2);
+        instance.addBox(3, 2);
+        Point newPosition = new Point(3, 3);
         instance.setPlayerPosition(newPosition);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(newPosition, instance.getPlayerPosition());
+        instance.displayBoard();
     }
 
     /**
@@ -49,13 +60,11 @@ public class BoardTest {
     @Test
     public void testInTheBoardCheck() {
         System.out.println("inTheBoardCheck");
-        Point check = null;
-        Board instance = null;
+        Board instance = new Board("TestBoard", 8, 8);
+        Point check = new Point(3, 8);
         boolean expResult = false;
         boolean result = instance.inTheBoardCheck(check);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
 }
