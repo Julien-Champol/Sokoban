@@ -70,6 +70,7 @@ public class Player {
                 /* Test du reste */
                 analyseSequence();
                 winDialog();
+                currentBoard.displayBoard();
             }
         } catch (GamePlayerLeavesException e) {
             e.toString();
@@ -80,11 +81,16 @@ public class Player {
      * Method used to read the Player entry and to return it.
      *
      * @return the player's entry to uppercase.
+     * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
-    public static String readPlayerEntry() {
+    public static String readPlayerEntry() throws GamePlayerLeavesException {
         System.out.println("Bienvenue, vous pouvez entrer une séquence à jouer ou bien l'instruction /quit pour quitter la partie.");
         System.out.println("Veuillez entrer la commande ici :");
-        return in.nextLine().trim().toUpperCase();
+        String returned = in.nextLine().trim().toUpperCase();
+        if (returned.equalsIgnoreCase("/QUIT")) {
+            quiWithDialog();
+        }
+        return returned;
     }
 
     /**
@@ -94,29 +100,25 @@ public class Player {
      * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
     public static void analyseSequence() throws GamePlayerLeavesException {
-        if (!readPlayerEntry().contains("/QUIT")) {
-            for (char actu : readPlayerEntry().toCharArray()) {
-                switch (actu) {
-                    case 'L':
-                        PlayerMoves.moveLeft(currentBoard);
-                        allMoves.add(PlayerMoves.Moves.L);
-                        break;
-                    case 'R':
-                        PlayerMoves.moveRight(currentBoard);
-                        allMoves.add(PlayerMoves.Moves.R);
-                        break;
-                    case 'U':
-                        PlayerMoves.moveUp(currentBoard);
-                        allMoves.add(PlayerMoves.Moves.U);
-                        break;
-                    case 'D':
-                        PlayerMoves.moveDown(currentBoard);
-                        allMoves.add(PlayerMoves.Moves.D);
-                        break;
-                }
+        for (char actu : readPlayerEntry().toCharArray()) {
+            switch (actu) {
+                case 'L':
+                    PlayerMoves.moveLeft(currentBoard);
+                    allMoves.add(PlayerMoves.Moves.L);
+                    break;
+                case 'R':
+                    PlayerMoves.moveRight(currentBoard);
+                    allMoves.add(PlayerMoves.Moves.R);
+                    break;
+                case 'U':
+                    PlayerMoves.moveUp(currentBoard);
+                    allMoves.add(PlayerMoves.Moves.U);
+                    break;
+                case 'D':
+                    PlayerMoves.moveDown(currentBoard);
+                    allMoves.add(PlayerMoves.Moves.D);
+                    break;
             }
-        } else {
-            quiWithDialog();
         }
     }
 
@@ -152,5 +154,5 @@ public class Player {
         Board a = new Board(" ", 0, 0);
         return a;
     }
-    
+
 }

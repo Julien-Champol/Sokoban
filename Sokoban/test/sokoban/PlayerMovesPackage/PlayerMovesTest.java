@@ -15,7 +15,7 @@ import sokoban.BoardBuildingPackage.Board;
  * @author jcdru
  */
 public class PlayerMovesTest {
-    
+
     public PlayerMovesTest() {
     }
 
@@ -33,8 +33,11 @@ public class PlayerMovesTest {
         theBoard.addBox(3, 2);
         Point newPosition = new Point(3, 3);
         theBoard.setPlayerPosition(newPosition);
+        System.out.println(theBoard.getPlayerPosition().toString());
         PlayerMoves.moveLeft(theBoard);
-        //Assert
+        Point valid = new Point(3, 2);
+        System.out.println(theBoard.getPlayerPosition().toString());
+        assertEquals(theBoard.getPlayerPosition(), valid);
     }
 
     /**
@@ -43,10 +46,19 @@ public class PlayerMovesTest {
     @Test
     public void testMoveRight() {
         System.out.println("moveRight");
-        Board theBoard = null;
+        Board theBoard = new Board("TestBoard", 8, 8);
+        theBoard.addHorizontalWall(0, 0, 8);
+        theBoard.addHorizontalWall(0, 8, 8);
+        theBoard.addVerticalWall(7, 0, 8);
+        theBoard.addTarget(0, 2);
+        theBoard.addBox(3, 2);
+        Point newPosition = new Point(3, 3);
+        theBoard.setPlayerPosition(newPosition);
+        System.out.println(theBoard.getPlayerPosition().toString());
         PlayerMoves.moveRight(theBoard);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Point valid = new Point(3, 4);
+        System.out.println(theBoard.getPlayerPosition().toString());
+        assertEquals(theBoard.getPlayerPosition(), valid);
     }
 
     /**
@@ -55,10 +67,17 @@ public class PlayerMovesTest {
     @Test
     public void testMoveUp() {
         System.out.println("moveUp");
-        Board theBoard = null;
+        Board theBoard = new Board("TestBoard", 8, 8);
+        theBoard.addHorizontalWall(0, 0, 8);
+        theBoard.addHorizontalWall(0, 8, 8);
+        theBoard.addVerticalWall(7, 0, 8);
+        theBoard.addTarget(0, 2);
+        theBoard.addBox(3, 2);
+        Point newPosition = new Point(3, 3);
+        theBoard.setPlayerPosition(newPosition);
         PlayerMoves.moveUp(theBoard);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Point valid = new Point(2, 3);
+        assertEquals(theBoard.getPlayerPosition(), valid);
     }
 
     /**
@@ -67,10 +86,17 @@ public class PlayerMovesTest {
     @Test
     public void testMoveDown() {
         System.out.println("moveDown");
-        Board theBoard = null;
+        Board theBoard = new Board("TestBoard", 8, 8);
+        theBoard.addHorizontalWall(0, 0, 8);
+        theBoard.addHorizontalWall(0, 8, 8);
+        theBoard.addVerticalWall(7, 0, 8);
+        theBoard.addTarget(0, 2);
+        theBoard.addBox(3, 2);
+        Point newPosition = new Point(3, 3);
+        theBoard.setPlayerPosition(newPosition);
         PlayerMoves.moveDown(theBoard);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Point valid = new Point(4, 3);
+        assertEquals(theBoard.getPlayerPosition(), valid);
     }
-    
+
 }

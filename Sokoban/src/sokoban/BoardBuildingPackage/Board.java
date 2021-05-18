@@ -198,7 +198,7 @@ public class Board {
         if (this.inTheBoardCheck(newTarget) && (boxPositions.isEmpty() || wallPositions.isEmpty()) || !boxPositions.contains(newTarget)
                 && !wallPositions.contains(newTarget)) {
             winningPositions.add(newTarget);
-        }
+        }   
     }
 
     /**

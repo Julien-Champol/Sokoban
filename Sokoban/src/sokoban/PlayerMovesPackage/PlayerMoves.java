@@ -26,15 +26,15 @@ public class PlayerMoves {
      * @param theBoard the Board the player is completing
      */
     public static void moveLeft(Board theBoard) {
-        int x = (int) (theBoard.getPlayerPosition().getX() - 1);
-        int y = (int) theBoard.getPlayerPosition().getY();
+        int x = (int) theBoard.getPlayerPosition().getX();
+        int y = (int) (theBoard.getPlayerPosition().getY() - 1);
         Point newPosition = new Point(x, y);
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)) {
-            theBoard.setPlayerPosition(newPosition);
-            int z = x - 1; // The box has new coordinates
-            Point newBoxPosition = new Point(z, y);
+            int z = y - 1; // The box has new coordinates
+            Point newBoxPosition = new Point(x, z);
             theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+            theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)) {
             theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
@@ -47,15 +47,15 @@ public class PlayerMoves {
      * @param theBoard the Board the player is completing
      */
     public static void moveRight(Board theBoard) {
-        int x = (int) (theBoard.getPlayerPosition().getX() + 1);
-        int y = (int) theBoard.getPlayerPosition().getY();
+        int x = (int) theBoard.getPlayerPosition().getX();
+        int y = (int) (theBoard.getPlayerPosition().getY() + 1);
         Point newPosition = new Point(x, y);
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.R)) {
-            theBoard.setPlayerPosition(newPosition);
-            int z = x + 1; // The box has new coordinates
-            Point newBoxPosition = new Point(z, y);
+            int z = y + 1; // The box has new coordinates
+            Point newBoxPosition = new Point(x, z);
             theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+            theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.R)) {
             theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
@@ -68,15 +68,15 @@ public class PlayerMoves {
      * @param theBoard the Board the player is completing
      */
     public static void moveUp(Board theBoard) {
-        int x = (int) theBoard.getPlayerPosition().getX();
-        int y = (int) (theBoard.getPlayerPosition().getY() + 1);
+        int x = (int) (theBoard.getPlayerPosition().getX() - 1);
+        int y = (int) theBoard.getPlayerPosition().getY();
         Point newPosition = new Point(x, y);
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.U)) {
-            theBoard.setPlayerPosition(newPosition);
-            int a = y + 1; // The box has new coordinates
-            Point newBoxPosition = new Point(x, a);
+            int a = x - 1; // The box has new coordinates
+            Point newBoxPosition = new Point(a, y);
             theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+            theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.U)) {
             theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
@@ -89,15 +89,15 @@ public class PlayerMoves {
      * @param theBoard the Board the player is completing
      */
     public static void moveDown(Board theBoard) {
-        int x = (int) theBoard.getPlayerPosition().getX();
-        int y = (int) (theBoard.getPlayerPosition().getY() - 1);
+        int x = (int) (theBoard.getPlayerPosition().getX() + 1);
+        int y = (int) theBoard.getPlayerPosition().getY();
         Point newPosition = new Point(x, y);
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.D)) {
-            theBoard.setPlayerPosition(newPosition);
-            int a = y - 1; // The box has new coordinates
-            Point newBoxPosition = new Point(x, a);
+            int a = x + 1; // The box has new coordinates
+            Point newBoxPosition = new Point(a, y);
             theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+            theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.D)) {
             theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
