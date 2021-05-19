@@ -16,3 +16,9 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
 
 17/05
     Junit en version correcte, import de Hamcrest libraries impossible.
+
+18/05
+    Import de Hamcrest. Partie 1 commentée, testée, finie.
+
+19/05
+    Début lecture fichier.

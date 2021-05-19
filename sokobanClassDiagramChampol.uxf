@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>560</x>
-      <y>260</y>
+      <y>390</y>
       <w>340</w>
       <h>360</h>
     </coordinates>
@@ -41,7 +41,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>690</x>
-      <y>690</y>
+      <y>820</y>
       <w>270</w>
       <h>200</h>
     </coordinates>
@@ -83,7 +83,7 @@ BoardBuilder
     <id>UMLClass</id>
     <coordinates>
       <x>590</x>
-      <y>170</y>
+      <y>300</y>
       <w>110</w>
       <h>30</h>
     </coordinates>
@@ -98,21 +98,28 @@ BoardBuilder
       <x>630</x>
       <y>90</y>
       <w>110</w>
-      <h>100</h>
+      <h>230</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>90.0;10.0;90.0;60.0;10.0;60.0;10.0;80.0</additional_attributes>
+    <additional_attributes>90.0;10.0;90.0;190.0;10.0;190.0;10.0;210.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>780</x>
-      <y>170</y>
-      <w>140</w>
-      <h>30</h>
+      <x>740</x>
+      <y>160</y>
+      <w>180</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>TextBoardBuilder
+--
 
+
+
+--
++ TextBoardBuilder(String)
++ addRow(String) : void
++ build() : Board
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -122,10 +129,10 @@ BoardBuilder
       <x>740</x>
       <y>90</y>
       <w>110</w>
-      <h>100</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0;90.0;60.0;90.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;90.0;50.0;90.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLPackage</id>
@@ -133,7 +140,7 @@ BoardBuilder
       <x>420</x>
       <y>0</y>
       <w>540</w>
-      <h>670</h>
+      <h>800</h>
     </coordinates>
     <panel_attributes>BoardBuildingPackage
 bg=red</panel_attributes>
@@ -143,7 +150,7 @@ bg=red</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>80</x>
-      <y>760</y>
+      <y>890</y>
       <w>100</w>
       <h>110</h>
     </coordinates>
@@ -162,7 +169,7 @@ D
     <id>Relation</id>
     <coordinates>
       <x>720</x>
-      <y>610</y>
+      <y>740</y>
       <w>110</w>
       <h>100</h>
     </coordinates>
@@ -175,7 +182,7 @@ r1=gameBoards</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>630</x>
-      <y>190</y>
+      <y>320</y>
       <w>110</w>
       <h>90</h>
     </coordinates>
@@ -187,19 +194,19 @@ r1=gameBoards</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>740</x>
-      <y>190</y>
+      <y>300</y>
       <w>110</w>
-      <h>90</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;uses&gt;&gt;</panel_attributes>
-    <additional_attributes>90.0;10.0;90.0;40.0;10.0;40.0;10.0;70.0</additional_attributes>
+    <additional_attributes>90.0;10.0;90.0;60.0;10.0;60.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>520</x>
-      <y>800</y>
+      <y>930</y>
       <w>190</w>
       <h>50</h>
     </coordinates>
@@ -212,7 +219,7 @@ r1=allMoves</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>330</x>
-      <y>780</y>
+      <y>910</y>
       <w>200</w>
       <h>120</h>
     </coordinates>
@@ -229,7 +236,7 @@ _+ moveDown(Board) : void_
     <id>Relation</id>
     <coordinates>
       <x>890</x>
-      <y>350</y>
+      <y>480</y>
       <w>360</w>
       <h>330</h>
     </coordinates>
@@ -241,7 +248,7 @@ _+ moveDown(Board) : void_
     <id>UMLClass</id>
     <coordinates>
       <x>1000</x>
-      <y>660</y>
+      <y>790</y>
       <w>350</w>
       <h>100</h>
     </coordinates>
@@ -257,7 +264,7 @@ _+ movableBoxCheck(Board, Point, Moves) : Boolean_
     <id>UMLPackage</id>
     <coordinates>
       <x>990</x>
-      <y>610</y>
+      <y>740</y>
       <w>370</w>
       <h>180</h>
     </coordinates>
@@ -269,7 +276,7 @@ bg=magenta</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>990</x>
-      <y>820</y>
+      <y>950</y>
       <w>290</w>
       <h>90</h>
     </coordinates>
@@ -286,13 +293,14 @@ bg=light_gray</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>980</x>
-      <y>260</y>
+      <y>390</y>
       <w>220</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>Note..
 displayBoard must act like
 a refresh method too.
+DONE
 bg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
@@ -302,17 +310,17 @@ bg=light_gray</panel_attributes>
       <x>270</x>
       <y>80</y>
       <w>450</w>
-      <h>330</h>
+      <h>460</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;throws&gt;&gt;</panel_attributes>
-    <additional_attributes>430.0;10.0;70.0;10.0;70.0;310.0;10.0;310.0</additional_attributes>
+    <additional_attributes>430.0;10.0;70.0;10.0;70.0;440.0;10.0;440.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>150</x>
-      <y>360</y>
+      <y>490</y>
       <w>130</w>
       <h>50</h>
     </coordinates>
@@ -324,7 +332,7 @@ BuilderException </panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>980</x>
-      <y>390</y>
+      <y>520</y>
       <w>220</w>
       <h>90</h>
     </coordinates>
@@ -341,7 +349,7 @@ bg=light_gray</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>980</x>
-      <y>510</y>
+      <y>640</y>
       <w>240</w>
       <h>80</h>
     </coordinates>
@@ -356,7 +364,7 @@ bg=light_gray</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>1380</x>
-      <y>600</y>
+      <y>730</y>
       <w>220</w>
       <h>110</h>
     </coordinates>
@@ -373,7 +381,7 @@ bg=light_gray</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>1380</x>
-      <y>740</y>
+      <y>870</y>
       <w>260</w>
       <h>80</h>
     </coordinates>
@@ -388,7 +396,7 @@ bg=blue</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>70</x>
-      <y>440</y>
+      <y>570</y>
       <w>210</w>
       <h>50</h>
     </coordinates>
@@ -401,7 +409,7 @@ GamePlayerLeavesException
     <id>Relation</id>
     <coordinates>
       <x>270</x>
-      <y>460</y>
+      <y>590</y>
       <w>440</w>
       <h>270</h>
     </coordinates>
@@ -413,7 +421,7 @@ GamePlayerLeavesException
     <id>UMLPackage</id>
     <coordinates>
       <x>0</x>
-      <y>290</y>
+      <y>420</y>
       <w>320</w>
       <h>240</h>
     </coordinates>
@@ -425,7 +433,7 @@ bg=green</panel_attributes>
     <id>UMLPackage</id>
     <coordinates>
       <x>60</x>
-      <y>710</y>
+      <y>840</y>
       <w>550</w>
       <h>230</h>
     </coordinates>
@@ -437,7 +445,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>170</x>
-      <y>810</y>
+      <y>940</y>
       <w>180</w>
       <h>40</h>
     </coordinates>
@@ -449,7 +457,7 @@ bg=black</panel_attributes>
     <id>UMLPackage</id>
     <coordinates>
       <x>1260</x>
-      <y>90</y>
+      <y>220</y>
       <w>330</w>
       <h>420</h>
     </coordinates>
@@ -460,7 +468,7 @@ bg=black</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1310</x>
-      <y>130</y>
+      <y>260</y>
       <w>210</w>
       <h>150</h>
     </coordinates>
@@ -472,6 +480,21 @@ _-ClassAttribute: Long_
 #Operation(i: int): int
 /+AbstractOperation()/
 </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>990</x>
+      <y>160</y>
+      <w>140</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Note..
+Where do we put 
+the input file ?
+FileBoardBuilder.
+bg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

@@ -5,6 +5,8 @@
  */
 package sokoban.BoardBuildingPackage;
 
+import sokoban.ExceptionsPackage.BuilderExcpetion;
+
 /**
  * Class representing data about the BoardBuilder using text files.
  *
@@ -12,4 +14,8 @@ package sokoban.BoardBuildingPackage;
  */
 public class TextBoardBuilder implements BoardBuilder {
 
+    public Board build() throws BuilderExcpetion {
+        Board pasDerreur = new Board("pasDerreur", 0, 0);
+        return pasDerreur;
+    }
 }

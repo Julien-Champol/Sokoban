@@ -5,11 +5,15 @@
  */
 package sokoban.BoardBuildingPackage;
 
+import sokoban.ExceptionsPackage.BuilderExcpetion;
+
 /**
  * Class representing data about the BoardBuilder interface.
- * 
+ *
  * @author jcdru
  */
 public interface BoardBuilder {
-    
+
+    public Board build() throws BuilderExcpetion;
+
 }

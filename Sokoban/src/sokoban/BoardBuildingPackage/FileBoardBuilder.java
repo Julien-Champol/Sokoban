@@ -5,11 +5,17 @@
  */
 package sokoban.BoardBuildingPackage;
 
+import sokoban.ExceptionsPackage.BuilderExcpetion;
+
 /**
  * Class representing data about the File BoardBuilder.
- * 
+ *
  * @author jcdru
  */
 public class FileBoardBuilder implements BoardBuilder {
-    
+
+    public Board build() throws BuilderExcpetion {
+        Board pasDerreur = new Board("pasDerreur", 0, 0);
+        return pasDerreur;
+    }
 }
