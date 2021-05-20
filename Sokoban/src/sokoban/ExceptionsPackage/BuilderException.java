@@ -6,9 +6,14 @@
 package sokoban.ExceptionsPackage;
 
 /**
- *
+ *  Class representing data about the exception thrown in case of BuilderException.
+ * 
  * @author jcdru
  */
-public class BuilderExcpetion extends Exception {
-    
+public class BuilderException extends Exception {
+
+    public BuilderException(String message) {
+        super(message);
+    }
+
 }

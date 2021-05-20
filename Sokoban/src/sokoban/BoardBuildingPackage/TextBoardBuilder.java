@@ -6,7 +6,7 @@
 package sokoban.BoardBuildingPackage;
 
 import java.awt.Point;
-import sokoban.ExceptionsPackage.BuilderExcpetion;
+import sokoban.ExceptionsPackage.BuilderException;
 
 /**
  * Class representing data about the BoardBuilder using text.
@@ -15,14 +15,29 @@ import sokoban.ExceptionsPackage.BuilderExcpetion;
  */
 public class TextBoardBuilder implements BoardBuilder {
 
+    /* The description of the board we'll built */
     private final String DESCRIPTION;
 
+    /* The board that we'll finally be returned */
     private Board textBuildBoard;
 
-    private int width;
-    private int x = 0;
-    private int y = 0;
+    /* The width of the board we'll build */
+    private int width = 0;
 
+    /* The height of the board we'll build */
+    private int height = 0; //So that for the first addRow we start at x = 0
+
+    /* This is the int we use to give coordinates to the character we read from the file */
+    private int y = 0; //So that for the first addRow we start at y = 0
+
+    /* A int set to -1 that allows us not to throw an exception on the first loop turn  of addRow */
+    int securedInput = -1;
+
+    /**
+     * Parameterized builder of the TextBoardBuilder class.
+     *
+     * @param description the description of the board we want to build.
+     */
     public TextBoardBuilder(String description) {
         this.DESCRIPTION = description;
         textBuildBoard = new Board(DESCRIPTION, -1, -1); //Initialized to -1, -1 so that we see it has to be modified.
@@ -31,28 +46,45 @@ public class TextBoardBuilder implements BoardBuilder {
     /**
      * Method used to add rows to a board.
      *
-     * @param row
+     * @param row the row describing the Board
+     * @throws sokoban.ExceptionsPackage.BuilderException
      */
-    public void addRow(String row) {
+    public void addRow(String row) throws BuilderException {
         width = row.length();
-        y++;
-        for (var c : row.toCharArray()) {
-            switch (c) {
-                case 'C':
-                    this.textBuildBoard.addBox(x, y);
-                case 'x':
-                    this.textBuildBoard.addTarget(x, y);
-                case 'P':
-                    Point playerPosition = new Point(x, y);
-                    this.textBuildBoard.setPlayerPosition(playerPosition);
+        if (width != securedInput && securedInput != -1) {
+            throw new BuilderException("Row must be a regular int");
+        } else {
+            for (var c : row.toCharArray()) {
+                switch (c) {
+                    case 'C':
+                        this.textBuildBoard.addBox(height, y);
+                    case 'x':
+                        this.textBuildBoard.addTarget(height, y);
+                    case 'P':
+                        Point playerPosition = new Point(height, y);
+                        this.textBuildBoard.setPlayerPosition(playerPosition);
+                }
+                y++;
             }
+            securedInput = width;
+            height++;
         }
     }
 
+    /**
+     * Method used to return the Board built.
+     *
+     * @return an instance of Board
+     * @throws sokoban.ExceptionsPackage.BuilderException
+     */
     @Override
-    public Board build() throws BuilderExcpetion {
-        this.textBuildBoard.addHorizontalWall(0, 0, width);
-        Board pasDerreur = new Board("pasDerreur", 0, 0);
-        return pasDerreur;
+    public Board build() throws BuilderException {
+        this.textBuildBoard.setHeight(height);
+        this.textBuildBoard.setWidth(width);
+        this.textBuildBoard.addHorizontalWall(0, 0, width); //We always add walls on the boarders of the board, safety measure.
+        this.textBuildBoard.addVerticalWall(0, 0, height);
+        this.textBuildBoard.addVerticalWall(height - 1, width - 1, height);
+        this.textBuildBoard.addHorizontalWall(0, width - 1, width);
+        return this.textBuildBoard;
     }
 }

@@ -5,7 +5,7 @@
  */
 package sokoban.BoardBuildingPackage;
 
-import sokoban.ExceptionsPackage.BuilderExcpetion;
+import sokoban.ExceptionsPackage.BuilderException;
 
 /**
  * Class representing data about the BoardBuilder interface.
@@ -14,6 +14,6 @@ import sokoban.ExceptionsPackage.BuilderExcpetion;
  */
 public interface BoardBuilder {
 
-    public Board build() throws BuilderExcpetion;
+    public Board build() throws BuilderException;
 
 }
