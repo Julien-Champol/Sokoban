@@ -8,12 +8,13 @@ package sokoban.BoardBuildingPackage;
 import sokoban.ExceptionsPackage.BuilderExcpetion;
 
 /**
- * Class representing data about the File BoardBuilder.
+ * Class representing data about the BoardBuilder using files.
  *
  * @author jcdru
  */
 public class FileBoardBuilder implements BoardBuilder {
 
+    @Override
     public Board build() throws BuilderExcpetion {
         Board pasDerreur = new Board("pasDerreur", 0, 0);
         return pasDerreur;

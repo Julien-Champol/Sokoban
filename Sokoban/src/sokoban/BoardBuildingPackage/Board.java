@@ -29,12 +29,12 @@ public class Board {
     /**
      * The width of the board
      */
-    private final int WIDTH;
+    private int width;
 
     /**
      * The height of the board
      */
-    private final int HEIGHT;
+    private int height;
 
     /**
      * The player's position on the board
@@ -65,9 +65,29 @@ public class Board {
      */
     public Board(String description, int width, int height) {
         this.DESCRIPTION = description;
-        this.WIDTH = width;
-        this.HEIGHT = height;
+        this.width = width;
+        this.height = height;
         playerPosition = new Point(-1, -1); //Initialized in  aposition that doesn't exist, conevntionnally.
+    }
+
+    /**
+     * Method used to set the width of the board, useful in the text board
+     * builder where we don't know the width of the Board in the beginning.
+     *
+     * @param newWidth the new width of the board
+     */
+    public void setWidth(int newWidth) {
+        this.width = newWidth;
+    }
+    
+    /**
+     * Method used to set the height of the board, useful in the text board
+     * builder where we don't know the height of the Board in the beginning.
+     * 
+     * @param newHeight the new height of the board.
+     */
+    public void setHeight(int newHeight) {
+        this.height = newHeight;
     }
 
     // The accessors :
@@ -220,7 +240,7 @@ public class Board {
      * @return true iff the point is in the board, false otherwise
      */
     public boolean inTheBoardCheck(Point check) {
-        return (check.getX() < this.WIDTH && check.getY() < this.HEIGHT);
+        return (check.getX() < this.width && check.getY() < this.height);
     }
 
     /**
@@ -229,16 +249,16 @@ public class Board {
     public void displayBoard() {
         out.println(DESCRIPTION);
         out.print(" ");
-        for (int j = 0; j < WIDTH; j++) { //First line display, the one with the numbers.
+        for (int j = 0; j < width; j++) { //First line display, the one with the numbers.
             out.print(" " + j);
         }
         out.println();
-        for (int i = 0; i < HEIGHT; i++) { //We are filling the board in the height direction, from the top to the bottom, line by line
+        for (int i = 0; i < height; i++) { //We are filling the board in the height direction, from the top to the bottom, line by line
             out.print(i);
-            for (int j = 0; j < WIDTH; j++) {
+            for (int j = 0; j < width; j++) {
                 Point courant = new Point(i, j);
                 if (winningPositions.contains(courant)) {
-                    out.print(" " + "X");
+                    out.print(" " + "x");
                 } else if (wallPositions.contains(courant)) {
                     out.print(" " + "#");
                 } else if (boxPositions.contains(courant)) {
