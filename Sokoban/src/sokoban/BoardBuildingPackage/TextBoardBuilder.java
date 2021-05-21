@@ -54,20 +54,28 @@ public class TextBoardBuilder implements BoardBuilder {
         if (width != securedInput && securedInput != -1) {
             throw new BuilderException("Row must be a regular int");
         } else {
+            securedInput = width;
+            height++;
             for (var c : row.toCharArray()) {
                 switch (c) {
                     case 'C':
                         this.textBuildBoard.addBox(height, y);
+                        y++;
+                        break;
                     case 'x':
                         this.textBuildBoard.addTarget(height, y);
+                        y++;
+                        break;
                     case 'P':
                         Point playerPosition = new Point(height, y);
                         this.textBuildBoard.setPlayerPosition(playerPosition);
+                        y++;
+                        break;
+                    case '.':
+                        y++;
+                        break;
                 }
-                y++;
             }
-            securedInput = width;
-            height++;
         }
     }
 
