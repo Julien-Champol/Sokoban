@@ -19,7 +19,7 @@ public class TextBoardBuilder implements BoardBuilder {
     private final String DESCRIPTION;
 
     /* The board that we'll finally be returned */
-    private Board textBuildBoard;
+    private Board textBuiltBoard;
 
     /* The width of the board we'll build */
     private int width = 0;
@@ -40,7 +40,7 @@ public class TextBoardBuilder implements BoardBuilder {
      */
     public TextBoardBuilder(String description) {
         this.DESCRIPTION = description;
-        textBuildBoard = new Board(DESCRIPTION, -1, -1); //Initialized to -1, -1 so that we see it has to be modified.
+        textBuiltBoard = new Board(DESCRIPTION, -1, -1); //Initialized to -1, -1 so that we see it has to be modified.
     }
 
     /**
@@ -57,24 +57,28 @@ public class TextBoardBuilder implements BoardBuilder {
             securedInput = width;
             height++;
             for (var c : row.toCharArray()) {
+                if (y == width - 1) {
+                    y = 0;
+                }
+                System.out.println(height);
                 switch (c) {
                     case 'C':
-                        this.textBuildBoard.addBox(height, y);
+                        this.textBuiltBoard.addBox(height - 1, y); //Height - 1 to start at 0 not at 1
                         y++;
                         break;
                     case 'x':
-                        this.textBuildBoard.addTarget(height, y);
+                        this.textBuiltBoard.addTarget(height - 1, y);
                         y++;
                         break;
                     case 'P':
-                        Point playerPosition = new Point(height, y);
-                        this.textBuildBoard.setPlayerPosition(playerPosition);
+                        Point playerPosition = new Point(height - 1, y);
+                        this.textBuiltBoard.setPlayerPosition(playerPosition);
                         y++;
                         break;
-                    case '.':
+                    default:
                         y++;
-                        break;
                 }
+                System.out.println("y :" + y);
             }
         }
     }
@@ -87,12 +91,12 @@ public class TextBoardBuilder implements BoardBuilder {
      */
     @Override
     public Board build() throws BuilderException {
-        this.textBuildBoard.setHeight(height);
-        this.textBuildBoard.setWidth(width);
-        this.textBuildBoard.addHorizontalWall(0, 0, width); //We always add walls on the boarders of the board, safety measure.
-        this.textBuildBoard.addVerticalWall(0, 0, height);
-        this.textBuildBoard.addVerticalWall(height - 1, width - 1, height);
-        this.textBuildBoard.addHorizontalWall(0, width - 1, width);
-        return this.textBuildBoard;
+        this.textBuiltBoard.setHeight(height);
+        this.textBuiltBoard.setWidth(width);
+        this.textBuiltBoard.addHorizontalWall(0, 0, width); //We always add walls on the boarders of the board, safety measure.
+        this.textBuiltBoard.addVerticalWall(0, 0, height);
+        this.textBuiltBoard.addVerticalWall(0, width - 1, height);
+        this.textBuiltBoard.addHorizontalWall(height - 1, 0, width);
+        return this.textBuiltBoard;
     }
 }

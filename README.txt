@@ -26,4 +26,7 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
 20/05
     Continuité du jour précédent, les tests ne passent pas.
 
-21/05
+23/05
+    Text Board builder non fonctionnel
+
+24/05

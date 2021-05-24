@@ -17,6 +17,7 @@ public class TextBoardBuilderTest {
 
     /**
      * Test of addRow method, of class TextBoardBuilder.
+     * @throws java.lang.Exception
      */
     @Test
     public void testAddRow() throws Exception {
@@ -39,6 +40,7 @@ public class TextBoardBuilderTest {
 
     /**
      * Test of build method, of class TextBoardBuilder.
+     * @throws java.lang.Exception
      */
     @Test
     public void testBuild() throws Exception {
