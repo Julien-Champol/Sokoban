@@ -30,3 +30,5 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
     Text Board builder non fonctionnel
 
 24/05
+    addRow() fonctionnelle et nettoyée.
+    Debugage de addHorizontalWall() et addVerticalWall(), debugage de inTheBoardCheck() (inversion de width et height). 

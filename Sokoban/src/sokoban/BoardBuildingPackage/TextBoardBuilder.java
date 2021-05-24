@@ -28,7 +28,7 @@ public class TextBoardBuilder implements BoardBuilder {
     private int height = 0; //So that for the first addRow we start at x = 0
 
     /* This is the int we use to give coordinates to the character we read from the file */
-    private int y = 0; //So that for the first addRow we start at y = 0
+    private int y = -1; //So that for the first addRow we start at y = 0
 
     /* A int set to -1 that allows us not to throw an exception on the first loop turn  of addRow */
     int securedInput = -1;
@@ -59,32 +59,24 @@ public class TextBoardBuilder implements BoardBuilder {
             for (var c : row.toCharArray()) {
                 if (y == width - 1) {
                     y = 0;
+                } else {
+                    y++;
                 }
-                System.out.println(height);
                 switch (c) {
                     case 'C':
                         this.textBuiltBoard.addBox(height - 1, y); //Height - 1 to start at 0 not at 1
-                        y++;
-                        break;
                     case 'x':
                         this.textBuiltBoard.addTarget(height - 1, y);
-                        y++;
-                        break;
                     case 'P':
                         Point playerPosition = new Point(height - 1, y);
                         this.textBuiltBoard.setPlayerPosition(playerPosition);
-                        y++;
-                        break;
-                    default:
-                        y++;
                 }
-                System.out.println("y :" + y);
             }
         }
     }
 
     /**
-     * Method used to return the Board built.
+     * Method used to return the Board we have built.
      *
      * @return an instance of Board
      * @throws sokoban.ExceptionsPackage.BuilderException
@@ -93,10 +85,10 @@ public class TextBoardBuilder implements BoardBuilder {
     public Board build() throws BuilderException {
         this.textBuiltBoard.setHeight(height);
         this.textBuiltBoard.setWidth(width);
-        this.textBuiltBoard.addHorizontalWall(0, 0, width); //We always add walls on the boarders of the board, safety measure.
         this.textBuiltBoard.addVerticalWall(0, 0, height);
         this.textBuiltBoard.addVerticalWall(0, width - 1, height);
-        this.textBuiltBoard.addHorizontalWall(height - 1, 0, width);
+        this.textBuiltBoard.addHorizontalWall(0, 0, width - 1); //We always add walls on the boarders, safety measure.
+        this.textBuiltBoard.addHorizontalWall(height - 1, 0, width - 1);
         return this.textBuiltBoard;
     }
 }

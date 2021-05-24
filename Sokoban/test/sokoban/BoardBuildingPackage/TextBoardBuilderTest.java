@@ -17,6 +17,7 @@ public class TextBoardBuilderTest {
 
     /**
      * Test of addRow method, of class TextBoardBuilder.
+     *
      * @throws java.lang.Exception
      */
     @Test
@@ -25,21 +26,22 @@ public class TextBoardBuilderTest {
         TextBoardBuilder instance = new TextBoardBuilder("testBoard");
         instance.addRow("#########");
         instance.addRow("#...x...#");
-        instance.addRow("#.....c.#");
+        instance.addRow("#.....C.#");
         instance.addRow("#....P..#");
         instance.addRow("#########");
         Board testAddRow = instance.build();
         testAddRow.displayBoard();
-        Point playerPosition = new Point(5, 3);
+        Point playerPosition = new Point(3, 5);
         assertEquals(testAddRow.getPlayerPosition(), playerPosition);
-        Point boxPosition = new Point(6, 2);
+        Point boxPosition = new Point(2, 6);
         assertTrue(testAddRow.getBoxPositions().contains(boxPosition));
-        Point targetPosition = new Point(4, 1);
+        Point targetPosition = new Point(1, 4);
         assertTrue(testAddRow.getWinningpositions().contains(targetPosition));
     }
 
     /**
      * Test of build method, of class TextBoardBuilder.
+     *
      * @throws java.lang.Exception
      */
     @Test

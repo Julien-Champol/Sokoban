@@ -55,8 +55,8 @@ public class Player {
         /* Board initialization */
         Board analysed = new Board("TestBoard", 8, 8);
         analysed.addHorizontalWall(0, 0, 8);
-        analysed.addHorizontalWall(0, 7, 8);
-        analysed.addVerticalWall(7, 0, 8);
+        analysed.addHorizontalWall(7, 0, 8);
+        analysed.addVerticalWall(0, 7, 8);
         analysed.addVerticalWall(0, 0, 8);
         analysed.addTarget(1, 2);
         analysed.addBox(3, 2);
@@ -130,7 +130,7 @@ public class Player {
         if (BoardChecker.winCheck(currentBoard)) {
             inGame = false;
             System.out.println("Félicitations, vous avez acheminé toutes les caisses !");
-            System.out.println(allMoves.toString());
+            System.out.println("Voici votre séquence de jeu : " + allMoves.toString());
         }
     }
 

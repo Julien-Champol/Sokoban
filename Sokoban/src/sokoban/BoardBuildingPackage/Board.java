@@ -79,11 +79,11 @@ public class Board {
     public void setWidth(int newWidth) {
         this.width = newWidth;
     }
-    
+
     /**
      * Method used to set the height of the board, useful in the text board
      * builder where we don't know the height of the Board in the beginning.
-     * 
+     *
      * @param newHeight the new height of the board.
      */
     public void setHeight(int newHeight) {
@@ -147,9 +147,9 @@ public class Board {
             out.println("Cette position est déjà occupée.");
         }
         for (int i = 1; i <= length; i++) {
-            Point newPoint = new Point(x + i, y);
-            if (this.inTheBoardCheck(newPoint) && !winningPositions.contains(newPoint)
-                    && !boxPositions.contains(newPoint)) {
+            Point newPoint = new Point(x, y + i);
+            if (this.inTheBoardCheck(newPoint) && (winningPositions.isEmpty() || boxPositions.isEmpty())
+                    || !winningPositions.contains(newPoint) && !boxPositions.contains(newPoint)) {
                 wallPositions.add(newPoint);
             }
         }
@@ -171,9 +171,9 @@ public class Board {
             out.println("Cette position est déjà occupée.");
         }
         for (int i = 1; i <= length; i++) {
-            Point newPoint = new Point(x, y + i);
-            if (this.inTheBoardCheck(newPoint) && winningPositions.isEmpty() || boxPositions.isEmpty()
-                    && !winningPositions.contains(newPoint) && !boxPositions.contains(newPoint)) {
+            Point newPoint = new Point(x + i, y);
+            if (this.inTheBoardCheck(newPoint) && (winningPositions.isEmpty() || boxPositions.isEmpty())
+                    || !winningPositions.contains(newPoint) && !boxPositions.contains(newPoint)) {
                 wallPositions.add(newPoint);
             }
         }
@@ -240,7 +240,7 @@ public class Board {
      * @return true iff the point is in the board, false otherwise
      */
     public boolean inTheBoardCheck(Point check) {
-        return (check.getX() < this.width && check.getY() < this.height);
+        return (check.getX() < this.height && check.getY() < this.width);
     }
 
     /**
@@ -249,13 +249,13 @@ public class Board {
     public void displayBoard() {
         out.println(DESCRIPTION);
         out.print(" ");
-        for (int j = 0; j < width; j++) { //First line display, the one with the numbers.
+        for (int j = 0; j < this.width; j++) { //First line display, the one with the numbers.
             out.print(" " + j);
         }
         out.println();
-        for (int i = 0; i < height; i++) { //We are filling the board in the height direction, from the top to the bottom, line by line
+        for (int i = 0; i < this.height; i++) { //We are filling the board in the height direction, from the top to the bottom, line by line
             out.print(i);
-            for (int j = 0; j < width; j++) {
+            for (int j = 0; j < this.width; j++) {
                 Point courant = new Point(i, j);
                 if (winningPositions.contains(courant)) {
                     out.print(" " + "x");
