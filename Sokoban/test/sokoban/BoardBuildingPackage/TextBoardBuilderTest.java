@@ -47,12 +47,30 @@ public class TextBoardBuilderTest {
     @Test
     public void testBuild() throws Exception {
         System.out.println("build");
-        TextBoardBuilder instance = null;
-        Board expResult = null;
-        Board result = instance.build();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        TextBoardBuilder instance = new TextBoardBuilder("testBoard2");
+        instance.addRow("##########");
+        instance.addRow("#.x.x.C..#");
+        instance.addRow("#.....C.##");
+        instance.addRow("#....P..##");
+        instance.addRow("##########");
+        Board testAddRow = instance.build();
+        testAddRow.displayBoard();
+        Point playerPosition = new Point(3, 5);
+        assertEquals(testAddRow.getPlayerPosition(), playerPosition);
+        Point boxPosition = new Point(1, 6);
+        assertTrue(testAddRow.getBoxPositions().contains(boxPosition));
+        Point boxPosition2 = new Point(2, 6);
+        assertTrue(testAddRow.getBoxPositions().contains(boxPosition2));
+        Point targetPosition = new Point(1, 2);
+        assertTrue(testAddRow.getWinningpositions().contains(targetPosition));
+        Point targetPosition2 = new Point(1, 4);
+        assertTrue(testAddRow.getWinningpositions().contains(targetPosition2));
+        Point wall1 = new Point(0, 9);
+        assertTrue(testAddRow.getWallPositions().contains(wall1));
+        Point wall2 = new Point(2, 9);
+        assertTrue(testAddRow.getWallPositions().contains(wall2));
+        Point wall3 = new Point(4, 9);
+        assertTrue(testAddRow.getWallPositions().contains(wall3));
     }
 
 }

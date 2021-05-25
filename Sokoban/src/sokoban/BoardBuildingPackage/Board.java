@@ -131,6 +131,15 @@ public class Board {
     }
 
     /**
+     * Method returning the despcription of the board.
+     *
+     * @return a string, the description
+     */
+    public String getDescription() {
+        return this.DESCRIPTION;
+    }
+
+    /**
      * Method adding a length sized horizontal wall from a given point.
      *
      * @param x the point's absciss
@@ -139,17 +148,18 @@ public class Board {
      */
     public void addHorizontalWall(int x, int y, int length) {
         Point startingPoint = new Point(x, y);
-        if (this.inTheBoardCheck(startingPoint) && (winningPositions.isEmpty()
+        if (this.inTheBoardCheck(startingPoint) && !startingPoint.equals(playerPosition) && (winningPositions.isEmpty()
                 || boxPositions.isEmpty()) || !winningPositions.contains(startingPoint)
-                && !boxPositions.contains(startingPoint)) {
+                && !boxPositions.contains(startingPoint) && !startingPoint.equals(playerPosition)) {
             wallPositions.add(startingPoint);
         } else {
             out.println("Cette position est déjà occupée.");
         }
         for (int i = 1; i <= length; i++) {
             Point newPoint = new Point(x, y + i);
-            if (this.inTheBoardCheck(newPoint) && (winningPositions.isEmpty() || boxPositions.isEmpty())
-                    || !winningPositions.contains(newPoint) && !boxPositions.contains(newPoint)) {
+            if (this.inTheBoardCheck(newPoint) && !newPoint.equals(playerPosition) && (winningPositions.isEmpty()
+                    || boxPositions.isEmpty()) || !winningPositions.contains(newPoint)
+                    && !boxPositions.contains(newPoint) && !newPoint.equals(playerPosition)) {
                 wallPositions.add(newPoint);
             }
         }
@@ -164,16 +174,17 @@ public class Board {
      */
     public void addVerticalWall(int x, int y, int length) {
         Point startingPoint = new Point(x, y);
-        if (this.inTheBoardCheck(startingPoint) && (winningPositions.isEmpty() || boxPositions.isEmpty())
-                || !winningPositions.contains(startingPoint) && !boxPositions.contains(startingPoint)) {
+        if (this.inTheBoardCheck(startingPoint) && !startingPoint.equals(playerPosition) && (winningPositions.isEmpty()
+                || boxPositions.isEmpty()) || !winningPositions.contains(startingPoint)
+                && !boxPositions.contains(startingPoint) && !startingPoint.equals(playerPosition)) {
             wallPositions.add(startingPoint);
         } else {
             out.println("Cette position est déjà occupée.");
         }
         for (int i = 1; i <= length; i++) {
             Point newPoint = new Point(x + i, y);
-            if (this.inTheBoardCheck(newPoint) && (winningPositions.isEmpty() || boxPositions.isEmpty())
-                    || !winningPositions.contains(newPoint) && !boxPositions.contains(newPoint)) {
+            if (this.inTheBoardCheck(newPoint) && !startingPoint.equals(playerPosition) && (winningPositions.isEmpty() || boxPositions.isEmpty())
+                    || !winningPositions.contains(newPoint) && !boxPositions.contains(newPoint) && !newPoint.equals(playerPosition)) {
                 wallPositions.add(newPoint);
             }
         }
@@ -228,7 +239,7 @@ public class Board {
      */
     public void setPlayerPosition(Point newPosition) {
         if (this.inTheBoardCheck(newPosition) && (winningPositions.isEmpty() || wallPositions.isEmpty() || boxPositions.isEmpty())
-                || !wallPositions.contains(newPosition) && !boxPositions.contains(newPosition)) {
+                || (!wallPositions.contains(newPosition) && !boxPositions.contains(newPosition))) {
             playerPosition.setLocation(newPosition);
         }
     }

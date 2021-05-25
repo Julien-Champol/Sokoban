@@ -31,7 +31,7 @@ public class TextBoardBuilder implements BoardBuilder {
     private int y = -1; //So that for the first addRow we start at y = 0
 
     /* A int set to -1 that allows us not to throw an exception on the first loop turn  of addRow */
-    int securedInput = -1;
+    private int securedInput = -1;
 
     /**
      * Parameterized builder of the TextBoardBuilder class.
@@ -65,11 +65,17 @@ public class TextBoardBuilder implements BoardBuilder {
                 switch (c) {
                     case 'C':
                         this.textBuiltBoard.addBox(height - 1, y); //Height - 1 to start at 0 not at 1
+                        break;
                     case 'x':
                         this.textBuiltBoard.addTarget(height - 1, y);
+                        break;
                     case 'P':
                         Point playerPosition = new Point(height - 1, y);
                         this.textBuiltBoard.setPlayerPosition(playerPosition);
+                        break;
+                    case '#':
+                        this.textBuiltBoard.addHorizontalWall(height - 1, y, 0);
+                        break;
                 }
             }
         }

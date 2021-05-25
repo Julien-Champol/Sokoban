@@ -32,3 +32,9 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
 24/05
     addRow() fonctionnelle et nettoyée.
     Debugage de addHorizontalWall() et addVerticalWall(), debugage de inTheBoardCheck() (inversion de width et height). 
+    Test terminés pour le TextBoardBuilder.
+
+25/05
+    FileBoardBuilder démarré.
+    FileBoardBuilder terminé, nouveau débugage du TextBoardBuilder, maj du diagramme de classe.
+    Tests tous faits et bons, javadoc entière.
