@@ -60,10 +60,21 @@ public class Player {
         analysed.addVerticalWall(0, 0, 8);
         analysed.addTarget(1, 2);
         analysed.addBox(3, 2);
-        Point player = new Point(4, 2);
+        analysed.addBox(4, 2);
+        Point player = new Point(5, 2);
         analysed.setPlayerPosition(player);
         currentBoard = analysed;
         inGame = true;
+        System.out.println("_________________________________________________________________");
+        System.out.println("Welcome in Sokoban ! ");
+        System.out.println("You have to put every boxes on the targets, walls can't be hit.");
+        System.out.println("Type L to move left");
+        System.out.println("Type R to move right");
+        System.out.println("Type U to move up");
+        System.out.println("Type D to move down");
+        System.out.println("Type /quit to leave the game at any time.");
+        System.out.println("Enjoy your game !");
+        System.out.println("_________________________________________________________________");
         currentBoard.displayBoard();
         try {
             while (inGame) {
@@ -84,7 +95,6 @@ public class Player {
      * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
     public static String readPlayerEntry() throws GamePlayerLeavesException {
-        System.out.println("Bienvenue, vous pouvez entrer une séquence à jouer ou bien l'instruction /quit pour quitter la partie.");
         System.out.println("Veuillez entrer la commande ici :");
         String returned = in.nextLine().trim().toUpperCase();
         if (returned.equalsIgnoreCase("/QUIT")) {

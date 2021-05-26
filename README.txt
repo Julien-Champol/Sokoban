@@ -38,3 +38,7 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
     FileBoardBuilder démarré.
     FileBoardBuilder terminé, nouveau débugage du TextBoardBuilder, maj du diagramme de classe.
     Tests tous faits et bons, javadoc entière.
+
+26/05
+    Début de la partie 3 base de données.
+    Pb rencontré : le déplacement d'une série de caisses ne fonctionne pas correctement.

@@ -6,6 +6,7 @@
 package sokoban.PlayerMovesPackage;
 
 import java.awt.Point;
+import static java.lang.System.out;
 import sokoban.BoardAnalysisPackage.BoardChecker;
 import sokoban.BoardBuildingPackage.Board;
 
@@ -34,6 +35,7 @@ public class PlayerMoves {
             int z = y - 1; // The box has new coordinates
             Point newBoxPosition = new Point(x, z);
             theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+            //HERE ADD CODE TO MOVE MULTIPLE BOXES AT THE SAME TIME
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)) {
