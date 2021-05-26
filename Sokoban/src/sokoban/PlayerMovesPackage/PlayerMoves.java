@@ -6,7 +6,6 @@
 package sokoban.PlayerMovesPackage;
 
 import java.awt.Point;
-import static java.lang.System.out;
 import sokoban.BoardAnalysisPackage.BoardChecker;
 import sokoban.BoardBuildingPackage.Board;
 
@@ -35,9 +34,9 @@ public class PlayerMoves {
             int z = y - 1; // The box has new coordinates
             Point newBoxPosition = new Point(x, z);
             theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
-
+            //TEMP
             boolean serial = true;
-            while (z >= 0 && serial) {
+            while (z >= 0 && serial) { //Loop to move the serial boxes 
                 int a = z - 1;
                 Point serialBox = new Point(x, a);
                 if (BoardChecker.movableBoxCheck(theBoard, serialBox, Moves.L)) {

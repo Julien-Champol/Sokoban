@@ -61,30 +61,30 @@ public class BoardChecker {
     public static boolean movableBoxCheck(Board theBoard, Point theBox, Moves direction) {
         int x;
         int y;
-        Point voisin = new Point(-1, -1);
+        Point neighbor = new Point(-1, -1);
         switch (direction) {
             case L:
                 x = (int) theBox.getX();
                 y = (int) theBox.getY() - 1;
-                voisin = new Point(x, y);
+                neighbor = new Point(x, y);
                 break;
             case R:
                 x = (int) (theBox.getX());
                 y = (int) theBox.getY() + 1;
-                voisin = new Point(x, y);
+                neighbor = new Point(x, y);
                 break;
             case U:
                 x = (int) theBox.getX() - 1;
                 y = (int) theBox.getY();
-                voisin = new Point(x, y);
+                neighbor = new Point(x, y);
                 break;
             case D:
                 x = (int) theBox.getX() + 1;
                 y = (int) theBox.getY();
-                voisin = new Point(x, y);
+                neighbor = new Point(x, y);
                 break;
         }
-        return (theBoard.getBoxPositions().contains(theBox) && theBoard.inTheBoardCheck(voisin)
-                && BoardChecker.movableBoxCheck(theBoard, voisin, direction));
+        return (theBoard.getBoxPositions().contains(theBox) && theBoard.inTheBoardCheck(neighbor)
+                && !theBoard.getWallPositions().contains(neighbor));
     }
 }

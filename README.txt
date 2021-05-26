@@ -41,4 +41,5 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
 
 26/05
     Début de la partie 3 base de données.
-    Pb rencontré : le déplacement d'une série de caisses ne fonctionne pas correctement.
+    Pb rencontré : le déplacement d'une série de caisses ne fonctionne pas correctement. Tentative de récurisivité dans 
+    movableBoxCheck().
