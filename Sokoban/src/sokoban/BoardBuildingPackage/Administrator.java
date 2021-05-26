@@ -19,7 +19,30 @@ public class Administrator {
      * @param args
      */
     public static void main(String[] args) {
-            System.out.println("Ici");
+        System.out.println("Ici");
+    }
+
+    /**
+     * Method called to create a dataBase.
+     *
+     * @param dataBaseName the dataBase name
+     */
+    public static void createDataBase(String dataBaseName) {
+
+    }
+
+    /**
+     * Stops the run with a message.
+     */
+    public static void quitWithDialog() {
+
+    }
+
+    /**
+     * Displays the main menu of the administrator
+     */
+    void mainMenu() {
+
     }
 
 }

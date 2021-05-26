@@ -396,8 +396,7 @@ bg=black</panel_attributes>
     <panel_attributes>Administrator
 --
 _+ main() : void_
-_+ dataBaseConnection() : void_
-_+ createDatabase(String) : void_
+_+ createDataBase(String) : void_
 _+ quiWithDialog() : void_
 _~ mainMenu() : void_
 </panel_attributes>

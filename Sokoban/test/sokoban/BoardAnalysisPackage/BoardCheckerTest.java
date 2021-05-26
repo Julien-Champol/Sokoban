@@ -65,14 +65,23 @@ public class BoardCheckerTest {
         theBoard.addHorizontalWall(0, 0, 8);
         theBoard.addHorizontalWall(0, 8, 8);
         theBoard.addVerticalWall(7, 0, 8);
-        theBoard.addTarget(0, 2);
+        theBoard.addTarget(1, 2);
         theBoard.addBox(3, 7);
+        theBoard.addBox(3, 6);
+        theBoard.addBox(3, 5);
+        theBoard.addBox(3, 4);
+        theBoard.addBox(3, 3);
         theBoard.displayBoard();
         Point theBox = new Point(3, 2);
         PlayerMoves.Moves direction = PlayerMoves.Moves.L;
         boolean expResult = false;
         boolean result = BoardChecker.movableBoxCheck(theBoard, theBox, direction);
         assertEquals(expResult, result);
+        Point theSecondBox = new Point(3, 3);
+        PlayerMoves.Moves direction2 = PlayerMoves.Moves.R;
+        boolean expResult2 = false;
+        boolean result2 = BoardChecker.movableBoxCheck(theBoard, theSecondBox, direction2);
+        assertEquals(expResult2, result2);
     }
 
 }

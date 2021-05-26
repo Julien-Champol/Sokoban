@@ -33,8 +33,12 @@ public class PlayerMovesTest {
         theBoard.addBox(3, 2);
         Point newPosition = new Point(3, 3);
         theBoard.setPlayerPosition(newPosition);
+        System.out.println("Before moving left");
+        theBoard.displayBoard();
         System.out.println(theBoard.getPlayerPosition().toString());
         PlayerMoves.moveLeft(theBoard);
+        System.out.println("After moving left");
+        theBoard.displayBoard();
         Point valid = new Point(3, 2);
         System.out.println(theBoard.getPlayerPosition().toString());
         assertEquals(theBoard.getPlayerPosition(), valid);

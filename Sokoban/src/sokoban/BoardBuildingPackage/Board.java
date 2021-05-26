@@ -81,6 +81,15 @@ public class Board {
     }
 
     /**
+     * Return the width of the actual board.
+     *
+     * @return the width
+     */
+    public int getWidth() {
+        return this.width;
+    }
+
+    /**
      * Method used to set the height of the board, useful in the text board
      * builder where we don't know the height of the Board in the beginning.
      *
@@ -88,6 +97,15 @@ public class Board {
      */
     public void setHeight(int newHeight) {
         this.height = newHeight;
+    }
+
+    /**
+     * Return the height of the actual board.
+     *
+     * @return the height
+     */
+    public int getHeight() {
+        return this.height;
     }
 
     // The accessors :

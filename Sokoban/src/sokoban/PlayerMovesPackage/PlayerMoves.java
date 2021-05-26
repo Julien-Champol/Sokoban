@@ -35,7 +35,19 @@ public class PlayerMoves {
             int z = y - 1; // The box has new coordinates
             Point newBoxPosition = new Point(x, z);
             theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
-            //HERE ADD CODE TO MOVE MULTIPLE BOXES AT THE SAME TIME
+
+            boolean serial = true;
+            while (z >= 0 && serial) {
+                int a = z - 1;
+                Point serialBox = new Point(x, a);
+                if (BoardChecker.movableBoxCheck(theBoard, serialBox, Moves.L)) {
+                    theBoard.moveBox(newBoxPosition, serialBox);
+                    newBoxPosition = serialBox;
+                } else {
+                    serial = false;
+                }
+            }
+
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)) {
@@ -57,6 +69,19 @@ public class PlayerMoves {
             int z = y + 1; // The box has new coordinates
             Point newBoxPosition = new Point(x, z);
             theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+
+            boolean serial = true;
+            while (z < theBoard.getWidth() && serial) {
+                int a = z + 1;
+                Point serialBox = new Point(x, a);
+                if (BoardChecker.movableBoxCheck(theBoard, serialBox, Moves.R)) {
+                    theBoard.moveBox(newBoxPosition, serialBox);
+                    newBoxPosition = serialBox;
+                } else {
+                    serial = false;
+                }
+            }
+
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.R)) {
@@ -78,6 +103,19 @@ public class PlayerMoves {
             int a = x - 1; // The box has new coordinates
             Point newBoxPosition = new Point(a, y);
             theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+
+            boolean serial = true;
+            while (a >= 0 && serial) {
+                int b = a - 1;
+                Point serialBox = new Point(x, b);
+                if (BoardChecker.movableBoxCheck(theBoard, serialBox, Moves.U)) {
+                    theBoard.moveBox(newBoxPosition, serialBox);
+                    newBoxPosition = serialBox;
+                } else {
+                    serial = false;
+                }
+            }
+
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.U)) {
@@ -99,6 +137,19 @@ public class PlayerMoves {
             int a = x + 1; // The box has new coordinates
             Point newBoxPosition = new Point(a, y);
             theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+
+            boolean serial = true;
+            while (a < theBoard.getHeight() && serial) {
+                int b = a + 1;
+                Point serialBox = new Point(x, b);
+                if (BoardChecker.movableBoxCheck(theBoard, serialBox, Moves.D)) {
+                    theBoard.moveBox(newBoxPosition, serialBox);
+                    newBoxPosition = serialBox;
+                } else {
+                    serial = false;
+                }
+            }
+
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.D)) {
