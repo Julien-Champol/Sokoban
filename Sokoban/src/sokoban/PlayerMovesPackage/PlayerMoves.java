@@ -6,6 +6,9 @@
 package sokoban.PlayerMovesPackage;
 
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import sokoban.BoardAnalysisPackage.BoardChecker;
 import sokoban.BoardBuildingPackage.Board;
 
@@ -26,27 +29,42 @@ public class PlayerMoves {
      * @param theBoard the Board the player is completing
      */
     public static void moveLeft(Board theBoard) {
+
+        ArrayList<Point> laterMoves = new ArrayList<Point>();
+
         int x = (int) theBoard.getPlayerPosition().getX();
         int y = (int) (theBoard.getPlayerPosition().getY() - 1);
         Point newPosition = new Point(x, y);
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)) {
-            int z = y - 1; // The box has new coordinates
-            Point newBoxPosition = new Point(x, z);
-            theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
-            //TEMP
+            //int z = y - 1; // The box has new coordinates
+            //Point newBoxPosition = new Point(x, z);
+            //theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+            //Loop to add the box to move to the container
+
+            //Adding the first box
+            laterMoves.add(newPosition);
+            //Adding the other boxes
             boolean serial = true;
-            while (z >= 0 && serial) { //Loop to move the serial boxes 
-                int a = z - 1;
-                Point serialBox = new Point(x, a);
-                if (BoardChecker.movableBoxCheck(theBoard, serialBox, Moves.L)) {
-                    theBoard.moveBox(newBoxPosition, serialBox);
+            while (serial && y >= 0) {
+                y--;
+                Point newBoxPosition = new Point(x, y);
+                if (BoardChecker.movableBoxCheck(theBoard, newBoxPosition, Moves.L)) { //Check if we can move to serialBox
+                    laterMoves.add(newBoxPosition);
+                    Point serialBox = new Point(x, y);
                     newBoxPosition = serialBox;
                 } else {
                     serial = false;
                 }
             }
 
+            Collections.reverse(laterMoves);
+            for (Point box : laterMoves) {
+                Point next = new Point((int) box.getX(), (int) box.getY() - 1);
+                theBoard.moveBox(box, next);
+            }
+
+            //Finally, moving the player
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)) {
@@ -60,25 +78,34 @@ public class PlayerMoves {
      * @param theBoard the Board the player is completing
      */
     public static void moveRight(Board theBoard) {
+
+        ArrayList<Point> laterMoves = new ArrayList<Point>();
+
         int x = (int) theBoard.getPlayerPosition().getX();
         int y = (int) (theBoard.getPlayerPosition().getY() + 1);
         Point newPosition = new Point(x, y);
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.R)) {
-            int z = y + 1; // The box has new coordinates
-            Point newBoxPosition = new Point(x, z);
-            theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+
+            laterMoves.add(newPosition);
 
             boolean serial = true;
-            while (z < theBoard.getWidth() && serial) {
-                int a = z + 1;
-                Point serialBox = new Point(x, a);
-                if (BoardChecker.movableBoxCheck(theBoard, serialBox, Moves.R)) {
-                    theBoard.moveBox(newBoxPosition, serialBox);
+            while (serial && y < theBoard.getWidth()) {
+                y++;
+                Point newBoxPosition = new Point(x, y);
+                if (BoardChecker.movableBoxCheck(theBoard, newBoxPosition, Moves.R)) {
+                    laterMoves.add(newBoxPosition);
+                    Point serialBox = new Point(x, y);
                     newBoxPosition = serialBox;
                 } else {
                     serial = false;
                 }
+            }
+
+            Collections.reverse(laterMoves);
+            for (Point box : laterMoves) {
+                Point next = new Point((int) box.getX(), (int) box.getY() + 1);
+                theBoard.moveBox(box, next);
             }
 
             theBoard.setPlayerPosition(newPosition);
@@ -94,25 +121,33 @@ public class PlayerMoves {
      * @param theBoard the Board the player is completing
      */
     public static void moveUp(Board theBoard) {
+
+        ArrayList<Point> laterMoves = new ArrayList<Point>();
+
         int x = (int) (theBoard.getPlayerPosition().getX() - 1);
         int y = (int) theBoard.getPlayerPosition().getY();
         Point newPosition = new Point(x, y);
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.U)) {
-            int a = x - 1; // The box has new coordinates
-            Point newBoxPosition = new Point(a, y);
-            theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+            laterMoves.add(newPosition);
 
             boolean serial = true;
-            while (a >= 0 && serial) {
-                int b = a - 1;
-                Point serialBox = new Point(x, b);
-                if (BoardChecker.movableBoxCheck(theBoard, serialBox, Moves.U)) {
-                    theBoard.moveBox(newBoxPosition, serialBox);
+            while (serial && y < theBoard.getWidth()) {
+                x--;
+                Point newBoxPosition = new Point(x, y);
+                if (BoardChecker.movableBoxCheck(theBoard, newBoxPosition, Moves.U)) {
+                    laterMoves.add(newBoxPosition);
+                    Point serialBox = new Point(x, y);
                     newBoxPosition = serialBox;
                 } else {
                     serial = false;
                 }
+            }
+
+            Collections.reverse(laterMoves);
+            for (Point box : laterMoves) {
+                Point next = new Point((int) box.getX() - 1, (int) box.getY());
+                theBoard.moveBox(box, next);
             }
 
             theBoard.setPlayerPosition(newPosition);
@@ -128,25 +163,33 @@ public class PlayerMoves {
      * @param theBoard the Board the player is completing
      */
     public static void moveDown(Board theBoard) {
+
+        ArrayList<Point> laterMoves = new ArrayList<Point>();
+
         int x = (int) (theBoard.getPlayerPosition().getX() + 1);
         int y = (int) theBoard.getPlayerPosition().getY();
         Point newPosition = new Point(x, y);
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.D)) {
-            int a = x + 1; // The box has new coordinates
-            Point newBoxPosition = new Point(a, y);
-            theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
+            laterMoves.add(newPosition);
 
             boolean serial = true;
-            while (a < theBoard.getHeight() && serial) {
-                int b = a + 1;
-                Point serialBox = new Point(x, b);
-                if (BoardChecker.movableBoxCheck(theBoard, serialBox, Moves.D)) {
-                    theBoard.moveBox(newBoxPosition, serialBox);
+            while (serial && y < theBoard.getWidth()) {
+                x++;
+                Point newBoxPosition = new Point(x, y);
+                if (BoardChecker.movableBoxCheck(theBoard, newBoxPosition, Moves.D)) {
+                    laterMoves.add(newBoxPosition);
+                    Point serialBox = new Point(x, y);
                     newBoxPosition = serialBox;
                 } else {
                     serial = false;
                 }
+            }
+
+            Collections.reverse(laterMoves);
+            for (Point box : laterMoves) {
+                Point next = new Point((int) box.getX() + 1, (int) box.getY());
+                theBoard.moveBox(box, next);
             }
 
             theBoard.setPlayerPosition(newPosition);

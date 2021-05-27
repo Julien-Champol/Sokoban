@@ -5,6 +5,13 @@
  */
 package sokoban.BoardBuildingPackage;
 
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Class representing data about the data base containing the boards.
  *
@@ -27,7 +34,15 @@ public class DataBase {
      * Method loading the Sqlite jdbc driver and establishing a connection
      */
     public void loadDriverAndConnect() {
-
+        String sqlite_driver = "org.sqlite.JDBC";
+        String path = "D:\\DUT\\Informatique\\AlgoProg";
+        try {
+            Class.forName(sqlite_driver);
+        } catch (ClassNotFoundException ex) {
+            System.err.println(
+                    "* Driver " + sqlite_driver + " absent");
+            System.exit(1);
+        }
     }
 
     /**
@@ -69,10 +84,10 @@ public class DataBase {
     public void showBoards() {
 
     }
-    
+
     /**
      * Method used to pull a board from the database
-     * 
+     *
      * @param id the board's id
      * @return an isntance of the Board class
      */

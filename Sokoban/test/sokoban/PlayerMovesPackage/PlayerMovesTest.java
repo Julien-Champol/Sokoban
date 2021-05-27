@@ -54,10 +54,15 @@ public class PlayerMovesTest {
         theBoard.addHorizontalWall(0, 8, 8);
         theBoard.addVerticalWall(7, 0, 8);
         theBoard.addTarget(0, 2);
-        theBoard.addBox(3, 2);
+        theBoard.addBox(3, 4);
+        theBoard.addBox(3, 5);
         Point newPosition = new Point(3, 3);
         theBoard.setPlayerPosition(newPosition);
+        System.out.println("Before");
+        theBoard.displayBoard();
         PlayerMoves.moveRight(theBoard);
+        System.out.println("After");
+        theBoard.displayBoard();
         Point valid = new Point(3, 4);
         assertEquals(theBoard.getPlayerPosition(), valid);
     }
@@ -76,7 +81,11 @@ public class PlayerMovesTest {
         theBoard.addBox(3, 2);
         Point newPosition = new Point(3, 3);
         theBoard.setPlayerPosition(newPosition);
+        System.out.println("Avant move up");
+        theBoard.displayBoard();
         PlayerMoves.moveUp(theBoard);
+        System.out.println("Après move up");
+        theBoard.displayBoard();
         Point valid = new Point(2, 3);
         assertEquals(theBoard.getPlayerPosition(), valid);
     }

@@ -84,7 +84,7 @@ public class BoardChecker {
                 neighbor = new Point(x, y);
                 break;
         }
-        return (theBoard.getBoxPositions().contains(theBox) && theBoard.inTheBoardCheck(neighbor)
-                && !theBoard.getWallPositions().contains(neighbor));
+        return (theBoard.getBoxPositions().contains(theBox) && !theBoard.getWallPositions().contains(theBox)
+                && theBoard.inTheBoardCheck(neighbor) && !theBoard.getWallPositions().contains(neighbor));
     }
 }
