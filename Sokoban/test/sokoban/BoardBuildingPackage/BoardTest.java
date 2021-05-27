@@ -9,6 +9,8 @@ import java.awt.Point;
 import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import sokoban.PlayerMovesPackage.PlayerMoves;
+import sokoban.PlayerMovesPackage.PlayerMoves.Moves;
 
 /**
  *

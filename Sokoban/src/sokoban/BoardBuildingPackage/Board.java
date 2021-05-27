@@ -8,6 +8,8 @@ package sokoban.BoardBuildingPackage;
 import java.awt.Point;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import sokoban.BoardAnalysisPackage.BoardChecker;
+import sokoban.PlayerMovesPackage.PlayerMoves;
 
 /**
  * Class representing data about a game board.
@@ -232,7 +234,9 @@ public class Board {
         if (this.inTheBoardCheck(toMove) && this.inTheBoardCheck(moved) && ((wallPositions.isEmpty()
                 || winningPositions.isEmpty()) && !boxPositions.isEmpty()) || !wallPositions.contains(toMove)
                 && !winningPositions.contains(toMove) && !wallPositions.contains(moved)) { // No !winningPositions.contains(moved), the player can move a box to a winning pos.
-            boxPositions.set(boxPositions.indexOf(toMove), moved);
+            if (!boxPositions.contains(moved)) { //So that two boxes cannot be in the same place.
+                boxPositions.set(boxPositions.indexOf(toMove), moved);
+            }
         }
     }
 

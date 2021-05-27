@@ -8,7 +8,6 @@ package sokoban.PlayerMovesPackage;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import sokoban.BoardAnalysisPackage.BoardChecker;
 import sokoban.BoardBuildingPackage.Board;
 
@@ -46,13 +45,11 @@ public class PlayerMoves {
             laterMoves.add(newPosition);
             //Adding the other boxes
             boolean serial = true;
-            while (serial && y >= 0) {
+            while (serial && y > 0) {
                 y--;
                 Point newBoxPosition = new Point(x, y);
                 if (BoardChecker.movableBoxCheck(theBoard, newBoxPosition, Moves.L)) { //Check if we can move to serialBox
                     laterMoves.add(newBoxPosition);
-                    Point serialBox = new Point(x, y);
-                    newBoxPosition = serialBox;
                 } else {
                     serial = false;
                 }
@@ -63,7 +60,7 @@ public class PlayerMoves {
                 Point next = new Point((int) box.getX(), (int) box.getY() - 1);
                 theBoard.moveBox(box, next);
             }
-
+            
             //Finally, moving the player
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
@@ -147,7 +144,9 @@ public class PlayerMoves {
             Collections.reverse(laterMoves);
             for (Point box : laterMoves) {
                 Point next = new Point((int) box.getX() - 1, (int) box.getY());
-                theBoard.moveBox(box, next);
+                if (BoardChecker.movableBoxCheck(theBoard, box, Moves.U)) {
+                    theBoard.moveBox(box, next);
+                }
             }
 
             theBoard.setPlayerPosition(newPosition);

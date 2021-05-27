@@ -34,8 +34,10 @@ public class DataBase {
      * Method loading the Sqlite jdbc driver and establishing a connection
      */
     public void loadDriverAndConnect() {
+        String chemin = "./data/librairie.sqlite3";
+        String URL = "jdbc:sqlite:" + chemin;
+        
         String sqlite_driver = "org.sqlite.JDBC";
-        String path = "D:\\DUT\\Informatique\\AlgoProg";
         try {
             Class.forName(sqlite_driver);
         } catch (ClassNotFoundException ex) {
@@ -43,6 +45,12 @@ public class DataBase {
                     "* Driver " + sqlite_driver + " absent");
             System.exit(1);
         }
+        /*
+        try (Connection connexion = DriverManager.getConnection(URL)) {
+            dialoguer(connexion);
+        } catch (SQLException ex) {
+            System.err.println("* Base " + URL + " introuvable.");
+        }*/
     }
 
     /**
