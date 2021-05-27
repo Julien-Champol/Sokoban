@@ -41,22 +41,22 @@ public class Board {
     /**
      * The player's position on the board
      */
-    private Point playerPosition;
+    private final Point playerPosition;
 
     /**
      * A list of all the winning positions, the one containing targets.
      */
-    private ArrayList<Point> winningPositions = new ArrayList<Point>();
+    private final ArrayList<Point> winningPositions = new ArrayList<Point>();
 
     /**
      * A list of all the walls' positions, the points that cannot be reached.
      */
-    private ArrayList<Point> wallPositions = new ArrayList<Point>();
+    private final ArrayList<Point> wallPositions = new ArrayList<Point>();
 
     /**
      * The list of all the boxs' positions, the ones that can be moved.
      */
-    private ArrayList<Point> boxPositions = new ArrayList<Point>();
+    private final ArrayList<Point> boxPositions = new ArrayList<Point>();
 
     /**
      * Parameterized constructor of the Board class.
@@ -157,6 +157,34 @@ public class Board {
      */
     public String getDescription() {
         return this.DESCRIPTION;
+    }
+
+    /**
+     * Method used to pull a number with its row
+     *
+     * @param theRowNumber the number of the row we want to pull
+     * @return
+     */
+    public String getRow(int theRowNumber) {
+        String row = "";
+        if (theRowNumber < height && theRowNumber >= 0) {
+            
+            for (int i = 0; i < width; i++) {
+                Point courant = new Point(theRowNumber, i);
+                if (winningPositions.contains(courant)) {
+                    row += ("x");
+                } else if (wallPositions.contains(courant)) {
+                    row += ("#");
+                } else if (boxPositions.contains(courant)) {
+                    row += ("C");
+                } else if (courant.equals(playerPosition)) {
+                    row += ("P");
+                } else {
+                    row += (".");
+                }
+            }
+        }
+        return row;
     }
 
     /**

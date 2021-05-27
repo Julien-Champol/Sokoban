@@ -19,45 +19,65 @@ import java.sql.SQLException;
  */
 public class DataBase {
 
-    private final String NAME; //The name of the data base
+    private Connection actualConnection;
+
+    private String chemin = "data\\librairie.sqlite3";
+
+    private String URL = "jdbc:sqlite:" + chemin;
 
     /**
-     * Parameterized constructor of the DataBase class.
+     * Constructor of the Database class.
      *
-     * @param name
+     * @throws java.sql.SQLException
      */
-    public DataBase(String name) {
-        this.NAME = name;
+    public DataBase() throws SQLException {
+        this.actualConnection = DriverManager.getConnection(URL);
+        loadDriverAndConnect();
     }
 
     /**
-     * Method loading the Sqlite jdbc driver and establishing a connection
+     * Method establishing a connection
      */
-    public void loadDriverAndConnect() {
-        String chemin = "./data/librairie.sqlite3";
-        String URL = "jdbc:sqlite:" + chemin;
-        
+    public static void loadDriverAndConnect() {
         String sqlite_driver = "org.sqlite.JDBC";
         try {
             Class.forName(sqlite_driver);
         } catch (ClassNotFoundException ex) {
-            System.err.println(
-                    "* Driver " + sqlite_driver + " absent");
+            System.err.println("* Driver " + sqlite_driver + " introuvable.");
             System.exit(1);
         }
-        /*
-        try (Connection connexion = DriverManager.getConnection(URL)) {
-            dialoguer(connexion);
-        } catch (SQLException ex) {
-            System.err.println("* Base " + URL + " introuvable.");
-        }*/
     }
 
     /**
-     * Method creating the data base, tables etc ...
+     * Method used to create the table and the rows of the dataBase.
      */
     public void createDataBase() {
+        //BOARDS table creation
+        String sql = "CREATE TABLE IF NOT EXISTS BOARDS (\n"
+                + "     board_id TEXT PRIMARY KEY,\n"
+                + "   	name TEXT NOT NULL,\n"
+                + "     nb_rows INTEGER NOT NULL,\n"
+                + "	nb_cols INTEGER NOT NULL\n"
+                + "   );";
+        try {
+            Statement boardsCreation = actualConnection.createStatement();
+            boardsCreation.execute(sql);
+        } catch (SQLException e) {
+            System.out.println("Création de BOARDS impossible : " + e.toString());
+        }
 
+        //ROWS table creation
+        String sql2 = "CREATE TABLE IF NOT EXISTS ROWS (\n"
+                + "     board_id TEXT PRIMARY KEY,\n"
+                + "   	row_num INTEGER NOT NULL,\n"
+                + "     description TEXT NOT NULL\n"
+                + "   );";
+        try {
+            Statement rowCreation = actualConnection.createStatement();
+            rowCreation.execute(sql2);
+        } catch (SQLException e) {
+            System.out.println("Création de ROWS impossible : " + e.toString());
+        }
     }
 
     /**
@@ -65,9 +85,37 @@ public class DataBase {
      *
      * @param id the id of the board in the dataBase
      * @param theBoard the board we are adding
+     * @throws java.sql.SQLException
      */
-    public void add(String id, Board theBoard) {
+    public void add(String id, Board theBoard) throws SQLException {
+        // Insetion in the BOARDS table
+        String sql = "INSERT INTO BOARDS (board_id,name,nb_rows,nb_cols)\n"
+                + "VALUES(?,?,?,?);                                    ";
+        PreparedStatement ps = actualConnection.prepareStatement(sql);
+        ps.setString(1, id);
+        System.out.println(theBoard.getDescription());
+        ps.setString(2, theBoard.getDescription());
+        ps.setInt(3, theBoard.getHeight());
+        ps.setInt(4, theBoard.getWidth());
 
+        // Insertion in the ROWS table
+        String sql2 = "INSERT INTO ROWS (board_id,row_num,description)\n"
+                + "VALUES(?,?,?);                                    ";
+        PreparedStatement ps2 = actualConnection.prepareStatement(sql2);
+        for (int i = 0; i < theBoard.getHeight(); i++) {
+            ps2.setString(1, id);
+            ps2.setInt(2, i);
+            ps2.setString(3, theBoard.getRow(i));
+        }
+
+        try {
+            Statement addingInBoards = actualConnection.createStatement();
+            addingInBoards.execute(sql);
+            Statement addingInRows = actualConnection.createStatement();
+            addingInRows.execute(sql2);
+        } catch (SQLException e) {
+            System.out.println("Ajout du Board impossible : " + e.toString());
+        }
     }
 
     /**

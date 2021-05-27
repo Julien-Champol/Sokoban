@@ -57,6 +57,25 @@ public class BoardTest {
     }
 
     /**
+     * Test of getRow method, of class Board.
+     */
+    @Test
+    public void testGetRow() {
+        System.out.println("getRow");
+        Board instance = new Board("TestBoard", 8, 8);
+        instance.addHorizontalWall(0, 0, 8);
+        instance.addVerticalWall(0, 0, 8);
+        instance.addVerticalWall(0, 7, 8);
+        instance.addHorizontalWall(7, 0, 8);
+        instance.addTarget(1, 2);
+        instance.addBox(3, 2);
+        Point newPosition = new Point(3, 3);
+        instance.setPlayerPosition(newPosition);
+        instance.displayBoard();
+        assertEquals(instance.getRow(3), "#.CP...#");
+    }
+
+    /**
      * Test of inTheBoardCheck method, of class Board.
      */
     @Test
