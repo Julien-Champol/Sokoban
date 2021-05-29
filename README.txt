@@ -53,3 +53,4 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
 29/05
     add fonctionnelle.
     Base de donnée terminée, jeu complétement fonctionnelle.
+    Relecture et nettoyage du code. Rédaction du rapport. Remise du Projet.
