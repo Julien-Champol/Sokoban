@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import sokoban.ExceptionsPackage.BuilderException;
 
 /**
  * Class representing data about the data base containing the boards.
@@ -100,7 +101,7 @@ public class DataBase {
         } catch (SQLException e) {
             System.out.println("Ajout dans BOARDS impossible : " + e.getMessage());
         }
-        
+
         // Insertion in the ROWS table
         String sql2 = "INSERT INTO ROWS (board_id,row_num,description) VALUES(?,?,?)";
         try (PreparedStatement ps2 = actualConnection.prepareStatement(sql2);) {
@@ -113,42 +114,66 @@ public class DataBase {
         } catch (SQLException e) {
             System.out.println("Ajout dans ROWS impossible : " + e.getMessage());
         }
-       
-        /*
-        try (Statement addingInBoards = actualConnection.createStatement();) {
-            addingInBoards.execute(sql);
-        } catch (SQLException e) {
-            System.out.println("Ajout du Board impossible : " + e.getMessage());
-        }
-
-        try (Statement addingInRows = actualConnection.createStatement();) {
-            addingInRows.execute(sql2);
-        } catch (SQLException ex) {
-            System.out.println("Ajout du Board impossible : " + ex.getMessage());
-        }*/
     }
 
     /**
-     * Method used to remove a board from a dataBase with its id
+     * Method used to remove a board from a dataBase using its id
      *
      * @param id the id of the board to remove
      */
     public void remove(String id) {
+        // Deletion of the board from the BOARDS table
+        String sql = "DELETE FROM BOARDS WHERE BOARDS.board_id = ?";
+        try (PreparedStatement ps = actualConnection.prepareStatement(sql);) {
+            ps.setString(1, id);
+            ps.execute();
+        } catch (SQLException e) {
+            System.out.println("Ajout dans BOARDS impossible : " + e.getMessage());
+        }
 
+        // Deletion of the board from the ROWS table
+        String sql2 = "DELETE FROM ROWS WHERE ROWS.board_id = ?";
+        try (PreparedStatement ps2 = actualConnection.prepareStatement(sql2);) {
+            ps2.setString(1, id);
+            ps2.execute();
+        } catch (SQLException e) {
+            System.out.println("Ajout dans BOARDS impossible : " + e.getMessage());
+        }
+
+        System.out.println("Removed from database.");
     }
 
     /**
      * Method used to list the boards contained in the data base
+     *
+     * @throws sokoban.ExceptionsPackage.BuilderException
      */
-    public void listBoards() {
+    public void listBoards() throws BuilderException {
+        String sql = "SELECT * FROM BOARDS";
+        try (Statement ps = actualConnection.createStatement();) {
+            ResultSet r = ps.executeQuery(sql);
+            while (r.next()) {
+                if (r.getString(1) != null) {
+                    System.out.println("_______________________________________________________________________________");
+                    System.out.println("Board id : " + "     Name : " + "    nb_rows: " + " nb_cols: ");
+                    System.out.println(r.getString(1) + "    |  " + r.getString(2) + "  |  " + r.getInt(3) + "         | " + r.getInt(4));
+                    showBoard(r.getString(1));
+                }
 
+            }
+        } catch (SQLException e) {
+            System.out.println("Affichage de la liste impossible : " + e.getMessage());
+        }
     }
 
     /**
      * Method used to show the boards contained in the dataBase
+     *
+     * @throws sokoban.ExceptionsPackage.BuilderException
      */
-    public void showBoards() {
-
+    public void showBoard(String id) throws BuilderException {
+        System.out.println("_______________________________________________________________________________");
+        this.get(id).displayBoard();
     }
 
     /**
@@ -156,9 +181,36 @@ public class DataBase {
      *
      * @param id the board's id
      * @return an isntance of the Board class
+     * @throws sokoban.ExceptionsPackage.BuilderException
      */
-    public Board get(String id) {
-        Board tmp = new Board(id, 0, 0);
-        return tmp;
+    public Board get(String id) throws BuilderException {
+        // TextBoardBuilder initialization with the Board's name.
+        TextBoardBuilder theBoardWeGet = new TextBoardBuilder("tempo");
+        String sql = "SELECT BOARDS.name FROM BOARDS WHERE BOARDS.board_id = ?";
+        try (PreparedStatement ps = actualConnection.prepareStatement(sql);) {
+            ps.setString(1, id);
+            ResultSet r = ps.executeQuery();
+            while (r.next()) {
+                if (r.getString(1) != null) {
+                    theBoardWeGet = new TextBoardBuilder(r.getString(1));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Retrait du nom impossible : " + e.getMessage());
+        }
+
+        String sql2 = "SELECT ROWS.description FROM ROWS WHERE ROWS.board_id = ?";
+        try (PreparedStatement ps2 = actualConnection.prepareStatement(sql2);) {
+            ps2.setString(1, id);
+            ResultSet r = ps2.executeQuery();
+            while (r.next()) {
+                if (r.getString(1) != null) {
+                    theBoardWeGet.addRow(r.getString(1));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Retrait des rows impossible : " + e.getMessage());
+        }
+        return theBoardWeGet.build();
     }
 }

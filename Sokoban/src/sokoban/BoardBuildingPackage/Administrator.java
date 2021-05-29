@@ -92,7 +92,9 @@ public class Administrator {
                         myDatabase.listBoards();
                         break;
                     case "3":
-                        myDatabase.showBoards();
+                        System.out.println("Board id ?");
+                        String boardId = readAdministratorEntry();
+                        myDatabase.showBoard(boardId);
                         break;
                     case "4":
                         System.out.println("Board id ?");

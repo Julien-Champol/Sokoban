@@ -46,6 +46,10 @@ public class FileBoardBuilder implements BoardBuilder {
                 if (i == 0 && !line.contains("#")) {
                     fileBuiltBoard = new TextBoardBuilder(line);
                     i = -1;
+                } else if (i == 0 && line.contains("#")) {
+                    fileBuiltBoard = new TextBoardBuilder("No name found");
+                    fileBuiltBoard.addRow(line);
+                    i = -1;
                 } else {
                     fileBuiltBoard.addRow(line);
                 }
