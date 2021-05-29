@@ -46,3 +46,9 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
 
 27/05 
     Déplacement réparé. Connection et création de la base de données. Problème avec add.
+
+28/05 
+    add semi - fonctionnelle.
+
+29/05
+    add fonctionnelle.

@@ -68,7 +68,7 @@ public class DataBase {
 
         //ROWS table creation
         String sql2 = "CREATE TABLE IF NOT EXISTS ROWS (\n"
-                + "     board_id TEXT PRIMARY KEY,\n"
+                + "     board_id INTEGER NOT NULL,\n"
                 + "   	row_num INTEGER NOT NULL,\n"
                 + "     description TEXT NOT NULL\n"
                 + "   );";
@@ -89,33 +89,43 @@ public class DataBase {
      */
     public void add(String id, Board theBoard) throws SQLException {
         // Insetion in the BOARDS table
-        String sql = "INSERT INTO BOARDS (board_id,name,nb_rows,nb_cols)\n"
-                + "VALUES(?,?,?,?);                                    ";
-        PreparedStatement ps = actualConnection.prepareStatement(sql);
-        ps.setString(1, id);
-        System.out.println(theBoard.getDescription());
-        ps.setString(2, theBoard.getDescription());
-        ps.setInt(3, theBoard.getHeight());
-        ps.setInt(4, theBoard.getWidth());
-
-        // Insertion in the ROWS table
-        String sql2 = "INSERT INTO ROWS (board_id,row_num,description)\n"
-                + "VALUES(?,?,?);                                    ";
-        PreparedStatement ps2 = actualConnection.prepareStatement(sql2);
-        for (int i = 0; i < theBoard.getHeight(); i++) {
-            ps2.setString(1, id);
-            ps2.setInt(2, i);
-            ps2.setString(3, theBoard.getRow(i));
-        }
-
-        try {
-            Statement addingInBoards = actualConnection.createStatement();
-            addingInBoards.execute(sql);
-            Statement addingInRows = actualConnection.createStatement();
-            addingInRows.execute(sql2);
+        String sql = "INSERT INTO BOARDS (board_id,name,nb_rows,nb_cols) VALUES(?,?,?,?)";
+        try (PreparedStatement ps = actualConnection.prepareStatement(sql);) {
+            ps.setString(1, id);
+            System.out.println(theBoard.getDescription());
+            ps.setString(2, theBoard.getDescription());
+            ps.setInt(3, theBoard.getHeight());
+            ps.setInt(4, theBoard.getWidth());
+            ps.execute();
         } catch (SQLException e) {
-            System.out.println("Ajout du Board impossible : " + e.toString());
+            System.out.println("Ajout dans BOARDS impossible : " + e.getMessage());
         }
+        
+        // Insertion in the ROWS table
+        String sql2 = "INSERT INTO ROWS (board_id,row_num,description) VALUES(?,?,?)";
+        try (PreparedStatement ps2 = actualConnection.prepareStatement(sql2);) {
+            for (int i = 0; i < theBoard.getHeight(); i++) {
+                ps2.setString(1, id);
+                ps2.setInt(2, i);
+                ps2.setString(3, theBoard.getRow(i));
+                ps2.execute();
+            }
+        } catch (SQLException e) {
+            System.out.println("Ajout dans ROWS impossible : " + e.getMessage());
+        }
+       
+        /*
+        try (Statement addingInBoards = actualConnection.createStatement();) {
+            addingInBoards.execute(sql);
+        } catch (SQLException e) {
+            System.out.println("Ajout du Board impossible : " + e.getMessage());
+        }
+
+        try (Statement addingInRows = actualConnection.createStatement();) {
+            addingInRows.execute(sql2);
+        } catch (SQLException ex) {
+            System.out.println("Ajout du Board impossible : " + ex.getMessage());
+        }*/
     }
 
     /**
