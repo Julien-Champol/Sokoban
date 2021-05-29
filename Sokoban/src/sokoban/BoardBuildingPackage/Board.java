@@ -8,8 +8,6 @@ package sokoban.BoardBuildingPackage;
 import java.awt.Point;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import sokoban.BoardAnalysisPackage.BoardChecker;
-import sokoban.PlayerMovesPackage.PlayerMoves;
 
 /**
  * Class representing data about a game board.
@@ -44,7 +42,7 @@ public class Board {
     private final Point playerPosition;
 
     /**
-     * A list of all the winning positions, the one containing targets.
+     * A list of all the winning positions, the ones containing targets.
      */
     private final ArrayList<Point> winningPositions = new ArrayList<Point>();
 
@@ -102,7 +100,7 @@ public class Board {
     }
 
     /**
-     * Return the height of the actual board.
+     * Method returning the height of the actual board.
      *
      * @return the height
      */
@@ -142,7 +140,7 @@ public class Board {
     }
 
     /**
-     * Method the current player's position.
+     * Method used to get the current player's position.
      *
      * @return a point, the position of the player.
      */
@@ -160,7 +158,7 @@ public class Board {
     }
 
     /**
-     * Method used to pull a number with its row
+     * Method used to pull a row with its number.
      *
      * @param theRowNumber the number of the row we want to pull
      * @return
@@ -168,7 +166,7 @@ public class Board {
     public String getRow(int theRowNumber) {
         String row = "";
         if (theRowNumber < height && theRowNumber >= 0) {
-            
+
             for (int i = 0; i < width; i++) {
                 Point courant = new Point(theRowNumber, i);
                 if (winningPositions.contains(courant)) {

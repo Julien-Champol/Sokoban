@@ -18,8 +18,11 @@ import sokoban.ExceptionsPackage.BuilderException;
  */
 public class Administrator {
 
-    private static Scanner in = new Scanner(System.in);
+    private static final Scanner in = new Scanner(System.in);
 
+    /**
+     * The DataBase we are linked to.
+     */
     private static DataBase myDatabase;
 
     private static boolean menu = true;
@@ -39,7 +42,7 @@ public class Administrator {
     }
 
     /**
-     * Reading the administrator keyboard entry
+     * Method used to read the administrator keyboard entry
      *
      * @return
      * @throws sokoban.ExceptionsPackage.AdminLeavesException
@@ -54,7 +57,7 @@ public class Administrator {
     }
 
     /**
-     * Stops the run with a message.
+     * Method used to stop the run with a message.
      *
      * @throws sokoban.ExceptionsPackage.AdminLeavesException
      */
@@ -63,7 +66,7 @@ public class Administrator {
     }
 
     /**
-     * Displays the main menu of the administrator
+     * Displays the main menu the administartor uses.
      *
      * @throws sokoban.ExceptionsPackage.AdminLeavesException
      * @throws sokoban.ExceptionsPackage.BuilderException

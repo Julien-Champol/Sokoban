@@ -19,7 +19,7 @@ public class TextBoardBuilder implements BoardBuilder {
     private final String DESCRIPTION;
 
     /* The board that we'll finally be returned */
-    private Board textBuiltBoard;
+    private final Board textBuiltBoard;
 
     /* The width of the board we'll build */
     private int width = 0;
@@ -34,7 +34,7 @@ public class TextBoardBuilder implements BoardBuilder {
     private int securedInput = -1;
 
     /**
-     * Parameterized builder of the TextBoardBuilder class.
+     * Parameterized constructor of the TextBoardBuilder class.
      *
      * @param description the description of the board we want to build.
      */

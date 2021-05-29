@@ -1,4 +1,4 @@
-# SokobanChampol
+ # SokobanChampol
 
 Projet Sokoban de Julien CHAMPOL.
 Remise avant le pt2.
@@ -52,3 +52,4 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
 
 29/05
     add fonctionnelle.
+    Base de donnée terminée, jeu complétement fonctionnelle.

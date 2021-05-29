@@ -6,7 +6,6 @@
 package sokoban;
 
 import java.sql.SQLException;
-import java.util.HashSet;
 import java.util.Scanner;
 import java.util.ArrayList;
 import sokoban.BoardAnalysisPackage.BoardChecker;
@@ -41,17 +40,12 @@ public class Player {
      * This the Board that is being currently completed by the player.
      */
     private static Board currentBoard;
-    /**
-     * The HashSet is containing all the Boards that will be played during the
-     * game.
-     */
-    private HashSet gameBoards = new HashSet<Board>();
 
     /**
      * All the moves of the player are stored in this HashSet. So that it's
      * easier to display them in the end of the game.
      */
-    private static ArrayList<PlayerMoves.Moves> allMoves = new ArrayList<PlayerMoves.Moves>();
+    private static final ArrayList<PlayerMoves.Moves> allMoves = new ArrayList<PlayerMoves.Moves>();
 
     /**
      * Main method of the player class.
@@ -62,20 +56,6 @@ public class Player {
      * @throws sokoban.ExceptionsPackage.BuilderException
      */
     public static void main(String[] args) throws SQLException, GamePlayerLeavesException, BuilderException {
-        /* Board initialization */
- /*
-        Board analysed = new Board("TestBoard", 8, 8);
-        analysed.addHorizontalWall(0, 0, 8);
-        analysed.addHorizontalWall(7, 0, 8);
-        analysed.addVerticalWall(0, 7, 8);
-        analysed.addVerticalWall(0, 0, 8);
-        analysed.addTarget(1, 2);
-        analysed.addBox(3, 2);
-        analysed.addBox(4, 2);
-        Point player = new Point(5, 2);
-        analysed.setPlayerPosition(player);
-         */
-
         try {
             /**
              * dataBase initialization
@@ -203,15 +183,4 @@ public class Player {
     public static void quiWithDialog() throws GamePlayerLeavesException {
         throw new GamePlayerLeavesException("The player left the game");
     }
-
-    /**
-     * Method used to switch to the nextBoard if the current one is complete.
-     *
-     * @return the next board the player will complete
-     */
-    public static Board nextBoard() {
-        Board a = new Board(" ", 0, 0);
-        return a;
-    }
-
 }

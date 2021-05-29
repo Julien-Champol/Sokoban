@@ -8,7 +8,8 @@ package sokoban.BoardBuildingPackage;
 import sokoban.ExceptionsPackage.BuilderException;
 
 /**
- * Class representing data about the BoardBuilder interface.
+ * Class representing data about the BoardBuilder interface. We will use the
+ * interface to load data about a board and to build it.
  *
  * @author jcdru
  */

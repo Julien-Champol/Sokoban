@@ -29,6 +29,7 @@ public class PlayerMoves {
      */
     public static void moveLeft(Board theBoard) {
 
+        // This ArrayList contains the point we'll move when reading the board will be done.
         ArrayList<Point> laterMoves = new ArrayList<Point>();
 
         int x = (int) theBoard.getPlayerPosition().getX();
@@ -36,13 +37,10 @@ public class PlayerMoves {
         Point newPosition = new Point(x, y);
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)) {
-            //int z = y - 1; // The box has new coordinates
-            //Point newBoxPosition = new Point(x, z);
-            //theBoard.moveBox(newPosition, newBoxPosition); //We move the box.
-            //Loop to add the box to move to the container
 
             //Adding the first box
             laterMoves.add(newPosition);
+
             //Adding the other boxes
             boolean serial = true;
             while (serial && y > 0) {
@@ -55,12 +53,12 @@ public class PlayerMoves {
                 }
             }
 
-            Collections.reverse(laterMoves);
-            for (Point box : laterMoves) {
+            Collections.reverse(laterMoves); //Reversing the list so that we move the boxes in the right order.
+            laterMoves.forEach((box) -> {
                 Point next = new Point((int) box.getX(), (int) box.getY() - 1);
                 theBoard.moveBox(box, next);
-            }
-            
+            });
+
             //Finally, moving the player
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
@@ -100,10 +98,10 @@ public class PlayerMoves {
             }
 
             Collections.reverse(laterMoves);
-            for (Point box : laterMoves) {
+            laterMoves.forEach((box) -> {
                 Point next = new Point((int) box.getX(), (int) box.getY() + 1);
                 theBoard.moveBox(box, next);
-            }
+            });
 
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
@@ -142,12 +140,12 @@ public class PlayerMoves {
             }
 
             Collections.reverse(laterMoves);
-            for (Point box : laterMoves) {
+            laterMoves.forEach((box) -> {
                 Point next = new Point((int) box.getX() - 1, (int) box.getY());
                 if (BoardChecker.movableBoxCheck(theBoard, box, Moves.U)) {
                     theBoard.moveBox(box, next);
                 }
-            }
+            });
 
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
@@ -186,10 +184,10 @@ public class PlayerMoves {
             }
 
             Collections.reverse(laterMoves);
-            for (Point box : laterMoves) {
+            laterMoves.forEach((box) -> {
                 Point next = new Point((int) box.getX() + 1, (int) box.getY());
                 theBoard.moveBox(box, next);
-            }
+            });
 
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)

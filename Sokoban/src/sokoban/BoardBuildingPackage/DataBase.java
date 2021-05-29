@@ -22,9 +22,12 @@ public class DataBase {
 
     private final Connection actualConnection;
 
-    private final String chemin = "data\\librairie.sqlite3";
+    /**
+     * The path to the database.
+     */
+    private final String PATH = "data\\librairie.sqlite3";
 
-    private final String URL = "jdbc:sqlite:" + chemin;
+    private final String URL = "jdbc:sqlite:" + PATH;
 
     /**
      * Constructor of the Database class.
@@ -37,7 +40,7 @@ public class DataBase {
     }
 
     /**
-     * Method establishing a connection
+     * Method loading the driver and establishing a connection
      */
     public static void loadDriverAndConnect() {
         String sqlite_driver = "org.sqlite.JDBC";
@@ -50,7 +53,7 @@ public class DataBase {
     }
 
     /**
-     * Method used to create the table and the rows of the dataBase.
+     * Method used to create the tables BOARD and ROWS of the dataBase.
      */
     public void createDataBase() {
         //BOARDS table creation
@@ -117,7 +120,7 @@ public class DataBase {
     }
 
     /**
-     * Method used to remove a board from a dataBase using its id
+     * Method used to remove a board from the dataBase using its board_id
      *
      * @param id the id of the board to remove
      */
@@ -144,7 +147,7 @@ public class DataBase {
     }
 
     /**
-     * Method used to list the boards contained in the data base
+     * Method used to list and display the boards contained in the data base
      *
      * @throws sokoban.ExceptionsPackage.BuilderException
      */
@@ -167,7 +170,7 @@ public class DataBase {
     }
 
     /**
-     * Method used to show the boards contained in the dataBase
+     * Method used to show a particular board contained in the database
      *
      * @param id
      * @throws sokoban.ExceptionsPackage.BuilderException
