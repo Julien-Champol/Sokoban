@@ -20,11 +20,11 @@ import sokoban.ExceptionsPackage.BuilderException;
  */
 public class DataBase {
 
-    private Connection actualConnection;
+    private final Connection actualConnection;
 
-    private String chemin = "data\\librairie.sqlite3";
+    private final String chemin = "data\\librairie.sqlite3";
 
-    private String URL = "jdbc:sqlite:" + chemin;
+    private final String URL = "jdbc:sqlite:" + chemin;
 
     /**
      * Constructor of the Database class.
@@ -64,7 +64,7 @@ public class DataBase {
             Statement boardsCreation = actualConnection.createStatement();
             boardsCreation.execute(sql);
         } catch (SQLException e) {
-            System.out.println("Création de BOARDS impossible : " + e.toString());
+            System.out.println("Creating BOARDS impossible : " + e.toString());
         }
 
         //ROWS table creation
@@ -77,7 +77,7 @@ public class DataBase {
             Statement rowCreation = actualConnection.createStatement();
             rowCreation.execute(sql2);
         } catch (SQLException e) {
-            System.out.println("Création de ROWS impossible : " + e.toString());
+            System.out.println("Creating ROWS impossible : " + e.toString());
         }
     }
 
@@ -99,7 +99,7 @@ public class DataBase {
             ps.setInt(4, theBoard.getWidth());
             ps.execute();
         } catch (SQLException e) {
-            System.out.println("Ajout dans BOARDS impossible : " + e.getMessage());
+            System.out.println("Adding in Boards impossible : " + e.getMessage());
         }
 
         // Insertion in the ROWS table
@@ -112,7 +112,7 @@ public class DataBase {
                 ps2.execute();
             }
         } catch (SQLException e) {
-            System.out.println("Ajout dans ROWS impossible : " + e.getMessage());
+            System.out.println("Adding in ROWS impossible : " + e.getMessage());
         }
     }
 
@@ -128,7 +128,7 @@ public class DataBase {
             ps.setString(1, id);
             ps.execute();
         } catch (SQLException e) {
-            System.out.println("Ajout dans BOARDS impossible : " + e.getMessage());
+            System.out.println("Remove from Boards impossible : " + e.getMessage());
         }
 
         // Deletion of the board from the ROWS table
@@ -137,7 +137,7 @@ public class DataBase {
             ps2.setString(1, id);
             ps2.execute();
         } catch (SQLException e) {
-            System.out.println("Ajout dans BOARDS impossible : " + e.getMessage());
+            System.out.println("Remove from rows impossible : " + e.getMessage());
         }
 
         System.out.println("Removed from database.");
@@ -162,13 +162,14 @@ public class DataBase {
 
             }
         } catch (SQLException e) {
-            System.out.println("Affichage de la liste impossible : " + e.getMessage());
+            System.out.println("List displaying impossible : " + e.getMessage());
         }
     }
 
     /**
      * Method used to show the boards contained in the dataBase
      *
+     * @param id
      * @throws sokoban.ExceptionsPackage.BuilderException
      */
     public void showBoard(String id) throws BuilderException {
@@ -196,7 +197,7 @@ public class DataBase {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Retrait du nom impossible : " + e.getMessage());
+            System.out.println("Name pulling impossible : " + e.getMessage());
         }
 
         String sql2 = "SELECT ROWS.description FROM ROWS WHERE ROWS.board_id = ?";
@@ -209,7 +210,7 @@ public class DataBase {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Retrait des rows impossible : " + e.getMessage());
+            System.out.println("Rows pulling impossible : " + e.getMessage());
         }
         return theBoardWeGet.build();
     }

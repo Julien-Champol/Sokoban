@@ -5,12 +5,14 @@
  */
 package sokoban;
 
-import java.awt.Point;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.ArrayList;
 import sokoban.BoardAnalysisPackage.BoardChecker;
 import sokoban.BoardBuildingPackage.Board;
+import sokoban.BoardBuildingPackage.DataBase;
+import sokoban.ExceptionsPackage.BuilderException;
 import sokoban.ExceptionsPackage.GamePlayerLeavesException;
 import sokoban.PlayerMovesPackage.PlayerMoves;
 
@@ -20,6 +22,11 @@ import sokoban.PlayerMovesPackage.PlayerMoves;
  * @author jchampol
  */
 public class Player {
+
+    /**
+     * The dataBase where the player chooses his board.
+     */
+    private static DataBase myDatabase;
 
     /**
      * True if a game is being completed false otherwise.
@@ -50,9 +57,13 @@ public class Player {
      * Main method of the player class.
      *
      * @param args the command line arguments
+     * @throws java.sql.SQLException
+     * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
+     * @throws sokoban.ExceptionsPackage.BuilderException
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, GamePlayerLeavesException, BuilderException {
         /* Board initialization */
+ /*
         Board analysed = new Board("TestBoard", 8, 8);
         analysed.addHorizontalWall(0, 0, 8);
         analysed.addHorizontalWall(7, 0, 8);
@@ -63,20 +74,35 @@ public class Player {
         analysed.addBox(4, 2);
         Point player = new Point(5, 2);
         analysed.setPlayerPosition(player);
-        currentBoard = analysed;
-        inGame = true;
-        System.out.println("_________________________________________________________________");
-        System.out.println("Welcome in Sokoban ! ");
-        System.out.println("You have to put every boxes on the targets, walls can't be hit.");
-        System.out.println("Type L to move left");
-        System.out.println("Type R to move right");
-        System.out.println("Type U to move up");
-        System.out.println("Type D to move down");
-        System.out.println("Type /quit to leave the game at any time.");
-        System.out.println("Enjoy your game !");
-        System.out.println("_________________________________________________________________");
-        currentBoard.displayBoard();
+         */
+
         try {
+            /**
+             * dataBase initialization
+             */
+            DataBase myNewDataBase = new DataBase();
+            myDatabase = myNewDataBase;
+
+            /**
+             * The player chooses his board
+             */
+            boardChoosingInterface();
+
+            /**
+             * Welcome message
+             */
+            System.out.println("_________________________________________________________________");
+            System.out.println("Welcome in Sokoban ! ");
+            System.out.println("You have to put every boxes on the targets, walls can't be hit.");
+            System.out.println("Type L to move left");
+            System.out.println("Type R to move right");
+            System.out.println("Type U to move up");
+            System.out.println("Type D to move down");
+            System.out.println("Type /quit to leave the game at any time.");
+            System.out.println("Enjoy your game !");
+            System.out.println("_________________________________________________________________");
+            currentBoard.displayBoard();
+
             while (inGame) {
                 /* Test du reste */
                 analyseSequence();
@@ -95,7 +121,7 @@ public class Player {
      * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
     public static String readPlayerEntry() throws GamePlayerLeavesException {
-        System.out.println("Veuillez entrer la commande ici :");
+        System.out.println("Enter your command here :");
         String returned = in.nextLine().trim().toUpperCase();
         if (returned.equalsIgnoreCase("/QUIT")) {
             quiWithDialog();
@@ -133,14 +159,38 @@ public class Player {
     }
 
     /**
+     * Displays the interface where the player will choose the Board he wants to
+     * play on.
+     *
+     * @throws GamePlayerLeavesException
+     * @throws sokoban.ExceptionsPackage.BuilderException
+     */
+    public static void boardChoosingInterface() throws GamePlayerLeavesException, BuilderException {
+        System.out.println("___________________________________________");
+        System.out.println("       BOARD CHOOSING INTERFACE");
+        System.out.println("___________________________________________");
+        System.out.println("1. List boards and choose");
+
+        String entry = readPlayerEntry();
+        switch (entry) {
+            case "1":
+                myDatabase.listBoards();
+                System.out.println("Board id ?");
+                String boardId = readPlayerEntry().toLowerCase();
+                currentBoard = myDatabase.get(boardId);
+                inGame = true;
+        }
+    }
+
+    /**
      * Method used to display a message and switch the attributes to the good
      * value in case of winning.
      */
     public static void winDialog() {
         if (BoardChecker.winCheck(currentBoard)) {
             inGame = false;
-            System.out.println("Félicitations, vous avez acheminé toutes les caisses !");
-            System.out.println("Voici votre séquence de jeu : " + allMoves.toString());
+            System.out.println("Congratulations, all the boxes have been put in the right place !");
+            System.out.println("Here is your game sequence : " + allMoves.toString());
         }
     }
 
@@ -151,8 +201,7 @@ public class Player {
      * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
     public static void quiWithDialog() throws GamePlayerLeavesException {
-        System.out.println("Le joueur a quitté la partie.");
-        throw new GamePlayerLeavesException("Le joueur a quitté la partie");
+        throw new GamePlayerLeavesException("The player left the game");
     }
 
     /**

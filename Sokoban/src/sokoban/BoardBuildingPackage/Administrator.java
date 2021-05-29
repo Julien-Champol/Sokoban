@@ -45,7 +45,7 @@ public class Administrator {
      * @throws sokoban.ExceptionsPackage.AdminLeavesException
      */
     public static String readAdministratorEntry() throws AdminLeavesException {
-        System.out.println("Veuillez saisir ici :");
+        System.out.println("Please write here :");
         String returned = in.nextLine().trim();
         if (returned.equalsIgnoreCase("/quit")) {
             quitWithDialog();
@@ -59,7 +59,7 @@ public class Administrator {
      * @throws sokoban.ExceptionsPackage.AdminLeavesException
      */
     public static void quitWithDialog() throws AdminLeavesException {
-        throw new AdminLeavesException("L'admin a quitté le menu.");
+        throw new AdminLeavesException("The administrator has left the menu.");
     }
 
     /**
