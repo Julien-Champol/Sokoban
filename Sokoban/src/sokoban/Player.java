@@ -8,6 +8,7 @@ package sokoban;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import org.sqlite.SQLiteException;
 import sokoban.BoardAnalysisPackage.BoardChecker;
 import sokoban.BoardBuildingPackage.Board;
 import sokoban.BoardBuildingPackage.DataBase;
@@ -31,6 +32,12 @@ public class Player {
      * True if a game is being completed false otherwise.
      */
     private static boolean inGame;
+    
+    /**
+     * True if a game is being completed false otherwise.
+     */
+    private static boolean startingMenu;
+    
     /**
      * The user's command line entry.
      */
@@ -56,18 +63,20 @@ public class Player {
      * @throws sokoban.ExceptionsPackage.BuilderException
      */
     public static void main(String[] args) throws SQLException, GamePlayerLeavesException, BuilderException {
+
+        /**
+         * dataBase initialization
+         */
+        DataBase myNewDataBase = new DataBase();
+        myDatabase = myNewDataBase;
+
+        /**
+         * The player chooses his board
+         */
+        boardChoosingInterface();
+
         try {
-            /**
-             * dataBase initialization
-             */
-            DataBase myNewDataBase = new DataBase();
-            myDatabase = myNewDataBase;
-
-            /**
-             * The player chooses his board
-             */
-            boardChoosingInterface();
-
+            if (startingMenu) {
             /**
              * Welcome message
              */
@@ -82,14 +91,15 @@ public class Player {
             System.out.println("Enjoy your game !");
             System.out.println("_________________________________________________________________");
             currentBoard.displayBoard();
-
+            }
+            
             while (inGame) {
                 /* Test du reste */
                 analyseSequence();
                 winDialog();
                 currentBoard.displayBoard();
             }
-        } catch (GamePlayerLeavesException e) {
+        } catch (GamePlayerLeavesException | NullPointerException e) {
             e.toString();
         }
     }
@@ -144,21 +154,35 @@ public class Player {
      *
      * @throws GamePlayerLeavesException
      * @throws sokoban.ExceptionsPackage.BuilderException
+     * @throws org.sqlite.SQLiteException
      */
-    public static void boardChoosingInterface() throws GamePlayerLeavesException, BuilderException {
-        System.out.println("___________________________________________");
-        System.out.println("       BOARD CHOOSING INTERFACE");
-        System.out.println("___________________________________________");
-        System.out.println("1. List boards and choose");
+    public static void boardChoosingInterface() throws GamePlayerLeavesException, BuilderException, SQLiteException {
+        boolean choosing = true;
+        while (choosing) {
+            try {
+                System.out.println("___________________________________________");
+                System.out.println("       BOARD CHOOSING INTERFACE");
+                System.out.println("___________________________________________");
+                System.out.println("1. List boards and choose");
 
-        String entry = readPlayerEntry();
-        switch (entry) {
-            case "1":
-                myDatabase.listBoards();
-                System.out.println("Board id ?");
-                String boardId = readPlayerEntry().toLowerCase();
-                currentBoard = myDatabase.get(boardId);
-                inGame = true;
+                String entry = readPlayerEntry();
+                switch (entry) {
+                    case "1":
+                        myDatabase.listBoards();
+                        System.out.println("Board id ?");
+                        String boardId = readPlayerEntry().toLowerCase();
+                        currentBoard = myDatabase.get(boardId);
+                        inGame = true;
+                        startingMenu = true;
+                }
+
+            } catch (SQLiteException | NullPointerException e) {
+                System.out.println("Board not found try again please");
+            } catch (GamePlayerLeavesException e) {
+                System.out.println(e.toString());
+                choosing = false;
+                startingMenu = false;
+            }
         }
     }
 

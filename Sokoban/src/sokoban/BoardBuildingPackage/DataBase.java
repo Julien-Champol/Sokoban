@@ -11,6 +11,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import org.sqlite.SQLiteErrorCode;
+import org.sqlite.SQLiteException;
 import sokoban.ExceptionsPackage.BuilderException;
 
 /**
@@ -123,8 +125,15 @@ public class DataBase {
      * Method used to remove a board from the dataBase using its board_id
      *
      * @param id the id of the board to remove
+     * @throws org.sqlite.SQLiteException
      */
-    public void remove(String id) {
+    public void remove(String id) throws SQLiteException {
+
+        //Checking the id
+        if (!this.contains(id)) {
+            throw new SQLiteException("Board not found try again", SQLiteErrorCode.SQLITE_OK);
+        }
+
         // Deletion of the board from the BOARDS table
         String sql = "DELETE FROM BOARDS WHERE BOARDS.board_id = ?";
         try (PreparedStatement ps = actualConnection.prepareStatement(sql);) {
@@ -174,8 +183,9 @@ public class DataBase {
      *
      * @param id
      * @throws sokoban.ExceptionsPackage.BuilderException
+     * @throws org.sqlite.SQLiteException
      */
-    public void showBoard(String id) throws BuilderException {
+    public void showBoard(String id) throws BuilderException, SQLiteException {
         System.out.println("_______________________________________________________________________________");
         this.get(id).displayBoard();
     }
@@ -186,8 +196,15 @@ public class DataBase {
      * @param id the board's id
      * @return an isntance of the Board class
      * @throws sokoban.ExceptionsPackage.BuilderException
+     * @throws org.sqlite.SQLiteException
      */
-    public Board get(String id) throws BuilderException {
+    public Board get(String id) throws BuilderException, SQLiteException {
+
+        //Checking the id
+        if (!this.contains(id)) {
+            throw new SQLiteException("Board not found try again", SQLiteErrorCode.SQLITE_OK);
+        }
+
         // TextBoardBuilder initialization with the Board's name.
         TextBoardBuilder theBoardWeGet = new TextBoardBuilder("tempo");
         String sql = "SELECT BOARDS.name FROM BOARDS WHERE BOARDS.board_id = ?";
@@ -216,5 +233,28 @@ public class DataBase {
             System.out.println("Rows pulling impossible : " + e.getMessage());
         }
         return theBoardWeGet.build();
+    }
+
+    /**
+     * Boolean method used to tell if the given id is contained in the dataBase
+     *
+     * @param id
+     * @return
+     */
+    public boolean contains(String id) {
+        boolean contained = false;
+        String sql = "SELECT BOARDS.board_id FROM BOARDS WHERE BOARDS.board_id = ?";
+        try (PreparedStatement ps = actualConnection.prepareStatement(sql);) {
+            ps.setString(1, id);
+            ResultSet r = ps.executeQuery();
+            while (r.next()) {
+                if (r.getString(1) != null && r.getString(1).contains(id)) {
+                    contained = true;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Name pulling impossible : " + e.getMessage());
+        }
+        return contained;
     }
 }

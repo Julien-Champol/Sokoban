@@ -423,9 +423,9 @@ _+ quiWithDialog() : void_
     <id>UMLClass</id>
     <coordinates>
       <x>441</x>
-      <y>486</y>
+      <y>468</y>
       <w>243</w>
-      <h>198</h>
+      <h>216</h>
     </coordinates>
     <panel_attributes>DataBase
 --
@@ -440,7 +440,8 @@ _+ quiWithDialog() : void_
 + remove(String) : void
 + listBoards() : void
 + showBoard(String) : void
-+ get(String) : Board</panel_attributes>
++ get(String) : Board
++ contains(id) : Boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
