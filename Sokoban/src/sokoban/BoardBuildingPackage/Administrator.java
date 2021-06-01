@@ -7,6 +7,7 @@ package sokoban.BoardBuildingPackage;
 
 import java.sql.SQLException;
 import java.util.Scanner;
+import org.sqlite.SQLiteException;
 import sokoban.ExceptionsPackage.AdminLeavesException;
 import sokoban.ExceptionsPackage.BuilderException;
 
@@ -26,6 +27,8 @@ public class Administrator {
     private static DataBase myDatabase;
 
     private static boolean menu = true;
+
+    private static int i = -1;
 
     /**
      * The main method of the administrator class.
@@ -75,6 +78,7 @@ public class Administrator {
     public static void analyseSequence() throws AdminLeavesException, BuilderException, SQLException {
         while (menu) {
             try {
+                String entry;
 
                 System.out.println("___________________________________________");
                 System.out.println("ADMINISTRATION INTERFACE - USE WITH CAUTION");
@@ -86,20 +90,28 @@ public class Administrator {
                 System.out.println("5. Remove board from database [DANGEROUS]");
                 System.out.println("6. Quit.");
 
-                String entry = readAdministratorEntry();
+                if (i != -1) {
+                    entry = readAdministratorEntry();
+                } else {
+                    entry = "" + i;
+                }
                 switch (entry) {
                     case "1":
+                        i = 1;
                         myDatabase.createDataBase();
                         break;
                     case "2":
+                        i = 2;
                         myDatabase.listBoards();
                         break;
                     case "3":
+                        i = 3;
                         System.out.println("Board id ?");
                         String boardId = readAdministratorEntry();
                         myDatabase.showBoard(boardId);
                         break;
                     case "4":
+                        i = 4;
                         System.out.println("Board id ?");
                         String id = readAdministratorEntry();
                         System.out.println("Write the file path please : ");
@@ -109,6 +121,7 @@ public class Administrator {
                         myDatabase.add(id, theFileBuiltBoard);
                         break;
                     case "5":
+                        i = 5;
                         System.out.println("Board id ?");
                         String removeId = readAdministratorEntry();
                         System.out.println("Are you sure about this deletion ?");
@@ -121,12 +134,15 @@ public class Administrator {
                         }
                         break;
                     case "6":
+                        i = 6;
                         quitWithDialog();
                         break;
                 }
-
             } catch (AdminLeavesException e) {
+                System.out.println(e.toString());
                 menu = false;
+            } catch (SQLiteException e) {
+                System.out.println("Instruction where the catch has been done : " + i);
                 System.out.println(e.toString());
             }
         }
