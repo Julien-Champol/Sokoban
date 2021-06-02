@@ -36,7 +36,7 @@ public class TextBoardBuilderTest {
         Point boxPosition = new Point(2, 6);
         assertTrue(testAddRow.getBoxPositions().contains(boxPosition));
         Point targetPosition = new Point(1, 4);
-        assertTrue(testAddRow.getWinningpositions().contains(targetPosition));
+        assertTrue(testAddRow.getWinningPositions().contains(targetPosition));
     }
 
     /**
@@ -62,9 +62,9 @@ public class TextBoardBuilderTest {
         Point boxPosition2 = new Point(2, 6);
         assertTrue(testAddRow.getBoxPositions().contains(boxPosition2));
         Point targetPosition = new Point(1, 2);
-        assertTrue(testAddRow.getWinningpositions().contains(targetPosition));
+        assertTrue(testAddRow.getWinningPositions().contains(targetPosition));
         Point targetPosition2 = new Point(1, 4);
-        assertTrue(testAddRow.getWinningpositions().contains(targetPosition2));
+        assertTrue(testAddRow.getWinningPositions().contains(targetPosition2));
         Point wall1 = new Point(0, 9);
         assertTrue(testAddRow.getWallPositions().contains(wall1));
         Point wall2 = new Point(2, 9);

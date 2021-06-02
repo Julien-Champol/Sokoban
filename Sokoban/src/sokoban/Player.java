@@ -32,12 +32,17 @@ public class Player {
      * True if a game is being completed false otherwise.
      */
     private static boolean inGame;
-    
+
     /**
      * True if a game is being completed false otherwise.
      */
     private static boolean startingMenu;
-    
+
+    /**
+     * True if a board is currently being choosed.
+     */
+    private static boolean choosing;
+
     /**
      * The user's command line entry.
      */
@@ -77,26 +82,26 @@ public class Player {
 
         try {
             if (startingMenu) {
-            /**
-             * Welcome message
-             */
-            System.out.println("_________________________________________________________________");
-            System.out.println("Welcome in Sokoban ! ");
-            System.out.println("You have to put every boxes on the targets, walls can't be hit.");
-            System.out.println("Type L to move left");
-            System.out.println("Type R to move right");
-            System.out.println("Type U to move up");
-            System.out.println("Type D to move down");
-            System.out.println("Type /quit to leave the game at any time.");
-            System.out.println("Enjoy your game !");
-            System.out.println("_________________________________________________________________");
-            currentBoard.displayBoard();
+                /**
+                 * Welcome message
+                 */
+                System.out.println("_________________________________________________________________");
+                System.out.println("Welcome in Sokoban ! ");
+                System.out.println("You have to put every boxes on the targets, walls can't be hit.");
+                System.out.println("Type L to move left");
+                System.out.println("Type R to move right");
+                System.out.println("Type U to move up");
+                System.out.println("Type D to move down");
+                System.out.println("Type /quit to leave the game at any time.");
+                System.out.println("Enjoy your game !");
+                System.out.println("_________________________________________________________________");
+                currentBoard.displayBoard();
             }
-            
+
             while (inGame) {
                 /* Test du reste */
                 analyseSequence();
-                winDialog();
+                winOrNotDialog();
                 currentBoard.displayBoard();
             }
         } catch (GamePlayerLeavesException | NullPointerException e) {
@@ -157,7 +162,7 @@ public class Player {
      * @throws org.sqlite.SQLiteException
      */
     public static void boardChoosingInterface() throws GamePlayerLeavesException, BuilderException, SQLiteException {
-        boolean choosing = true;
+        choosing = true;
         while (choosing) {
             try {
                 System.out.println("___________________________________________");
@@ -174,9 +179,10 @@ public class Player {
                         currentBoard = myDatabase.get(boardId);
                         inGame = true;
                         startingMenu = true;
+                        choosing = false;
                 }
-
             } catch (SQLiteException | NullPointerException e) {
+                System.out.println(e.toString());
                 System.out.println("Board not found try again please");
             } catch (GamePlayerLeavesException e) {
                 System.out.println(e.toString());
@@ -190,7 +196,7 @@ public class Player {
      * Method used to display a message and switch the attributes to the good
      * value in case of winning.
      */
-    public static void winDialog() {
+    public static void winOrNotDialog() {
         if (BoardChecker.winCheck(currentBoard)) {
             inGame = false;
             System.out.println("Congratulations, all the boxes have been put in the right place !");

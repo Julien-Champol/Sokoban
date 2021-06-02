@@ -93,7 +93,7 @@ public class Administrator {
                 if (i != -1) {
                     entry = readAdministratorEntry();
                 } else {
-                    entry = "" + i;
+                    entry = "" + i; 
                 }
                 switch (entry) {
                     case "1":

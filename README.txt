@@ -54,3 +54,8 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
     add fonctionnelle.
     Base de donnée terminée, jeu complétement fonctionnelle.
     Relecture et nettoyage du code. Rédaction du rapport. Remise du Projet.
+
+02/06 
+    Refactorisation globale du code.
+    Try catch manquant pour la sécurisation des saisies.
+    Début de l'ajout de la fonctionnalité abandon quand le joueur ne peut plus gagner.

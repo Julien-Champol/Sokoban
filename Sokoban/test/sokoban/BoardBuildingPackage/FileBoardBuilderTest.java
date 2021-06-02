@@ -34,7 +34,7 @@ public class FileBoardBuilderTest {
         Point boxPos = new Point(2, 3);
         assertTrue(result.build().getBoxPositions().contains(boxPos));
         Point targetPos = new Point(1, 2);
-        assertTrue(result.build().getWinningpositions().contains(targetPos));
+        assertTrue(result.build().getWinningPositions().contains(targetPos));
     }
 
     /**

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>9</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>828</x>
-      <y>315</y>
-      <w>306</w>
-      <h>378</h>
+      <x>552</x>
+      <y>210</y>
+      <w>204</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes>Board
 --
@@ -44,14 +44,16 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>945</x>
-      <y>738</y>
-      <w>243</w>
-      <h>180</h>
+      <x>630</x>
+      <y>492</y>
+      <w>162</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>Player
 --
 _- inGame : Boolean_
+_- startingMenu : Boolean_
+_- choosing : Boolean_
 _- in : Scanner_
 _- currentBoard : Board_
 --
@@ -59,10 +61,8 @@ _+ main() : void_
 _+ readPlayerEntry() : String_
 _+ analyseSequence() : void_
 _+ boardChoosingInterface()_
-_+ winDialog() : void_
+_+ winOrNotDialog() : void_
 _+ quitWithDialog() : void_
-_+ nextBoard() : Board_
-
 
 
 bg=blue</panel_attributes>
@@ -71,10 +71,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>954</x>
-      <y>27</y>
-      <w>117</w>
-      <h>63</h>
+      <x>636</x>
+      <y>18</y>
+      <w>78</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 BoardBuilder
@@ -87,10 +87,10 @@ BoardBuilder
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>756</x>
-      <y>135</y>
-      <w>198</w>
-      <h>90</h>
+      <x>504</x>
+      <y>90</y>
+      <w>132</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>FileBoardBuilder
 --
@@ -105,10 +105,10 @@ BoardBuilder
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>891</x>
-      <y>81</y>
-      <w>99</w>
-      <h>72</h>
+      <x>594</x>
+      <y>54</y>
+      <w>66</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>90.0;10.0;90.0;40.0;10.0;40.0;10.0;60.0</additional_attributes>
@@ -116,10 +116,10 @@ BoardBuilder
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>972</x>
-      <y>126</y>
-      <w>180</w>
-      <h>162</h>
+      <x>648</x>
+      <y>84</y>
+      <w>120</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>TextBoardBuilder
 --
@@ -139,10 +139,10 @@ BoardBuilder
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>990</x>
-      <y>81</y>
-      <w>99</w>
-      <h>63</h>
+      <x>660</x>
+      <y>54</y>
+      <w>66</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0;90.0;40.0;90.0;50.0</additional_attributes>
@@ -150,10 +150,10 @@ BoardBuilder
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>423</x>
+      <x>282</x>
       <y>0</y>
-      <w>774</w>
-      <h>729</h>
+      <w>516</w>
+      <h>486</h>
     </coordinates>
     <panel_attributes>BoardBuildingPackage
 bg=red</panel_attributes>
@@ -162,10 +162,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>396</x>
-      <y>801</y>
-      <w>90</w>
-      <h>99</h>
+      <x>264</x>
+      <y>534</y>
+      <w>60</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 Moves
@@ -181,10 +181,10 @@ D
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>891</x>
-      <y>216</y>
-      <w>99</w>
-      <h>117</h>
+      <x>594</x>
+      <y>144</y>
+      <w>66</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -193,10 +193,10 @@ D
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>990</x>
-      <y>279</y>
-      <w>99</w>
-      <h>54</h>
+      <x>660</x>
+      <y>186</y>
+      <w>66</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -205,10 +205,10 @@ D
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>837</y>
-      <w>171</w>
-      <h>45</h>
+      <x>528</x>
+      <y>558</y>
+      <w>114</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=*
@@ -218,10 +218,10 @@ r1=allMoves</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>621</x>
-      <y>819</y>
-      <w>180</w>
-      <h>108</h>
+      <x>414</x>
+      <y>546</y>
+      <w>120</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>PlayerMoves
 --
@@ -235,10 +235,10 @@ _+ moveDown(Board) : void_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1125</x>
-      <y>594</y>
-      <w>288</w>
-      <h>135</h>
+      <x>750</x>
+      <y>396</y>
+      <w>192</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -247,26 +247,26 @@ _+ moveDown(Board) : void_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1224</x>
-      <y>711</y>
-      <w>315</w>
-      <h>90</h>
+      <x>816</x>
+      <y>474</y>
+      <w>210</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>BoardChecker
 --
 _+ winCheck(Board) : Boolean_
 _+ legitMove(Board, Point, Point) : Boolean_
 _+ movableBoxCheck(Board, Point, Moves) : Boolean_
-</panel_attributes>
+_+ trapcaseCheck(Board, Point) : Boolean_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>1215</x>
-      <y>666</y>
-      <w>333</w>
-      <h>162</h>
+      <x>810</x>
+      <y>444</y>
+      <w>222</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>BoardAnalysisPackage
 bg=magenta</panel_attributes>
@@ -275,10 +275,10 @@ bg=magenta</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1143</x>
-      <y>954</y>
-      <w>261</w>
-      <h>81</h>
+      <x>762</x>
+      <y>660</y>
+      <w>174</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>Note..
 We put a letter corresponding to 
@@ -292,10 +292,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>72</y>
-      <w>792</w>
-      <h>396</h>
+      <x>120</x>
+      <y>48</y>
+      <w>528</w>
+      <h>264</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;throws&gt;&gt;</panel_attributes>
@@ -304,10 +304,10 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
-      <y>441</y>
-      <w>117</w>
-      <h>45</h>
+      <x>48</x>
+      <y>294</y>
+      <w>78</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Exception&gt;&gt;
 BuilderException </panel_attributes>
@@ -316,10 +316,10 @@ BuilderException </panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
-      <y>567</y>
-      <w>189</w>
-      <h>45</h>
+      <x>48</x>
+      <y>378</y>
+      <w>126</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Exception&gt;&gt;
 GamePlayerLeavesException
@@ -329,10 +329,10 @@ GamePlayerLeavesException
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>252</x>
-      <y>585</y>
-      <w>711</w>
-      <h>189</h>
+      <x>168</x>
+      <y>390</y>
+      <w>474</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;throws&gt;&gt;</panel_attributes>
@@ -341,10 +341,10 @@ GamePlayerLeavesException
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>36</x>
-      <y>378</y>
-      <w>369</w>
-      <h>252</h>
+      <x>24</x>
+      <y>252</y>
+      <w>246</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>SokobanExceptionsPackage
 bg=green</panel_attributes>
@@ -353,10 +353,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>387</x>
-      <y>774</y>
-      <w>495</w>
-      <h>207</h>
+      <x>258</x>
+      <y>510</y>
+      <w>330</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>PlayerMovesPackage
 bg=black</panel_attributes>
@@ -365,10 +365,10 @@ bg=black</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>477</x>
-      <y>846</y>
-      <w>162</w>
-      <h>36</h>
+      <x>318</x>
+      <y>564</y>
+      <w>108</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -377,31 +377,32 @@ bg=black</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>441</x>
-      <y>315</y>
-      <w>225</w>
-      <h>135</h>
+      <x>294</x>
+      <y>210</y>
+      <w>150</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>Administrator
 --
 _- in : Scanner_
 _- menu : Boolean_
+_- i : int_
 --
 _+ main() : void_
 _+ readAdministratorEntry : String_
-_+ analyseSequence() : void_
 _+ quiWithDialog() : void_
+_+ analyseSequence() : void_
 
-</panel_attributes>
+ </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>657</x>
-      <y>252</y>
-      <w>333</w>
-      <h>99</h>
+      <x>438</x>
+      <y>168</y>
+      <w>222</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -410,10 +411,10 @@ _+ quiWithDialog() : void_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>189</y>
-      <w>207</w>
-      <h>144</h>
+      <x>378</x>
+      <y>126</y>
+      <w>138</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -422,10 +423,10 @@ _+ quiWithDialog() : void_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>441</x>
-      <y>468</y>
-      <w>243</w>
-      <h>216</h>
+      <x>294</x>
+      <y>312</y>
+      <w>162</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>DataBase
 --
@@ -441,16 +442,16 @@ _+ quiWithDialog() : void_
 + listBoards() : void
 + showBoard(String) : void
 + get(String) : Board
-+ contains(id) : Boolean</panel_attributes>
++ contains(String) : Boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>657</x>
-      <y>369</y>
-      <w>126</w>
-      <h>189</h>
+      <x>438</x>
+      <y>246</y>
+      <w>84</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -460,10 +461,10 @@ r1=myDataBase</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
-      <y>504</y>
-      <w>153</w>
-      <h>36</h>
+      <x>48</x>
+      <y>336</y>
+      <w>102</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Exception&gt;&gt;
 AdminLeavesException</panel_attributes>
@@ -472,10 +473,10 @@ AdminLeavesException</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>216</x>
-      <y>405</y>
-      <w>243</w>
-      <h>135</h>
+      <x>144</x>
+      <y>270</y>
+      <w>162</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;throws&gt;&gt;</panel_attributes>
@@ -484,10 +485,10 @@ AdminLeavesException</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>981</x>
-      <y>684</y>
-      <w>63</w>
-      <h>72</h>
+      <x>654</x>
+      <y>456</y>
+      <w>42</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -496,10 +497,10 @@ AdminLeavesException</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>549</x>
-      <y>675</y>
-      <w>414</w>
-      <h>117</h>
+      <x>366</x>
+      <y>450</y>
+      <w>276</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -510,33 +511,33 @@ r1=myDataBase</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>0</x>
-      <y>450</y>
-      <w>981</w>
-      <h>639</h>
+      <y>300</y>
+      <w>654</w>
+      <h>426</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;throws&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;10.0;10.0;10.0;10.0;690.0;1070.0;690.0;1070.0;520.0</additional_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0;10.0;690.0;1070.0;690.0;1070.0;560.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>126</x>
-      <y>603</y>
-      <w>918</w>
-      <h>432</h>
+      <x>84</x>
+      <y>402</y>
+      <w>612</w>
+      <h>288</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;throws&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;460.0;1000.0;460.0;1000.0;350.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;460.0;1000.0;460.0;1000.0;390.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>468</y>
-      <w>279</w>
-      <h>135</h>
+      <x>120</x>
+      <y>312</y>
+      <w>186</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;throws&gt;&gt;</panel_attributes>
@@ -545,10 +546,10 @@ r1=myDataBase</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>342</y>
-      <w>279</w>
-      <h>144</h>
+      <x>120</x>
+      <y>228</y>
+      <w>186</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;throws&gt;&gt;</panel_attributes>

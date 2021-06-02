@@ -6,6 +6,7 @@
 package sokoban.BoardAnalysisPackage;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import sokoban.BoardBuildingPackage.Board;
 import sokoban.PlayerMovesPackage.PlayerMoves.Moves;
 
@@ -24,7 +25,7 @@ public class BoardChecker {
      * @return
      */
     public static boolean winCheck(Board analysed) {
-        return (analysed.getWinningpositions().containsAll(analysed.getBoxPositions()));
+        return (analysed.getWinningPositions().containsAll(analysed.getBoxPositions()));
     }
 
     /**
@@ -45,7 +46,7 @@ public class BoardChecker {
                 || (analysed.inTheBoardCheck(destination) && !analysed.getWallPositions().contains(destination)
                 //Can go anywhere but not on a wall
                 && (analysed.inTheBoardCheck(start) && (analysed.getBoxPositions().contains(start)
-                && (!analysed.getWallPositions().contains(start)) && !analysed.getWinningpositions().contains(start)))));
+                && (!analysed.getWallPositions().contains(start)) && !analysed.getWinningPositions().contains(start)))));
         // we are not moving a player but a box
     }
 
@@ -86,5 +87,58 @@ public class BoardChecker {
         }
         return (theBoard.getBoxPositions().contains(theBox) && !theBoard.getWallPositions().contains(theBox)
                 && theBoard.inTheBoardCheck(neighbor) && !theBoard.getWallPositions().contains(neighbor));
+    }
+
+    /**
+     * Method used to tell if there's any case locked in the board, between two
+     * walls for example.
+     *
+     * @param theBoard
+     * @param theBox
+     * @return
+     */
+    public static boolean trapCaseCheck(Board theBoard, Point theBox) {
+        ArrayList<Point> neighborsList = new ArrayList<>();
+
+        int lx = (int) theBox.getX();
+        int ly = (int) theBox.getY() - 1;
+        Point leftNeighbor = new Point(lx, ly);
+        neighborsList.add(leftNeighbor);
+
+        int rx = (int) (theBox.getX());
+        int ry = (int) theBox.getY() + 1;
+        Point rightNeighbor = new Point(rx, ry);
+        neighborsList.add(rightNeighbor);
+
+        int ux = (int) theBox.getX() - 1;
+        int uy = (int) theBox.getY();
+        Point upNeighbor = new Point(ux, uy);
+        neighborsList.add(upNeighbor);
+
+        int dx = (int) theBox.getX() + 1;
+        int dy = (int) theBox.getY();
+        Point downNeighbor = new Point(dx, dy);
+        neighborsList.add(downNeighbor);
+
+        return (theBoard.getBoxPositions().containsAll(neighborsList) //Only walls
+                || theBoard.getWallPositions().contains(leftNeighbor) && theBoard.getWallPositions().contains(rightNeighbor)
+                && theBoard.getWallPositions().contains(downNeighbor)) //l,r,u
+                || theBoard.getWallPositions().contains(leftNeighbor) && theBoard.getWallPositions().contains(rightNeighbor)
+                && theBoard.getWallPositions().contains(upNeighbor) //l,r,d
+                || theBoard.getWallPositions().contains(upNeighbor) && theBoard.getWallPositions().contains(downNeighbor)
+                && theBoard.getWallPositions().contains(leftNeighbor) //u,d,l
+                || theBoard.getWallPositions().contains(upNeighbor) && theBoard.getWallPositions().contains(downNeighbor)
+                && theBoard.getWallPositions().contains(rightNeighbor) //u,d,r
+                || theBoard.getWallPositions().contains(leftNeighbor) && theBoard.getWallPositions().contains(rightNeighbor)
+                && theBoard.getBoxPositions().contains(downNeighbor) //l,r, box on bottom
+                || theBoard.getWallPositions().contains(leftNeighbor) && theBoard.getWallPositions().contains(rightNeighbor)
+                && theBoard.getBoxPositions().contains(upNeighbor) //l,r, box on top
+                || theBoard.getBoxPositions().contains(leftNeighbor) && theBoard.getBoxPositions().contains(downNeighbor)
+                && theBoard.getBoxPositions().contains(upNeighbor) //boxes on the left
+                || theBoard.getBoxPositions().contains(rightNeighbor) && theBoard.getBoxPositions().contains(downNeighbor)
+                && theBoard.getBoxPositions().contains(upNeighbor) //boxes on the right
+                || theBoard.getBoxPositions().contains(leftNeighbor) && theBoard.getBoxPositions().contains(upNeighbor)
+                && theBoard.getWallPositions().contains(downNeighbor) //boxes on the left and wall down
+                ;
     }
 }

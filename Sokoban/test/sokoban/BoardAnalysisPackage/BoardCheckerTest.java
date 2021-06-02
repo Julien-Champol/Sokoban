@@ -84,4 +84,27 @@ public class BoardCheckerTest {
         assertEquals(expResult2, result2);
     }
 
+    /**
+     * Test of trapCaseCheck method, of class BoardChecker.
+     */
+    @Test
+    public void testTrapCaseCheck() {
+        System.out.println("trapcaseCheck");
+        Board theBoard = new Board("TestBoard", 8, 8);
+        theBoard.addHorizontalWall(0, 0, 8);
+        theBoard.addHorizontalWall(7, 0, 8);
+        theBoard.addVerticalWall(0, 7, 8);
+        theBoard.addVerticalWall(0, 0, 8);
+        theBoard.addHorizontalWall(4, 6, 2);
+        theBoard.addTarget(1, 2);
+        theBoard.addBox(5, 6);
+        theBoard.addBox(3, 6);
+        theBoard.addBox(1, 1);
+        theBoard.addBox(1, 6);
+        theBoard.addBox(1, 5);
+        theBoard.addBox(5, 1);
+        theBoard.addBox(6, 1);
+        theBoard.addBox(6, 6);
+        theBoard.displayBoard();
+    }
 }

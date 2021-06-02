@@ -115,7 +115,7 @@ public class Board {
      *
      * @return a copy of winningPositions ArrayList.
      */
-    public ArrayList<Point> getWinningpositions() {
+    public ArrayList<Point> getWinningPositions() {
         return (ArrayList<Point>) this.winningPositions.clone();
     }
 
