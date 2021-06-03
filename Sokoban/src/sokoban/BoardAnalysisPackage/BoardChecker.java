@@ -121,22 +121,31 @@ public class BoardChecker {
         neighborsList.add(downNeighbor);
 
         return (theBoard.getBoxPositions().containsAll(neighborsList) //Only walls
+
                 || theBoard.getWallPositions().contains(leftNeighbor) && theBoard.getWallPositions().contains(rightNeighbor)
                 && theBoard.getWallPositions().contains(downNeighbor)) //l,r,u
+
                 || theBoard.getWallPositions().contains(leftNeighbor) && theBoard.getWallPositions().contains(rightNeighbor)
                 && theBoard.getWallPositions().contains(upNeighbor) //l,r,d
+
                 || theBoard.getWallPositions().contains(upNeighbor) && theBoard.getWallPositions().contains(downNeighbor)
                 && theBoard.getWallPositions().contains(leftNeighbor) //u,d,l
+
                 || theBoard.getWallPositions().contains(upNeighbor) && theBoard.getWallPositions().contains(downNeighbor)
                 && theBoard.getWallPositions().contains(rightNeighbor) //u,d,r
+
                 || theBoard.getWallPositions().contains(leftNeighbor) && theBoard.getWallPositions().contains(rightNeighbor)
-                && theBoard.getBoxPositions().contains(downNeighbor) //l,r, box on bottom
+                && theBoard.getBoxPositions().contains(downNeighbor) && movableBoxCheck(theBoard, downNeighbor, Moves.D)//l,r, box on bottom
+
                 || theBoard.getWallPositions().contains(leftNeighbor) && theBoard.getWallPositions().contains(rightNeighbor)
-                && theBoard.getBoxPositions().contains(upNeighbor) //l,r, box on top
-                || theBoard.getBoxPositions().contains(leftNeighbor) && theBoard.getBoxPositions().contains(downNeighbor)
+                && theBoard.getBoxPositions().contains(upNeighbor) && movableBoxCheck(theBoard, upNeighbor, Moves.U)//l,r, box on top
+
+                || theBoard.getBoxPositions().contains(leftNeighbor) && movableBoxCheck(theBoard, leftNeighbor, Moves.L) && theBoard.getBoxPositions().contains(downNeighbor)
                 && theBoard.getBoxPositions().contains(upNeighbor) //boxes on the left
+
                 || theBoard.getBoxPositions().contains(rightNeighbor) && theBoard.getBoxPositions().contains(downNeighbor)
                 && theBoard.getBoxPositions().contains(upNeighbor) //boxes on the right
+
                 || theBoard.getBoxPositions().contains(leftNeighbor) && theBoard.getBoxPositions().contains(upNeighbor)
                 && theBoard.getWallPositions().contains(downNeighbor) //boxes on the left and wall down
                 ;
