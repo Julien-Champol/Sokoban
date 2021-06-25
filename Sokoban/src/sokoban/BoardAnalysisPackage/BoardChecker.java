@@ -191,6 +191,31 @@ public class BoardChecker {
                 && theBoard.getBoxPositions().contains(downNeighbor) && !movableBoxCheck(theBoard, downNeighbor, Moves.D)
                 && theBoard.getBoxPositions().contains(rightNeighbor) && !movableBoxCheck(theBoard, rightNeighbor, Moves.R)
                 && theBoard.getBoxPositions().contains(upNeighbor) && !movableBoxCheck(theBoard, upNeighbor, Moves.U)//boxes everywhere
-                /* Target being a problem */;
+
+                /* Target being a problem */
+                || theBoard.getWinningPositions().contains(upNeighbor)
+                && theBoard.getBoxPositions().contains(leftNeighbor) && !movableBoxCheck(theBoard, leftNeighbor, Moves.L)
+                && theBoard.getBoxPositions().contains(downNeighbor) && !movableBoxCheck(theBoard, downNeighbor, Moves.D)//target on top, box left and down
+
+                || theBoard.getWinningPositions().contains(downNeighbor)
+                && theBoard.getBoxPositions().contains(leftNeighbor) && !movableBoxCheck(theBoard, leftNeighbor, Moves.L)
+                && theBoard.getBoxPositions().contains(upNeighbor) && !movableBoxCheck(theBoard, upNeighbor, Moves.U)//target down, box left and up
+
+                || theBoard.getWinningPositions().contains(upNeighbor)
+                && theBoard.getBoxPositions().contains(rightNeighbor) && !movableBoxCheck(theBoard, rightNeighbor, Moves.R)
+                && theBoard.getBoxPositions().contains(downNeighbor) && !movableBoxCheck(theBoard, downNeighbor, Moves.D)//target on top, box right and down
+                
+                || theBoard.getWinningPositions().contains(downNeighbor)
+                && theBoard.getBoxPositions().contains(rightNeighbor) && !movableBoxCheck(theBoard, rightNeighbor, Moves.R)
+                && theBoard.getBoxPositions().contains(upNeighbor) && !movableBoxCheck(theBoard, upNeighbor, Moves.U)//target down, box left and up
+                
+                || theBoard.getWinningPositions().contains(downNeighbor)
+                && theBoard.getWinningPositions().contains(upNeighbor)
+                && theBoard.getBoxPositions().contains(rightNeighbor) && !movableBoxCheck(theBoard, rightNeighbor, Moves.R)//target top and bottom, box right
+                
+                || theBoard.getWinningPositions().contains(downNeighbor)
+                && theBoard.getWinningPositions().contains(upNeighbor)
+                && theBoard.getBoxPositions().contains(leftNeighbor) && !movableBoxCheck(theBoard, leftNeighbor, Moves.L)//target top and bottom, box left
+                ;
     }
 }
