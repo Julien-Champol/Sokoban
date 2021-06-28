@@ -100,6 +100,7 @@ public class Player {
                 System.out.println("Type /quit to leave the game at any time.");
                 System.out.println("Enjoy your game !");
                 System.out.println("_________________________________________________________________");
+                assistanceDialog();
                 currentBoard.displayBoard();
             }
 
@@ -124,7 +125,7 @@ public class Player {
         System.out.println("Enter your command here :");
         String returned = in.nextLine().trim().toUpperCase();
         if (returned.equalsIgnoreCase("/QUIT")) {
-            quiWithDialog();
+            quitWithDialog();
         }
         return returned;
     }
@@ -159,6 +160,53 @@ public class Player {
     }
 
     /**
+     * Method allowing the player to choose the mode he wants to play on :
+     * assisted or not
+     *
+     * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
+     */
+    public static void assistanceDialog() throws GamePlayerLeavesException {
+        boolean choosingAssistance = true;
+        while (choosingAssistance) {
+            try {
+                System.out.println("___________________________________________");
+                System.out.println("       ASSISTANCE CHOOSING INTERFACE");
+                System.out.println("                                           ");
+                System.out.println("  The game assistance will tell you if you ");
+                System.out.println("  try to do something that will kill your  ");
+                System.out.println("              winning chances,  ");
+                System.out.println("___________________________________________");
+                System.out.println(" ");
+                System.out.println(" Would you like to play with the game assistance ? ");
+                System.out.println(" Answer with yes or no please. ");
+                System.out.println(" ");
+
+                String entry = readPlayerEntry().toLowerCase();
+                switch (entry) {
+                    case "y":
+                    case "yes":
+                        assisted = true;
+                        choosingAssistance = false;
+                        break;
+
+                    case "n":
+                    case "no":
+                        assisted = false;
+                        choosingAssistance = false;
+                        break;
+                    default:
+                        System.out.println("Invalid entry, try again please.");
+                }
+            } catch (GamePlayerLeavesException e) {
+                System.out.println(e.toString());
+                choosingAssistance = false;
+                startingMenu = false;
+                inGame = false;
+            }
+        }
+    }
+
+    /**
      * Displays the interface where the player will choose the Board he wants to
      * play on.
      *
@@ -186,27 +234,6 @@ public class Player {
                         startingMenu = true;
                         choosing = false;
                 }
-
-                System.out.println("___________________________________________");
-                System.out.println("       ASSISTANCE CHOOSING INTERFACE");
-                System.out.println("                                           ");
-                System.out.println("  The game assistance will tell you if you ");
-                System.out.println("  try to do something that will kill your  ");
-                System.out.println("              winning chances  ");
-                System.out.println("___________________________________________");
-                System.out.println(" ");
-                System.out.println(" Would you like to play with the game assistance ? ");
-                System.out.println(" Answer with yes or no please. ");
-                System.out.println(" ");
-
-                String secondEntry = readPlayerEntry();
-                switch (secondEntry) {
-                    case "yes":
-                        assisted = true;
-                    case "no":
-                        assisted = false;
-                }
-
             } catch (SQLiteException | NullPointerException e) {
                 System.out.println(e.toString());
                 System.out.println("Board not found try again please");
@@ -236,7 +263,7 @@ public class Player {
      *
      * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
-    public static void quiWithDialog() throws GamePlayerLeavesException {
+    public static void quitWithDialog() throws GamePlayerLeavesException {
         throw new GamePlayerLeavesException("The player left the game");
     }
 }

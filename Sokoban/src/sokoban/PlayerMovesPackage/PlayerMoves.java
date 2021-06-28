@@ -28,7 +28,7 @@ public class PlayerMoves {
      * @param theBoard the Board the player is completing
      */
     public static void moveLeft(Board theBoard) {
-
+        
         // This ArrayList contains the point we'll move when reading the board will be done.
         ArrayList<Point> laterMoves = new ArrayList<Point>();
 
