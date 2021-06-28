@@ -31,7 +31,7 @@ public class Player {
     /**
      * True if a game is being completed false otherwise.
      */
-    private static boolean inGame;
+    public static boolean inGame;
 
     /**
      * True if a game is being completed false otherwise.
@@ -62,7 +62,7 @@ public class Player {
      * All the moves of the player are stored in this HashSet. So that it's
      * easier to display them in the end of the game.
      */
-    private static final ArrayList<PlayerMoves.Moves> allMoves = new ArrayList<PlayerMoves.Moves>();
+    public static final ArrayList<PlayerMoves.Moves> allMoves = new ArrayList<PlayerMoves.Moves>();
 
     /**
      * Main method of the player class.
@@ -141,19 +141,15 @@ public class Player {
             switch (actu) {
                 case 'L':
                     PlayerMoves.moveLeft(currentBoard);
-                    allMoves.add(PlayerMoves.Moves.L);
                     break;
                 case 'R':
                     PlayerMoves.moveRight(currentBoard);
-                    allMoves.add(PlayerMoves.Moves.R);
                     break;
                 case 'U':
                     PlayerMoves.moveUp(currentBoard);
-                    allMoves.add(PlayerMoves.Moves.U);
                     break;
                 case 'D':
                     PlayerMoves.moveDown(currentBoard);
-                    allMoves.add(PlayerMoves.Moves.D);
                     break;
             }
         }

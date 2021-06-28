@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import sokoban.BoardAnalysisPackage.BoardChecker;
 import sokoban.BoardBuildingPackage.Board;
+import sokoban.ExceptionsPackage.GamePlayerLeavesException;
+import sokoban.Player;
+import static sokoban.Player.readPlayerEntry;
 
 /**
  * Class representing data about the moves the player can do.
@@ -27,14 +30,46 @@ public class PlayerMoves {
      *
      * @param theBoard the Board the player is completing
      */
-    public static void moveLeft(Board theBoard) {
-        
+    public static void moveLeft(Board theBoard) throws GamePlayerLeavesException {
+
         // This ArrayList contains the point we'll move when reading the board will be done.
         ArrayList<Point> laterMoves = new ArrayList<Point>();
 
         int x = (int) theBoard.getPlayerPosition().getX();
         int y = (int) (theBoard.getPlayerPosition().getY() - 1);
         Point newPosition = new Point(x, y);
+        
+        if (Player.assisted && BoardChecker.trapCaseCheck(theBoard, newPosition)) {
+            boolean continueOrNot = true;
+            while (continueOrNot) {
+                try {
+                    System.out.println(" ");
+                    System.out.println(" Looks like you are going to loose this case ... Do you really want to make this move ?");
+                    System.out.println(" Answer with yes or no please. ");
+                    System.out.println(" ");
+
+                    String entry = readPlayerEntry().toLowerCase();
+                    switch (entry) {
+                        case "y":
+                        case "yes":
+                            continueOrNot = false;
+                            break;
+
+                        case "n":
+                        case "no":
+                            return;
+                        default:
+                            System.out.println("Invalid entry, try again please.");
+                    }
+
+                } catch (GamePlayerLeavesException e) {
+                    System.out.println(e.toString());
+                    continueOrNot = false;
+                    Player.inGame = false;
+                }
+            }
+        }
+         
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)) {
 
@@ -65,6 +100,7 @@ public class PlayerMoves {
                 && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)) {
             theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
         }
+        Player.allMoves.add(PlayerMoves.Moves.L);
     }
 
     /**
@@ -108,6 +144,7 @@ public class PlayerMoves {
                 && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.R)) {
             theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
         }
+        Player.allMoves.add(PlayerMoves.Moves.R);
     }
 
     /**
@@ -152,6 +189,7 @@ public class PlayerMoves {
                 && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.U)) {
             theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
         }
+        Player.allMoves.add(PlayerMoves.Moves.U);
     }
 
     /**
@@ -194,5 +232,6 @@ public class PlayerMoves {
                 && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.D)) {
             theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
         }
+        Player.allMoves.add(PlayerMoves.Moves.D);
     }
 }

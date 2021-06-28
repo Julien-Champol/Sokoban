@@ -75,7 +75,7 @@
     </coordinates>
     <panel_attributes>Player
 --
-_- inGame : Boolean_
+_+ inGame : Boolean_
 _- startingMenu : Boolean_
 _- choosing : Boolean_
 _+ assisted : Boolean_
