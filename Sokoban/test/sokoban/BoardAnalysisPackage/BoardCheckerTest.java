@@ -6,6 +6,7 @@
 package sokoban.BoardAnalysisPackage;
 
 import java.awt.Point;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import sokoban.BoardBuildingPackage.Board;
@@ -63,10 +64,11 @@ public class BoardCheckerTest {
         System.out.println("movableBoxCheck");
         Board theBoard = new Board("TestBoard", 8, 8);
         theBoard.addHorizontalWall(0, 0, 8);
-        theBoard.addHorizontalWall(0, 8, 8);
-        theBoard.addVerticalWall(7, 0, 8);
+        theBoard.addHorizontalWall(7, 0, 8);
+        theBoard.addVerticalWall(0, 7, 8);
+        theBoard.addVerticalWall(0, 0, 8);
         theBoard.addTarget(1, 2);
-        theBoard.addBox(3, 7);
+        //theBoard.addBox(3, 7);
         theBoard.addBox(3, 6);
         theBoard.addBox(3, 5);
         theBoard.addBox(3, 4);
@@ -79,7 +81,7 @@ public class BoardCheckerTest {
         assertEquals(expResult, result);
         Point theSecondBox = new Point(3, 3);
         PlayerMoves.Moves direction2 = PlayerMoves.Moves.R;
-        boolean expResult2 = false;
+        boolean expResult2 = true; // The fact that the box will finally isn't dealt here, it's in player moves
         boolean result2 = BoardChecker.movableBoxCheck(theBoard, theSecondBox, direction2);
         assertEquals(expResult2, result2);
     }
@@ -106,5 +108,23 @@ public class BoardCheckerTest {
         theBoard.addBox(6, 1);
         theBoard.addBox(6, 6);
         theBoard.displayBoard();
+        /* Assertions */
+        Point theBox = new Point(5, 6);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        theBox = new Point(3, 6);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        theBox = new Point(1, 1);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        theBox = new Point(1, 6);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        theBox = new Point(1, 5);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        theBox = new Point(5, 1);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        theBox = new Point(6, 1);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        theBox = new Point(6, 6);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+
     }
 }
