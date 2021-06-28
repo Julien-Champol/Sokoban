@@ -6,6 +6,7 @@
 package sokoban.BoardAnalysisPackage;
 
 import java.awt.Point;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import sokoban.BoardBuildingPackage.Board;
@@ -107,5 +108,23 @@ public class BoardCheckerTest {
         theBoard.addBox(6, 1);
         theBoard.addBox(6, 6);
         theBoard.displayBoard();
+        /* Assertions */
+        Point theBox = new Point(5, 6);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        theBox = new Point(3, 6);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        theBox = new Point(1, 1);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        theBox = new Point(1, 6);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        theBox = new Point(1, 5);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        theBox = new Point(5, 1);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        theBox = new Point(6, 1);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        theBox = new Point(6, 6);
+        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+
     }
 }

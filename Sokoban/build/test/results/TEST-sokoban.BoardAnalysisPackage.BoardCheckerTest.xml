@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="DESKTOP-JN919GS" name="sokoban.BoardAnalysisPackage.BoardCheckerTest" skipped="0" tests="4" time="0.109" timestamp="2021-06-25T08:54:30">
+<testsuite errors="0" failures="0" hostname="DESKTOP-JN919GS" name="sokoban.BoardAnalysisPackage.BoardCheckerTest" skipped="0" tests="4" time="0.109" timestamp="2021-06-28T09:49:32">
   <properties>
     <property name="libs.spring-framework300.classpath" value="C:\Program Files\NetBeans-12.4\netbeans\platform\modules\org-apache-commons-logging.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\cglib-2.2.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-aop-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-aspects-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-beans-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-context-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-context-support-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-core-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-expression-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-instrument-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-instrument-tomcat-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-jdbc-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-jms-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-orm-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-oxm-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-struts-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-test-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-tx-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-web-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-webmvc-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-12.4\netbeans\java\modules\ext\spring-3.0\spring-webmvc-portlet-3.2.18.RELEASE.jar" />
     <property name="javac.test.classpath" value=":C:\Program Files\NetBeans-12.4\netbeans\platform\lib\hamcrest-2.2.jar:../sqlite-jdbc-3.34.0.jar:build/classes:C:\Program Files\NetBeans-12.4\netbeans\platform\modules\ext\junit-4.13.1.jar:" />
@@ -19,7 +19,7 @@
     <property name="libs.jsp-compilation.src" value="" />
     <property name="libs.JWSAntTasks.javadoc" value="" />
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11.0.11\bin" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner sokoban.BoardAnalysisPackage.BoardCheckerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\test\results\TEST-sokoban.BoardAnalysisPackage.BoardCheckerTest.xml crashfile=D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\junitvmwatcher1650123616906041501.properties propsfile=D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\junit10709626359008792147.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner sokoban.BoardAnalysisPackage.BoardCheckerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\test\results\TEST-sokoban.BoardAnalysisPackage.BoardCheckerTest.xml crashfile=D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\junitvmwatcher17227646662323902894.properties propsfile=D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\build\junit2458688324545099970.properties" />
     <property name="jdk.debug" value="release" />
     <property name="libs.spring-framework300.src" value="" />
     <property name="javadoc.use" value="true" />
@@ -40,7 +40,7 @@
     <property name="libs.JAXB-ENDORSED.javadoc" value="" />
     <property name="sun.java2d.noddraw" value="true" />
     <property name="sun.zip.disableMemoryMapping" value="true" />
-    <property name="jnidispatch.path" value="C:\Users\jcdru\AppData\Local\Temp\jna-100942286\jna524098173090350523.dll" />
+    <property name="jnidispatch.path" value="C:\Users\jcdru\AppData\Local\Temp\jna-100942286\jna9242526127172542268.dll" />
     <property name="libs.primefaces.javadoc" value="" />
     <property name="libs.jsf12.src" value="" />
     <property name="libs.jsp-compilation.javadoc" value="" />
@@ -212,7 +212,7 @@
     <property name="libs.jsp-compilation-syscp.classpath" value="C:\Program Files\NetBeans-12.4\netbeans\extide\ant\lib\ant.jar;C:\Program Files\NetBeans-12.4\netbeans\enterprise\modules\ext\servlet3.1-jsp2.3-api.jar;C:\Program Files\NetBeans-12.4\netbeans\enterprise\modules\ext\glassfish-jspparser-4.0.jar;C:\Program Files\NetBeans-12.4\netbeans\enterprise\modules\ext\jstl-impl.jar;C:\Program Files\NetBeans-12.4\netbeans\enterprise\modules\ext\jsf-2_2\javax.faces.jar" />
     <property name="libs.jsp-compilation.classpath" value="C:\Program Files\NetBeans-12.4\netbeans\extide\ant\lib\ant.jar;C:\Program Files\NetBeans-12.4\netbeans\enterprise\modules\ext\servlet3.1-jsp2.3-api.jar;C:\Program Files\NetBeans-12.4\netbeans\enterprise\modules\ext\glassfish-jspparser-4.0.jar;C:\Program Files\NetBeans-12.4\netbeans\enterprise\modules\ext\jsf-2_2\javax.faces.jar;C:\Program Files\NetBeans-12.4\netbeans\enterprise\modules\ext\jstl-api.jar;C:\Program Files\NetBeans-12.4\netbeans\extide\ant\lib\ant-launcher.jar" />
     <property name="libs.javaee-api-6.0.classpath" value="C:\Program Files\NetBeans-12.4\netbeans\enterprise\modules\ext\javaee-api-6.0.jar" />
-    <property name="javac.includesfile.binary" value="D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\null121512927" />
+    <property name="javac.includesfile.binary" value="D:\DUT\Informatique\AlgoProg\sokobanchampol\Sokoban\null1559994070" />
     <property name="libs.javaee-api-7.0.classpath" value="C:\Program Files\NetBeans-12.4\netbeans\enterprise\modules\ext\javaee-api-7.0.jar" />
     <property name="sun.cpu.isalist" value="amd64" />
     <property name="libs.restapi.maven-pom" value="" />
@@ -448,7 +448,7 @@
   <testcase classname="sokoban.BoardAnalysisPackage.BoardCheckerTest" name="testLegitMove" time="0.0" />
   <testcase classname="sokoban.BoardAnalysisPackage.BoardCheckerTest" name="testTrapCaseCheck" time="0.0" />
   <testcase classname="sokoban.BoardAnalysisPackage.BoardCheckerTest" name="testWinCheck" time="0.0" />
-  <testcase classname="sokoban.BoardAnalysisPackage.BoardCheckerTest" name="testMovableBoxCheck" time="0.0" />
+  <testcase classname="sokoban.BoardAnalysisPackage.BoardCheckerTest" name="testMovableBoxCheck" time="0.016" />
   <system-out><![CDATA[legitMove
 TestBoard
   0 1 2 3 4 5 6 7
