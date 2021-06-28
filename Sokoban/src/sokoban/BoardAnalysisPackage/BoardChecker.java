@@ -98,27 +98,22 @@ public class BoardChecker {
      * @return
      */
     public static boolean trapCaseCheck(Board theBoard, Point theBox) {
-        //rrayList<Point> neighborsList = new ArrayList<>();
 
         int lx = (int) theBox.getX();
         int ly = (int) theBox.getY() - 1;
         Point leftNeighbor = new Point(lx, ly);
-        //neighborsList.add(leftNeighbor);
 
         int rx = (int) (theBox.getX());
         int ry = (int) theBox.getY() + 1;
         Point rightNeighbor = new Point(rx, ry);
-        //neighborsList.add(rightNeighbor);
 
         int ux = (int) theBox.getX() - 1;
         int uy = (int) theBox.getY();
         Point upNeighbor = new Point(ux, uy);
-        //neighborsList.add(upNeighbor);
 
         int dx = (int) theBox.getX() + 1;
         int dy = (int) theBox.getY();
         Point downNeighbor = new Point(dx, dy);
-        //neighborsList.add(downNeighbor);
 
         return (//
                 //

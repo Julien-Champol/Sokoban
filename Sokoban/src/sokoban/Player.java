@@ -44,6 +44,11 @@ public class Player {
     private static boolean choosing;
 
     /**
+     * True if the assistance mode is on.
+     */
+    public static boolean assisted;
+
+    /**
      * The user's command line entry.
      */
     private static Scanner in = new Scanner(System.in);
@@ -181,6 +186,27 @@ public class Player {
                         startingMenu = true;
                         choosing = false;
                 }
+
+                System.out.println("___________________________________________");
+                System.out.println("       ASSISTANCE CHOOSING INTERFACE");
+                System.out.println("                                           ");
+                System.out.println("  The game assistance will tell you if you ");
+                System.out.println("  try to do something that will kill your  ");
+                System.out.println("              winning chances  ");
+                System.out.println("___________________________________________");
+                System.out.println(" ");
+                System.out.println(" Would you like to play with the game assistance ? ");
+                System.out.println(" Answer with yes or no please. ");
+                System.out.println(" ");
+
+                String secondEntry = readPlayerEntry();
+                switch (secondEntry) {
+                    case "yes":
+                        assisted = true;
+                    case "no":
+                        assisted = false;
+                }
+
             } catch (SQLiteException | NullPointerException e) {
                 System.out.println(e.toString());
                 System.out.println("Board not found try again please");
