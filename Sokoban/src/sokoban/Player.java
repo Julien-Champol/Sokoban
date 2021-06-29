@@ -123,7 +123,7 @@ public class Player {
      */
     public static String readPlayerEntry() throws GamePlayerLeavesException {
         System.out.println("Enter your command here :");
-        String returned = in.nextLine().trim().toUpperCase();
+        String returned = in.nextLine().trim();
         if (returned.equalsIgnoreCase("/QUIT")) {
             quitWithDialog();
         }
@@ -137,7 +137,7 @@ public class Player {
      * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
     public static void analyseSequence() throws GamePlayerLeavesException {
-        for (char actu : readPlayerEntry().toCharArray()) {
+        for (char actu : readPlayerEntry().toUpperCase().toCharArray()) {
             switch (actu) {
                 case 'L':
                     PlayerMoves.moveLeft(currentBoard);
@@ -177,7 +177,7 @@ public class Player {
                 System.out.println(" Answer with yes or no please. ");
                 System.out.println(" ");
 
-                String entry = readPlayerEntry().toLowerCase();
+                String entry = readPlayerEntry();
                 switch (entry) {
                     case "y":
                     case "yes":
@@ -224,7 +224,7 @@ public class Player {
                     case "1":
                         myDatabase.listBoards();
                         System.out.println("Board id ?");
-                        String boardId = readPlayerEntry().toLowerCase();
+                        String boardId = readPlayerEntry();
                         currentBoard = myDatabase.get(boardId);
                         inGame = true;
                         startingMenu = true;

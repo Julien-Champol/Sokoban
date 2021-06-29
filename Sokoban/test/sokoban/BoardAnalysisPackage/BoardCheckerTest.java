@@ -98,6 +98,7 @@ public class BoardCheckerTest {
         theBoard.addVerticalWall(0, 7, 8);
         theBoard.addVerticalWall(0, 0, 8);
         theBoard.addHorizontalWall(4, 6, 2);
+        theBoard.addHorizontalWall(5, 6, 2);
         theBoard.addTarget(1, 2);
         theBoard.addBox(5, 6);
         theBoard.addBox(3, 6);
@@ -108,9 +109,20 @@ public class BoardCheckerTest {
         theBoard.addBox(6, 1);
         theBoard.addBox(6, 6);
         theBoard.displayBoard();
+        /*
+         0 1 2 3 4 5 6 7
+        0 # # # # # # # #
+        1 # C x . . C C #
+        2 # . . . . . . #
+        3 # . . . . . C #
+        4 # . . . . . # #
+        5 # C . . . . # #
+        6 # C . . . . C #
+        7 # # # # # # # #
+        */
         /* Assertions */
         Point theBox = new Point(5, 6);
-        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        //Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
         theBox = new Point(3, 6);
         Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
         theBox = new Point(1, 1);

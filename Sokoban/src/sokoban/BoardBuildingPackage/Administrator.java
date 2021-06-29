@@ -10,6 +10,7 @@ import java.util.Scanner;
 import org.sqlite.SQLiteException;
 import sokoban.ExceptionsPackage.AdminLeavesException;
 import sokoban.ExceptionsPackage.BuilderException;
+import sokoban.Player;
 
 /**
  * Class representing data about the administrator of the game and his possible

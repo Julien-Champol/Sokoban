@@ -39,40 +39,7 @@ public class PlayerMoves {
         int x = (int) theBoard.getPlayerPosition().getX();
         int y = (int) (theBoard.getPlayerPosition().getY() - 1);
         Point newPosition = new Point(x, y);
-        
-        if (Player.assisted && BoardChecker.trapCaseCheck(theBoard, newPosition)) {
-            boolean continueOrNot = true;
-            while (continueOrNot) {
-                try {
-                    System.out.println(" ");
-                    System.out.println(" Looks like you are going to loose this case ... Do you really want to make this move ?");
-                    System.out.println(" Answer with yes or no please. ");
-                    System.out.println(" ");
 
-                    String entry = readPlayerEntry().toLowerCase();
-                    switch (entry) {
-                        case "y":
-                        case "yes":
-                            continueOrNot = false;
-                            break;
-
-                        case "n":
-                        case "no":
-                            return;
-                        default:
-                            System.out.println("Invalid entry, try again please.");
-                    }
-
-                } catch (GamePlayerLeavesException e) {
-                    System.out.println(e.toString());
-                    continueOrNot = false;
-                    Player.inGame = false;
-                }
-            }
-        } else {
-            System.out.println("Saucisse");
-        }
-         
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)) {
 
@@ -84,6 +51,38 @@ public class PlayerMoves {
             while (serial && y > 0) {
                 y--;
                 Point newBoxPosition = new Point(x, y);
+
+                if (Player.assisted && BoardChecker.trapCaseCheck(theBoard, newBoxPosition)) {
+                    boolean continueOrNot = true;
+                    while (continueOrNot) {
+                        try {
+                            System.out.println(" ");
+                            System.out.println(" Looks like you are going to loose this case ... Do you really want to make this move ?");
+                            System.out.println(" Answer with yes or no please. ");
+                            System.out.println(" ");
+
+                            String entry = readPlayerEntry().toLowerCase();
+                            switch (entry) {
+                                case "y":
+                                case "yes":
+                                    continueOrNot = false;
+                                    break;
+
+                                case "n":
+                                case "no":
+                                    return;
+                                default:
+                                    System.out.println("Invalid entry, try again please.");
+                            }
+
+                        } catch (GamePlayerLeavesException e) {
+                            System.out.println(e.toString());
+                            continueOrNot = false;
+                            Player.inGame = false;
+                        }
+                    }
+                }
+
                 if (BoardChecker.movableBoxCheck(theBoard, newBoxPosition, Moves.L)) { //Check if we can move to serialBox
                     laterMoves.add(newBoxPosition);
                 } else {
@@ -127,6 +126,38 @@ public class PlayerMoves {
             while (serial && y < theBoard.getWidth()) {
                 y++;
                 Point newBoxPosition = new Point(x, y);
+
+                if (Player.assisted && BoardChecker.trapCaseCheck(theBoard, newBoxPosition)) {
+                    boolean continueOrNot = true;
+                    while (continueOrNot) {
+                        try {
+                            System.out.println(" ");
+                            System.out.println(" Looks like you are going to loose this case ... Do you really want to make this move ?");
+                            System.out.println(" Answer with yes or no please. ");
+                            System.out.println(" ");
+
+                            String entry = readPlayerEntry().toLowerCase();
+                            switch (entry) {
+                                case "y":
+                                case "yes":
+                                    continueOrNot = false;
+                                    break;
+
+                                case "n":
+                                case "no":
+                                    return;
+                                default:
+                                    System.out.println("Invalid entry, try again please.");
+                            }
+
+                        } catch (GamePlayerLeavesException e) {
+                            System.out.println(e.toString());
+                            continueOrNot = false;
+                            Player.inGame = false;
+                        }
+                    }
+                }
+
                 if (BoardChecker.movableBoxCheck(theBoard, newBoxPosition, Moves.R)) {
                     laterMoves.add(newBoxPosition);
                     Point serialBox = new Point(x, y);
@@ -170,6 +201,38 @@ public class PlayerMoves {
             while (serial && y < theBoard.getWidth()) {
                 x--;
                 Point newBoxPosition = new Point(x, y);
+
+                if (Player.assisted && BoardChecker.trapCaseCheck(theBoard, newBoxPosition)) {
+                    boolean continueOrNot = true;
+                    while (continueOrNot) {
+                        try {
+                            System.out.println(" ");
+                            System.out.println(" Looks like you are going to loose this case ... Do you really want to make this move ?");
+                            System.out.println(" Answer with yes or no please. ");
+                            System.out.println(" ");
+
+                            String entry = readPlayerEntry().toLowerCase();
+                            switch (entry) {
+                                case "y":
+                                case "yes":
+                                    continueOrNot = false;
+                                    break;
+
+                                case "n":
+                                case "no":
+                                    return;
+                                default:
+                                    System.out.println("Invalid entry, try again please.");
+                            }
+
+                        } catch (GamePlayerLeavesException e) {
+                            System.out.println(e.toString());
+                            continueOrNot = false;
+                            Player.inGame = false;
+                        }
+                    }
+                }
+
                 if (BoardChecker.movableBoxCheck(theBoard, newBoxPosition, Moves.U)) {
                     laterMoves.add(newBoxPosition);
                     Point serialBox = new Point(x, y);
@@ -215,6 +278,38 @@ public class PlayerMoves {
             while (serial && y < theBoard.getWidth()) {
                 x++;
                 Point newBoxPosition = new Point(x, y);
+
+                if (Player.assisted && BoardChecker.trapCaseCheck(theBoard, newBoxPosition)) {
+                    boolean continueOrNot = true;
+                    while (continueOrNot) {
+                        try {
+                            System.out.println(" ");
+                            System.out.println(" Looks like you are going to loose this case ... Do you really want to make this move ?");
+                            System.out.println(" Answer with yes or no please. ");
+                            System.out.println(" ");
+
+                            String entry = readPlayerEntry().toLowerCase();
+                            switch (entry) {
+                                case "y":
+                                case "yes":
+                                    continueOrNot = false;
+                                    break;
+
+                                case "n":
+                                case "no":
+                                    return;
+                                default:
+                                    System.out.println("Invalid entry, try again please.");
+                            }
+
+                        } catch (GamePlayerLeavesException e) {
+                            System.out.println(e.toString());
+                            continueOrNot = false;
+                            Player.inGame = false;
+                        }
+                    }
+                }
+
                 if (BoardChecker.movableBoxCheck(theBoard, newBoxPosition, Moves.D)) {
                     laterMoves.add(newBoxPosition);
                     Point serialBox = new Point(x, y);
