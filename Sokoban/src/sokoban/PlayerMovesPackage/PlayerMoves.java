@@ -29,6 +29,7 @@ public class PlayerMoves {
      * Method called when the player wants to move on his left.
      *
      * @param theBoard the Board the player is completing
+     * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
     public static void moveLeft(Board theBoard) throws GamePlayerLeavesException {
 
@@ -68,6 +69,8 @@ public class PlayerMoves {
                     Player.inGame = false;
                 }
             }
+        } else {
+            System.out.println("Saucisse");
         }
          
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
