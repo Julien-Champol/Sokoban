@@ -9,6 +9,7 @@ import java.awt.Point;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import sokoban.BoardBuildingPackage.Board;
+import sokoban.ExceptionsPackage.GamePlayerLeavesException;
 
 /**
  *
@@ -21,9 +22,10 @@ public class PlayerMovesTest {
 
     /**
      * Test of moveLeft method, of class PlayerMoves.
+     * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
     @Test
-    public void testMoveLeft() {
+    public void testMoveLeft() throws GamePlayerLeavesException {
         System.out.println("moveLeft");
         Board theBoard = new Board("TestBoard", 8, 8);
         theBoard.addHorizontalWall(0, 0, 8);

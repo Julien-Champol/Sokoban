@@ -31,7 +31,7 @@ public class Player {
     /**
      * True if a game is being completed false otherwise.
      */
-    private static boolean inGame;
+    public static boolean inGame;
 
     /**
      * True if a game is being completed false otherwise.
@@ -42,6 +42,11 @@ public class Player {
      * True if a board is currently being choosed.
      */
     private static boolean choosing;
+
+    /**
+     * True if the assistance mode is on.
+     */
+    public static boolean assisted;
 
     /**
      * The user's command line entry.
@@ -57,7 +62,7 @@ public class Player {
      * All the moves of the player are stored in this HashSet. So that it's
      * easier to display them in the end of the game.
      */
-    private static final ArrayList<PlayerMoves.Moves> allMoves = new ArrayList<PlayerMoves.Moves>();
+    public static final ArrayList<PlayerMoves.Moves> allMoves = new ArrayList<PlayerMoves.Moves>();
 
     /**
      * Main method of the player class.
@@ -95,6 +100,7 @@ public class Player {
                 System.out.println("Type /quit to leave the game at any time.");
                 System.out.println("Enjoy your game !");
                 System.out.println("_________________________________________________________________");
+                assistanceDialog();
                 currentBoard.displayBoard();
             }
 
@@ -117,9 +123,9 @@ public class Player {
      */
     public static String readPlayerEntry() throws GamePlayerLeavesException {
         System.out.println("Enter your command here :");
-        String returned = in.nextLine().trim().toUpperCase();
+        String returned = in.nextLine().trim();
         if (returned.equalsIgnoreCase("/QUIT")) {
-            quiWithDialog();
+            quitWithDialog();
         }
         return returned;
     }
@@ -131,24 +137,67 @@ public class Player {
      * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
     public static void analyseSequence() throws GamePlayerLeavesException {
-        for (char actu : readPlayerEntry().toCharArray()) {
+        for (char actu : readPlayerEntry().toUpperCase().toCharArray()) {
             switch (actu) {
                 case 'L':
                     PlayerMoves.moveLeft(currentBoard);
-                    allMoves.add(PlayerMoves.Moves.L);
                     break;
                 case 'R':
                     PlayerMoves.moveRight(currentBoard);
-                    allMoves.add(PlayerMoves.Moves.R);
                     break;
                 case 'U':
                     PlayerMoves.moveUp(currentBoard);
-                    allMoves.add(PlayerMoves.Moves.U);
                     break;
                 case 'D':
                     PlayerMoves.moveDown(currentBoard);
-                    allMoves.add(PlayerMoves.Moves.D);
                     break;
+            }
+        }
+    }
+
+    /**
+     * Method allowing the player to choose the mode he wants to play on :
+     * assisted or not
+     *
+     * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
+     */
+    public static void assistanceDialog() throws GamePlayerLeavesException {
+        boolean choosingAssistance = true;
+        while (choosingAssistance) {
+            try {
+                System.out.println("___________________________________________");
+                System.out.println("       ASSISTANCE CHOOSING INTERFACE");
+                System.out.println("                                           ");
+                System.out.println("  The game assistance will tell you if you ");
+                System.out.println("  try to do something that will kill your  ");
+                System.out.println("              winning chances,  ");
+                System.out.println("___________________________________________");
+                System.out.println(" ");
+                System.out.println(" Would you like to play with the game assistance ? ");
+                System.out.println(" Answer with yes or no please. ");
+                System.out.println(" ");
+
+                String entry = readPlayerEntry();
+                switch (entry) {
+                    case "y":
+                    case "yes":
+                        assisted = true;
+                        choosingAssistance = false;
+                        break;
+
+                    case "n":
+                    case "no":
+                        assisted = false;
+                        choosingAssistance = false;
+                        break;
+                    default:
+                        System.out.println("Invalid entry, try again please.");
+                }
+            } catch (GamePlayerLeavesException e) {
+                System.out.println(e.toString());
+                choosingAssistance = false;
+                startingMenu = false;
+                inGame = false;
             }
         }
     }
@@ -175,7 +224,7 @@ public class Player {
                     case "1":
                         myDatabase.listBoards();
                         System.out.println("Board id ?");
-                        String boardId = readPlayerEntry().toLowerCase();
+                        String boardId = readPlayerEntry();
                         currentBoard = myDatabase.get(boardId);
                         inGame = true;
                         startingMenu = true;
@@ -210,7 +259,7 @@ public class Player {
      *
      * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
-    public static void quiWithDialog() throws GamePlayerLeavesException {
+    public static void quitWithDialog() throws GamePlayerLeavesException {
         throw new GamePlayerLeavesException("The player left the game");
     }
 }

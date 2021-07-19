@@ -10,6 +10,7 @@ import java.util.Scanner;
 import org.sqlite.SQLiteException;
 import sokoban.ExceptionsPackage.AdminLeavesException;
 import sokoban.ExceptionsPackage.BuilderException;
+import sokoban.Player;
 
 /**
  * Class representing data about the administrator of the game and his possible
@@ -27,8 +28,6 @@ public class Administrator {
     private static DataBase myDatabase;
 
     private static boolean menu = true;
-
-    private static int i = -1;
 
     /**
      * The main method of the administrator class.
@@ -76,6 +75,7 @@ public class Administrator {
      * @throws java.sql.SQLException
      */
     public static void analyseSequence() throws AdminLeavesException, BuilderException, SQLException {
+        int i = -1;
         while (menu) {
             try {
                 String entry;
@@ -90,10 +90,13 @@ public class Administrator {
                 System.out.println("5. Remove board from database [DANGEROUS]");
                 System.out.println("6. Quit.");
 
-                if (i != -1) {
+                if (i == -1) {
+                    System.out.println(" ");
                     entry = readAdministratorEntry();
                 } else {
-                    entry = "" + i; 
+                    System.out.println(" ");
+                    System.out.println("Last entry that has been done : " + i);
+                    entry = readAdministratorEntry();
                 }
                 switch (entry) {
                     case "1":
@@ -142,7 +145,6 @@ public class Administrator {
                 System.out.println(e.toString());
                 menu = false;
             } catch (SQLiteException e) {
-                System.out.println("Instruction where the catch has been done : " + i);
                 System.out.println(e.toString());
             }
         }

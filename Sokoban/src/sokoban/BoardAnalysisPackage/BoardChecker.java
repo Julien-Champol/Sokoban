@@ -8,6 +8,7 @@ package sokoban.BoardAnalysisPackage;
 import java.awt.Point;
 import java.util.ArrayList;
 import sokoban.BoardBuildingPackage.Board;
+import sokoban.PlayerMovesPackage.PlayerMoves;
 import sokoban.PlayerMovesPackage.PlayerMoves.Moves;
 
 /**
@@ -62,31 +63,49 @@ public class BoardChecker {
     public static boolean movableBoxCheck(Board theBoard, Point theBox, Moves direction) {
         int x;
         int y;
+        int z;
+        Moves opposite = null;
         Point neighbor = new Point(-1, -1);
+        Point backNeighbor = new Point(-1, -1);
         switch (direction) {
             case L:
                 x = (int) theBox.getX();
                 y = (int) theBox.getY() - 1;
+                z = (int) theBox.getY() + 1;
                 neighbor = new Point(x, y);
+                backNeighbor = new Point(x, z);
+                opposite = Moves.R;
                 break;
             case R:
                 x = (int) (theBox.getX());
                 y = (int) theBox.getY() + 1;
+                z = (int) theBox.getY() - 1;
                 neighbor = new Point(x, y);
+                backNeighbor = new Point(x, z);
+                opposite = Moves.L;
                 break;
             case U:
                 x = (int) theBox.getX() - 1;
+                z = (int) theBox.getX() + 1;
                 y = (int) theBox.getY();
                 neighbor = new Point(x, y);
+                backNeighbor = new Point(z, y);
+                opposite = Moves.D;
                 break;
             case D:
                 x = (int) theBox.getX() + 1;
+                z = (int) theBox.getX() - 1;
                 y = (int) theBox.getY();
                 neighbor = new Point(x, y);
+                backNeighbor = new Point(z, y);
+                opposite = Moves.U;
                 break;
         }
         return (theBoard.getBoxPositions().contains(theBox) && !theBoard.getWallPositions().contains(theBox)
-                && theBoard.inTheBoardCheck(neighbor) && !theBoard.getWallPositions().contains(neighbor));
+                && theBoard.inTheBoardCheck(neighbor) && !theBoard.getWallPositions().contains(neighbor)
+                && theBoard.inTheBoardCheck(backNeighbor) //of course the backNeighbor has to be in the board
+                && !theBoard.getWallPositions().contains(backNeighbor) //If there's a wall down, you can't move up
+                && !BoardChecker.movableBoxCheck(theBoard, backNeighbor, opposite)); //If it's movable in the opposite way then there's space for the player
     }
 
     /**
@@ -98,27 +117,22 @@ public class BoardChecker {
      * @return
      */
     public static boolean trapCaseCheck(Board theBoard, Point theBox) {
-        //rrayList<Point> neighborsList = new ArrayList<>();
 
         int lx = (int) theBox.getX();
         int ly = (int) theBox.getY() - 1;
         Point leftNeighbor = new Point(lx, ly);
-        //neighborsList.add(leftNeighbor);
 
         int rx = (int) (theBox.getX());
         int ry = (int) theBox.getY() + 1;
         Point rightNeighbor = new Point(rx, ry);
-        //neighborsList.add(rightNeighbor);
 
         int ux = (int) theBox.getX() - 1;
         int uy = (int) theBox.getY();
         Point upNeighbor = new Point(ux, uy);
-        //neighborsList.add(upNeighbor);
 
         int dx = (int) theBox.getX() + 1;
         int dy = (int) theBox.getY();
         Point downNeighbor = new Point(dx, dy);
-        //neighborsList.add(downNeighbor);
 
         return (//
                 //
@@ -198,5 +212,70 @@ public class BoardChecker {
                 && !BoardChecker.movableBoxCheck(theBoard, rightNeighbor, Moves.R)
                 && (!BoardChecker.movableBoxCheck(theBoard, rightNeighbor, Moves.U) || !BoardChecker.movableBoxCheck(theBoard, rightNeighbor, Moves.D))//
                 );
+    }
+
+    /**
+     * Method returning true iff the Box cannot be saved from a trap situation
+     *
+     * @param theBoard
+     * @param theBox
+     * @return
+     */
+    public static boolean mustGetTraped(Board theBoard, Point theBox) {
+        boolean willGetTraped = true;
+        int x;
+        int y;
+        Point neighbor = new Point(-1, -1);
+        Point opposite = new Point(-1, -1);
+        ArrayList<PlayerMoves.Moves> allDirections = new ArrayList<>();
+        allDirections.add(PlayerMoves.Moves.D);
+        allDirections.add(PlayerMoves.Moves.U);
+        allDirections.add(PlayerMoves.Moves.L);
+        allDirections.add(PlayerMoves.Moves.R);
+        for (var dir : allDirections) {
+            switch (dir) {
+                case L:
+                    x = (int) theBox.getX();
+                    y = (int) theBox.getY() - 1;
+                    neighbor = new Point(x, y);
+                    opposite = new Point(x, y + 2);
+                    if (!trapCaseCheck(theBoard, opposite)
+                            && movableBoxCheck(theBoard, theBox, dir) && !trapCaseCheck(theBoard, neighbor)) {
+                        willGetTraped = false;
+                    }
+                    break;
+                case R:
+                    x = (int) (theBox.getX());
+                    y = (int) theBox.getY() + 1;
+                    neighbor = new Point(x, y);
+                    opposite = new Point(x, y - 2);
+                    if (!trapCaseCheck(theBoard, opposite)
+                            && movableBoxCheck(theBoard, theBox, dir) && !trapCaseCheck(theBoard, neighbor)) {
+                        willGetTraped = false;
+                    }
+                    break;
+                case U:
+                    x = (int) theBox.getX() - 1;
+                    y = (int) theBox.getY();
+                    neighbor = new Point(x, y);
+                    opposite = new Point(x + 2, y);
+                    if (!trapCaseCheck(theBoard, opposite)
+                            && movableBoxCheck(theBoard, theBox, dir) && !trapCaseCheck(theBoard, neighbor)) {
+                        willGetTraped = false;
+                    }
+                    break;
+                case D:
+                    x = (int) theBox.getX() + 1;
+                    y = (int) theBox.getY();
+                    neighbor = new Point(x, y);
+                    opposite = new Point(x - 2, y);
+                    if (!trapCaseCheck(theBoard, opposite)
+                            && movableBoxCheck(theBoard, theBox, dir) && !trapCaseCheck(theBoard, neighbor)) {
+                        willGetTraped = false;
+                    }
+                    break;
+            }
+        }
+        return willGetTraped;
     }
 }

@@ -73,6 +73,19 @@ public class BoardCheckerTest {
         theBoard.addBox(3, 5);
         theBoard.addBox(3, 4);
         theBoard.addBox(3, 3);
+        theBoard.addBox(3, 1);
+        theBoard.addBox(6, 2);
+        /*
+          0 1 2 3 4 5 6 7
+        0 # # # # # # # #
+        1 # . x . C . . #
+        2 # . . . . . . #
+        3 # C . C C C C #
+        4 # . . . . . . #
+        5 # . . . . . . #
+        6 # . C . . . . #
+        7 # # # # # # # #
+         */
         theBoard.displayBoard();
         Point theBox = new Point(3, 2);
         PlayerMoves.Moves direction = PlayerMoves.Moves.L;
@@ -84,6 +97,14 @@ public class BoardCheckerTest {
         boolean expResult2 = true; // The fact that the box will finally isn't dealt here, it's in player moves
         boolean result2 = BoardChecker.movableBoxCheck(theBoard, theSecondBox, direction2);
         assertEquals(expResult2, result2);
+        Point theThirdBox = new Point(3, 1);
+        Assert.assertFalse(BoardChecker.movableBoxCheck(theBoard, theThirdBox, direction2));
+        Point theFourthBox = new Point(6, 2);
+        Assert.assertFalse(BoardChecker.movableBoxCheck(theBoard, theFourthBox, PlayerMoves.Moves.U));
+        Point theFifthBox = new Point(3, 6);
+        Assert.assertFalse(BoardChecker.movableBoxCheck(theBoard, theFifthBox, PlayerMoves.Moves.L));
+        Point theSixthBox = new Point(1, 4);
+        Assert.assertFalse(BoardChecker.movableBoxCheck(theBoard, theSixthBox, PlayerMoves.Moves.D));
     }
 
     /**
@@ -98,6 +119,7 @@ public class BoardCheckerTest {
         theBoard.addVerticalWall(0, 7, 8);
         theBoard.addVerticalWall(0, 0, 8);
         theBoard.addHorizontalWall(4, 6, 2);
+        theBoard.addHorizontalWall(5, 6, 2);
         theBoard.addTarget(1, 2);
         theBoard.addBox(5, 6);
         theBoard.addBox(3, 6);
@@ -108,9 +130,20 @@ public class BoardCheckerTest {
         theBoard.addBox(6, 1);
         theBoard.addBox(6, 6);
         theBoard.displayBoard();
-        /* Assertions */
+        /*
+          0 1 2 3 4 5 6 7
+        0 # # # # # # # #
+        1 # C x . . C C #
+        2 # . . . . . . #
+        3 # . . . . . C #
+        4 # . . . . . # #
+        5 # C . . . . # #
+        6 # C . . . . C #
+        7 # # # # # # # #
+         */
+ /* Assertions */
         Point theBox = new Point(5, 6);
-        Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
+        //Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
         theBox = new Point(3, 6);
         Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
         theBox = new Point(1, 1);
@@ -126,5 +159,63 @@ public class BoardCheckerTest {
         theBox = new Point(6, 6);
         Assert.assertTrue(BoardChecker.trapCaseCheck(theBoard, theBox));
 
+        /*
+         0 1 2 3 4 5 6 7
+        0 # # # # # # # #
+        1 # . . . . . . #
+        2 # . . . . . . #
+        3 # . . . . . . #
+        4 # . . . . . # #
+        5 # # . . . . # #
+        6 # . C P . . . #
+        7 # # # # # # # #
+         */
+        Board theSecondBoard = new Board("secondTestBoard", 8, 8);
+        theSecondBoard.addHorizontalWall(0, 0, 8);
+        theSecondBoard.addHorizontalWall(7, 0, 8);
+        theSecondBoard.addVerticalWall(0, 7, 8);
+        theSecondBoard.addVerticalWall(0, 0, 8);
+        theSecondBoard.addHorizontalWall(4, 6, 2);
+        theSecondBoard.addHorizontalWall(5, 6, 2);
+    }
+
+    /**
+     * Test of mustGetTraped method, of class BoardChecker.
+     */
+    @Test
+    public void testWillGetTraped() {
+        System.out.println("mustGetTrapCheck");
+        Board theBoard = new Board("TestBoard", 8, 8);
+        theBoard.addHorizontalWall(0, 0, 8);
+        theBoard.addHorizontalWall(7, 0, 8);
+        theBoard.addVerticalWall(0, 7, 8);
+        theBoard.addVerticalWall(0, 0, 8);
+        theBoard.addHorizontalWall(2, 6, 2);
+        theBoard.addHorizontalWall(4, 6, 2);
+        theBoard.addHorizontalWall(5, 6, 2);
+        theBoard.addTarget(1, 2);
+        theBoard.addBox(5, 6);
+        theBoard.addBox(1, 1);
+        theBoard.addBox(1, 5);
+        theBoard.addBox(5, 1);
+        theBoard.addBox(6, 1);
+        theBoard.addBox(6, 5);
+        theBoard.displayBoard();
+        /*
+          0 1 2 3 4 5 6 7
+        0 # # # # # # # #
+        1 # C x . . C . #
+        2 # . . . . . # #
+        3 # . . . . . . #
+        4 # . . . . . # #
+        5 # C . . . . # #
+        6 # C . . . C . #
+        7 # # # # # # # #
+         */
+ /* Assertions */
+        Point box = new Point(1, 5);
+        Assert.assertTrue(BoardChecker.mustGetTraped(theBoard, box));
+        box = new Point(6, 5);
+        Assert.assertTrue(BoardChecker.mustGetTraped(theBoard, box));
     }
 }
