@@ -52,7 +52,8 @@ public class PlayerMoves {
                 y--;
                 Point newBoxPosition = new Point(x, y);
 
-                if (Player.assisted && BoardChecker.trapCaseCheck(theBoard, newBoxPosition)) {
+                if (Player.assisted
+                        && (BoardChecker.trapCaseCheck(theBoard, newBoxPosition) || BoardChecker.mustGetTraped(theBoard, newPosition))) {
                     boolean continueOrNot = true;
                     while (continueOrNot) {
                         try {
@@ -127,7 +128,8 @@ public class PlayerMoves {
                 y++;
                 Point newBoxPosition = new Point(x, y);
 
-                if (Player.assisted && BoardChecker.trapCaseCheck(theBoard, newBoxPosition)) {
+                if (Player.assisted
+                        && (BoardChecker.trapCaseCheck(theBoard, newBoxPosition) || BoardChecker.mustGetTraped(theBoard, newPosition))) {
                     boolean continueOrNot = true;
                     while (continueOrNot) {
                         try {
@@ -202,7 +204,8 @@ public class PlayerMoves {
                 x--;
                 Point newBoxPosition = new Point(x, y);
 
-                if (Player.assisted && BoardChecker.trapCaseCheck(theBoard, newBoxPosition)) {
+                if (Player.assisted
+                        && (BoardChecker.trapCaseCheck(theBoard, newBoxPosition) || BoardChecker.mustGetTraped(theBoard, newPosition))) {
                     boolean continueOrNot = true;
                     while (continueOrNot) {
                         try {
@@ -279,7 +282,8 @@ public class PlayerMoves {
                 x++;
                 Point newBoxPosition = new Point(x, y);
 
-                if (Player.assisted && BoardChecker.trapCaseCheck(theBoard, newBoxPosition)) {
+                if (Player.assisted
+                        && (BoardChecker.trapCaseCheck(theBoard, newBoxPosition) || BoardChecker.mustGetTraped(theBoard, newPosition))) {
                     boolean continueOrNot = true;
                     while (continueOrNot) {
                         try {

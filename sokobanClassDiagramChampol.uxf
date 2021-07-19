@@ -275,14 +275,15 @@ _+ moveDown(Board) : void_
       <x>1768</x>
       <y>1027</y>
       <w>455</w>
-      <h>143</h>
+      <h>156</h>
     </coordinates>
     <panel_attributes>BoardChecker
 --
 _+ winCheck(Board) : Boolean_
 _+ legitMove(Board, Point, Point) : Boolean_
 _+ movableBoxCheck(Board, Point, Moves) : Boolean_
-_+ trapcaseCheck(Board, Point) : Boolean_</panel_attributes>
+_+ trapcaseCheck(Board, Point) : Boolean_
+_+ mustGetTraped(Board, Point) : Boolean_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -291,7 +292,7 @@ _+ trapcaseCheck(Board, Point) : Boolean_</panel_attributes>
       <x>1755</x>
       <y>962</y>
       <w>481</w>
-      <h>234</h>
+      <h>260</h>
     </coordinates>
     <panel_attributes>BoardAnalysisPackage
 bg=magenta</panel_attributes>
