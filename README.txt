@@ -62,3 +62,6 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
 
 08/07
     Jeu sécurisé, ajout des cas limites de trapcase à la suite des dernières semaines. 
+
+19/07
+    Tous les coups menant à une défaite sont détectés par l'assistance de jeu.
