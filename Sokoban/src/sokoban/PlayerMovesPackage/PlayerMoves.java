@@ -53,7 +53,7 @@ public class PlayerMoves {
                 Point newBoxPosition = new Point(x, y);
 
                 if (Player.assisted
-                        && (BoardChecker.trapCaseCheck(theBoard, newBoxPosition) || BoardChecker.mustGetTraped(theBoard, newPosition))) {
+                        && (BoardChecker.trapCaseCheck(theBoard, newBoxPosition))) {
                     boolean continueOrNot = true;
                     while (continueOrNot) {
                         try {
@@ -129,7 +129,7 @@ public class PlayerMoves {
                 Point newBoxPosition = new Point(x, y);
 
                 if (Player.assisted
-                        && (BoardChecker.trapCaseCheck(theBoard, newBoxPosition) || BoardChecker.mustGetTraped(theBoard, newPosition))) {
+                        && (BoardChecker.trapCaseCheck(theBoard, newBoxPosition))) {
                     boolean continueOrNot = true;
                     while (continueOrNot) {
                         try {
@@ -205,7 +205,7 @@ public class PlayerMoves {
                 Point newBoxPosition = new Point(x, y);
 
                 if (Player.assisted
-                        && (BoardChecker.trapCaseCheck(theBoard, newBoxPosition) || BoardChecker.mustGetTraped(theBoard, newPosition))) {
+                        && (BoardChecker.trapCaseCheck(theBoard, newBoxPosition))) {
                     boolean continueOrNot = true;
                     while (continueOrNot) {
                         try {
@@ -283,7 +283,7 @@ public class PlayerMoves {
                 Point newBoxPosition = new Point(x, y);
 
                 if (Player.assisted
-                        && (BoardChecker.trapCaseCheck(theBoard, newBoxPosition) || BoardChecker.mustGetTraped(theBoard, newPosition))) {
+                        && (BoardChecker.trapCaseCheck(theBoard, newBoxPosition))) {
                     boolean continueOrNot = true;
                     while (continueOrNot) {
                         try {

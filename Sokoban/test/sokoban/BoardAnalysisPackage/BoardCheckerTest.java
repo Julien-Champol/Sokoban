@@ -178,44 +178,5 @@ public class BoardCheckerTest {
         theSecondBoard.addHorizontalWall(4, 6, 2);
         theSecondBoard.addHorizontalWall(5, 6, 2);
     }
-
-    /**
-     * Test of mustGetTraped method, of class BoardChecker.
-     */
-    @Test
-    public void testWillGetTraped() {
-        System.out.println("mustGetTrapCheck");
-        Board theBoard = new Board("TestBoard", 8, 8);
-        theBoard.addHorizontalWall(0, 0, 8);
-        theBoard.addHorizontalWall(7, 0, 8);
-        theBoard.addVerticalWall(0, 7, 8);
-        theBoard.addVerticalWall(0, 0, 8);
-        theBoard.addHorizontalWall(2, 6, 2);
-        theBoard.addHorizontalWall(4, 6, 2);
-        theBoard.addHorizontalWall(5, 6, 2);
-        theBoard.addTarget(1, 2);
-        theBoard.addBox(5, 6);
-        theBoard.addBox(1, 1);
-        theBoard.addBox(1, 5);
-        theBoard.addBox(5, 1);
-        theBoard.addBox(6, 1);
-        theBoard.addBox(6, 5);
-        theBoard.displayBoard();
-        /*
-          0 1 2 3 4 5 6 7
-        0 # # # # # # # #
-        1 # C x . . C . #
-        2 # . . . . . # #
-        3 # . . . . . . #
-        4 # . . . . . # #
-        5 # C . . . . # #
-        6 # C . . . C . #
-        7 # # # # # # # #
-         */
- /* Assertions */
-        Point box = new Point(1, 5);
-        Assert.assertTrue(BoardChecker.mustGetTraped(theBoard, box));
-        box = new Point(6, 5);
-        Assert.assertTrue(BoardChecker.mustGetTraped(theBoard, box));
-    }
+    
 }
