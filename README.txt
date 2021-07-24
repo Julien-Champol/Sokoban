@@ -65,3 +65,10 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
 
 19/07
     Tous les coups menant à une défaite sont détectés par l'assistance de jeu.
+
+24/07
+    Suppression de mustGetTraped code trop complexe à cause des cas limites, 
+    choix d'une méthode plus simple de retour arrière en cas de blocage du joueur,
+    volonté ajout TODO : /trap pour retour arrière
+                         /info pour informations en cours de partie
+                         /giveup pour abandonner la partie : retour au choix du board
