@@ -250,14 +250,17 @@ r1=allMoves</panel_attributes>
       <x>759</x>
       <y>1001</y>
       <w>220</w>
-      <h>132</h>
+      <h>154</h>
     </coordinates>
     <panel_attributes>PlayerMoves
+--
+_- boxMoved : Boolean_
 --
 _+ moveLeft(Board) : void_
 _+ moveRight(Board) : void_
 _+ moveUp(Board) : void_
 _+ moveDown(Board) : void_
+_+ moveBack(Board) : void_
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -279,15 +282,14 @@ _+ moveDown(Board) : void_
       <x>1507</x>
       <y>869</y>
       <w>385</w>
-      <h>143</h>
+      <h>121</h>
     </coordinates>
     <panel_attributes>BoardChecker
 --
 _+ winCheck(Board) : Boolean_
 _+ legitMove(Board, Point, Point) : Boolean_
 _+ movableBoxCheck(Board, Point, Moves) : Boolean_
-_+ trapcaseCheck(Board, Point) : Boolean_
-_+ mustGetTraped(Board, Point) : Boolean_</panel_attributes>
+_+ trapcaseCheck(Board, Point) : Boolean_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -296,7 +298,7 @@ _+ mustGetTraped(Board, Point) : Boolean_</panel_attributes>
       <x>1485</x>
       <y>814</y>
       <w>440</w>
-      <h>231</h>
+      <h>209</h>
     </coordinates>
     <panel_attributes>BoardAnalysisPackage
 bg=magenta</panel_attributes>
@@ -595,6 +597,6 @@ r1=myDataBase</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;throws&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;420.0;590.0;420.0;590.0;360.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;420.0;590.0;420.0;590.0;380.0</additional_attributes>
   </element>
 </diagram>

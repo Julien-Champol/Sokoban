@@ -161,6 +161,10 @@ public class Player {
             displayInfo();
         } else if (returned.equalsIgnoreCase("/ABORT")) {
             goBackToMenu();
+        } else if (returned.equalsIgnoreCase("/TRAP")) {
+            if (assisted) {
+                PlayerMoves.moveBack(currentBoard);
+            }
         }
         return returned;
     }

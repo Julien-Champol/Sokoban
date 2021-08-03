@@ -22,6 +22,7 @@ public class PlayerMovesTest {
 
     /**
      * Test of moveLeft method, of class PlayerMoves.
+     *
      * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
     @Test
@@ -109,6 +110,39 @@ public class PlayerMovesTest {
         PlayerMoves.moveDown(theBoard);
         Point valid = new Point(4, 3);
         assertEquals(theBoard.getPlayerPosition(), valid);
+    }
+
+    /**
+     * Test of moveBack method, of class PlayerMoves.
+     *
+     * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
+     */
+    @Test
+    public void testMoveBack() throws GamePlayerLeavesException {
+        System.out.println("moveBack");
+        Board theBoard = new Board("moveBackTestBoard", 8, 8);
+        theBoard.addHorizontalWall(0, 0, 8);
+        theBoard.addHorizontalWall(0, 8, 8);
+        theBoard.addVerticalWall(7, 0, 8);
+        theBoard.addTarget(0, 2);
+        theBoard.addBox(3, 3);
+        theBoard.addBox(3, 2);
+        theBoard.addBox(3, 1);
+        Point newPosition = new Point(3, 4);
+        theBoard.setPlayerPosition(newPosition);
+        theBoard.displayBoard();
+        PlayerMoves.moveLeft(theBoard);
+        theBoard.displayBoard();
+        PlayerMoves.moveBack(theBoard);
+        theBoard.displayBoard();
+        Point valid = new Point(3, 4);
+        assertEquals(theBoard.getPlayerPosition(), valid);
+        valid = new Point(3, 3);
+        assertTrue(theBoard.getBoxPositions().contains(valid));
+        valid = new Point(3, 2);
+        assertTrue(theBoard.getBoxPositions().contains(valid));
+        valid = new Point(3, 1);
+        assertTrue(theBoard.getBoxPositions().contains(valid));
     }
 
 }
