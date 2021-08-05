@@ -32,9 +32,10 @@ public class PlayerMoves {
     private static final ArrayList<Point> laterMoves = new ArrayList<Point>();
 
     /**
-     * True if we move a box when we move the player
+     * This ArrayList contains the point we'll have to move when moveBack is
+     * called
      */
-    private static boolean boxMoved = false;
+    private static final ArrayList<Point> backMoves = new ArrayList<Point>();
 
     /**
      * Method called when the player wants to move on his left.
@@ -44,8 +45,6 @@ public class PlayerMoves {
      */
     public static void moveLeft(Board theBoard) throws GamePlayerLeavesException {
 
-        laterMoves.clear();
-
         int x = (int) theBoard.getPlayerPosition().getX();
         int y = (int) (theBoard.getPlayerPosition().getY() - 1);
         Point newPosition = new Point(x, y);
@@ -53,8 +52,10 @@ public class PlayerMoves {
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)) {
 
+            laterMoves.clear();
+            backMoves.clear();
+
             //Adding the first box
-            boxMoved = true;
             laterMoves.add(newPosition);
 
             //Adding the other boxes
@@ -96,8 +97,9 @@ public class PlayerMoves {
                 }
 
                 if (BoardChecker.movableBoxCheck(theBoard, newBoxPosition, Moves.L)) { //Check if we can move to serialBox
-                    laterMoves.clear();
                     laterMoves.add(newBoxPosition);
+                    Point serialBox = new Point(x, y);
+                    newBoxPosition = serialBox;
                 } else {
                     serial = false;
                 }
@@ -107,14 +109,19 @@ public class PlayerMoves {
             laterMoves.forEach((box) -> {
                 Point next = new Point((int) box.getX(), (int) box.getY() - 1);
                 theBoard.moveBox(box, next);
+                backMoves.add(next);
             });
 
             //Finally, moving the player
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
-                && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)) {
-            boxMoved = false;
+                && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.L)
+                && !theBoard.getBoxPositions().contains(newPosition)) {
+            laterMoves.clear();
+            backMoves.clear();
             theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
+        } else {
+            return;
         }
         Player.allMoves.add(PlayerMoves.Moves.L);
     }
@@ -126,15 +133,14 @@ public class PlayerMoves {
      */
     public static void moveRight(Board theBoard) {
 
-        laterMoves.clear();
-
         int x = (int) theBoard.getPlayerPosition().getX();
         int y = (int) (theBoard.getPlayerPosition().getY() + 1);
         Point newPosition = new Point(x, y);
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.R)) {
 
-            boxMoved = true;
+            laterMoves.clear();
+            backMoves.clear();
             laterMoves.add(newPosition);
 
             boolean serial = true;
@@ -187,13 +193,18 @@ public class PlayerMoves {
             laterMoves.forEach((box) -> {
                 Point next = new Point((int) box.getX(), (int) box.getY() + 1);
                 theBoard.moveBox(box, next);
+                backMoves.add(next);
             });
 
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
-                && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.R)) {
-            boxMoved = false;
+                && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.R)
+                && !theBoard.getBoxPositions().contains(newPosition)) {
+            laterMoves.clear();
+            backMoves.clear();
             theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
+        } else {
+            return;
         }
         Player.allMoves.add(PlayerMoves.Moves.R);
     }
@@ -205,15 +216,14 @@ public class PlayerMoves {
      */
     public static void moveUp(Board theBoard) {
 
-        laterMoves.clear();
-
         int x = (int) (theBoard.getPlayerPosition().getX() - 1);
         int y = (int) theBoard.getPlayerPosition().getY();
         Point newPosition = new Point(x, y);
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.U)) {
 
-            boxMoved = true;
+            laterMoves.clear();
+            backMoves.clear();
             laterMoves.add(newPosition);
 
             boolean serial = true;
@@ -254,7 +264,6 @@ public class PlayerMoves {
                 }
 
                 if (BoardChecker.movableBoxCheck(theBoard, newBoxPosition, Moves.U)) {
-                    laterMoves.clear();
                     laterMoves.add(newBoxPosition);
                     Point serialBox = new Point(x, y);
                     newBoxPosition = serialBox;
@@ -266,16 +275,19 @@ public class PlayerMoves {
             Collections.reverse(laterMoves);
             laterMoves.forEach((box) -> {
                 Point next = new Point((int) box.getX() - 1, (int) box.getY());
-                if (BoardChecker.movableBoxCheck(theBoard, box, Moves.U)) {
-                    theBoard.moveBox(box, next);
-                }
+                theBoard.moveBox(box, next);
+                backMoves.add(next);
             });
 
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
-                && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.U)) {
-            boxMoved = false;
+                && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.U)
+                && !theBoard.getBoxPositions().contains(newPosition)) {
+            laterMoves.clear();
+            backMoves.clear();
             theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
+        } else {
+            return;
         }
         Player.allMoves.add(PlayerMoves.Moves.U);
     }
@@ -287,15 +299,14 @@ public class PlayerMoves {
      */
     public static void moveDown(Board theBoard) {
 
-        laterMoves.clear();
-
         int x = (int) (theBoard.getPlayerPosition().getX() + 1);
         int y = (int) theBoard.getPlayerPosition().getY();
         Point newPosition = new Point(x, y);
         if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
                 && BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.D)) {
 
-            boxMoved = true;
+            laterMoves.clear();
+            backMoves.clear();
             laterMoves.add(newPosition);
 
             boolean serial = true;
@@ -348,13 +359,18 @@ public class PlayerMoves {
             laterMoves.forEach((box) -> {
                 Point next = new Point((int) box.getX() + 1, (int) box.getY());
                 theBoard.moveBox(box, next);
+                backMoves.add(next);
             });
 
             theBoard.setPlayerPosition(newPosition);
         } else if (BoardChecker.legitMove(theBoard, theBoard.getPlayerPosition(), newPosition)
-                && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.D)) {
-            boxMoved = false;
+                && !BoardChecker.movableBoxCheck(theBoard, newPosition, Moves.D)
+                && !theBoard.getBoxPositions().contains(newPosition)) {
+            laterMoves.clear();
+            backMoves.clear();
             theBoard.setPlayerPosition(newPosition); // If we don't move no box, then we only move the player.
+        } else {
+            return;
         }
         Player.allMoves.add(PlayerMoves.Moves.D);
     }
@@ -365,38 +381,99 @@ public class PlayerMoves {
      * @param theBoard
      */
     public static void moveBack(Board theBoard) {
-        Moves last = Player.allMoves.get(Player.allMoves.size() - 1);
-        Player.allMoves.remove(Player.allMoves.size() - 1);
-        System.out.println("             ");
-        System.out.println("Your last move was " + last + ", now back at it again.");
-        switch (last) {
-            case L:
-                Point leftNeighbor = new Point(theBoard.getPlayerPosition().x, theBoard.getPlayerPosition().y - 1);
+        if (!Player.allMoves.isEmpty()) {
+            Moves last = Player.allMoves.get(Player.allMoves.size() - 1);
+            Player.allMoves.remove(Player.allMoves.size() - 1);
 
-                //We move the player to the right
-                int x = (int) theBoard.getPlayerPosition().getX();
-                int y = (int) (theBoard.getPlayerPosition().getY() + 1);
-                Point lastPlayerPos = new Point(x, y);
-                theBoard.setPlayerPosition(lastPlayerPos);
+            switch (last) {
+                case L:
+                    int x = (int) theBoard.getPlayerPosition().getX();
+                    int y = (int) (theBoard.getPlayerPosition().getY() + 1);
+                    Point lastPlayerPos = new Point(x, y);
+                    System.out.println("             ");
+                    System.out.println("Your last move was " + last + ", now back at (" + lastPlayerPos.x + ", " + lastPlayerPos.y + ") again.");
 
-                if (theBoard.getBoxPositions().contains(leftNeighbor) && boxMoved) {
-                    Point newPos = new Point(leftNeighbor.x, leftNeighbor.y + 1);
-                    theBoard.moveBox(leftNeighbor, newPos);
-                    if (laterMoves != null && !laterMoves.isEmpty()) {
-                        System.out.println("po");
-                        laterMoves.forEach((box) -> {
+                    //We move the player to the right
+                    theBoard.setPlayerPosition(lastPlayerPos);
+
+                    if (backMoves != null && !backMoves.isEmpty()) {
+                        Collections.reverse(backMoves);
+                        backMoves.forEach((box) -> {
                             Point next = new Point((int) box.getX(), (int) box.getY() + 1);
                             if (BoardChecker.legitMove(theBoard, box, next)) {
                                 theBoard.moveBox(box, next);
                             }
                         });
                     }
-                }
-                break;
+                    break;
+                case R:
+                    x = (int) theBoard.getPlayerPosition().getX();
+                    y = (int) (theBoard.getPlayerPosition().getY() - 1);
+                    lastPlayerPos = new Point(x, y);
 
-            case R:
-            case U:
-            case D:
+                    System.out.println("             ");
+                    System.out.println("Your last move was " + last + ", now back at (" + lastPlayerPos.x + ", " + lastPlayerPos.y + ") again.");
+
+                    //We move the player to the left
+                    theBoard.setPlayerPosition(lastPlayerPos);
+
+                    if (backMoves != null && !backMoves.isEmpty()) {
+                        Collections.reverse(backMoves);
+                        backMoves.forEach((box) -> {
+                            Point next = new Point((int) box.getX(), (int) box.getY() - 1);
+                            if (BoardChecker.legitMove(theBoard, box, next)) {
+                                theBoard.moveBox(box, next);
+                            }
+                        });
+                    }
+                    break;
+                case U:
+                    x = (int) (theBoard.getPlayerPosition().getX() + 1);
+                    y = (int) theBoard.getPlayerPosition().getY();
+                    lastPlayerPos = new Point(x, y);
+
+                    System.out.println("             ");
+                    System.out.println("Your last move was " + last + ", now back at (" + lastPlayerPos.x + ", " + lastPlayerPos.y + ") again.");
+
+                    //We move the player down
+                    theBoard.setPlayerPosition(lastPlayerPos);
+
+                    if (backMoves != null && !backMoves.isEmpty()) {
+                        Collections.reverse(backMoves);
+                        backMoves.forEach((box) -> {
+                            Point next = new Point((int) box.getX() + 1, (int) box.getY());
+                            if (BoardChecker.legitMove(theBoard, box, next)) {
+                                theBoard.moveBox(box, next);
+                            }
+                        });
+                    }
+                    break;
+                case D:
+                    x = (int) (theBoard.getPlayerPosition().getX() - 1);
+                    y = (int) theBoard.getPlayerPosition().getY();
+                    lastPlayerPos = new Point(x, y);
+
+                    System.out.println("             ");
+                    System.out.println("Your last move was " + last + ", now back at (" + lastPlayerPos.x + ", " + lastPlayerPos.y + ") again.");
+
+                    //We move the player up
+                    theBoard.setPlayerPosition(lastPlayerPos);
+
+                    if (backMoves != null && !backMoves.isEmpty()) {
+                        Collections.reverse(backMoves);
+                        backMoves.forEach((box) -> {
+                            Point next = new Point((int) box.getX() - 1, (int) box.getY());
+                            if (BoardChecker.legitMove(theBoard, box, next)) {
+                                theBoard.moveBox(box, next);
+                            }
+                        });
+                    }
+                    break;
+            }
+        } else {
+            System.out.println(" ");
+            System.out.println("You have to make a move before being able to come back on it.");
+            System.out.println(" ");
         }
     }
 }

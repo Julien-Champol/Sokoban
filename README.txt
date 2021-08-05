@@ -72,3 +72,13 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
     volonté ajout TODO : /trap pour retour arrière
                          /info pour informations en cours de partie
                          /giveup pour abandonner la partie : retour au choix du board
+
+04/08 
+    /giveup remplacé par /abort, /trap semble fonctionnel, tests validés.
+    reconnaissance du player a sauté, réparé.
+    /trap : cas limites étranges :  Mauvaise conception de la classe player, réglé.
+
+05/08
+    Retrait de case contre mur possible à nouveau. Possible après un seul force push.
+    Code trop problématique, reconstruction d'un fonctionnement plus simple à partir d'une version antérieure.
+    Code fonctionnel et mieux optimisé.

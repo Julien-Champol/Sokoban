@@ -129,6 +129,7 @@ public class Player {
                     /**
                      * The player chooses his board
                      */
+                    allMoves.clear();
                     boardChoosingInterface();
                     assistanceDialog();
                     currentBoard.displayBoard();
@@ -149,21 +150,28 @@ public class Player {
     /**
      * Method used to read the Player entry and to return it.
      *
-     * @return the player's entry to uppercase.
+     * @return the player's entry ignoring case.
      * @throws sokoban.ExceptionsPackage.GamePlayerLeavesException
      */
     public static String readPlayerEntry() throws GamePlayerLeavesException {
         System.out.println("Enter your command here :");
         String returned = in.nextLine().trim();
         if (returned.equalsIgnoreCase("/QUIT")) {
+            returned = "";
             quitWithDialog();
         } else if (returned.equalsIgnoreCase("/INFO")) {
+            returned = "";
             displayInfo();
         } else if (returned.equalsIgnoreCase("/ABORT")) {
+            returned = "";
             goBackToMenu();
         } else if (returned.equalsIgnoreCase("/TRAP")) {
+            returned = "";
             if (assisted) {
                 PlayerMoves.moveBack(currentBoard);
+            } else {
+                System.out.println("Assistance has not been turnt on.");
+                System.out.println(" ");
             }
         }
         return returned;
@@ -212,6 +220,9 @@ public class Player {
                 System.out.println(" in case of moves where you feel like you have    ");
                 System.out.println("  been traped, you will be able to type : /trap     ");
                 System.out.println("       to come back to your previous move,         ");
+                System.out.println("_________________________________________________");
+                System.out.println("         ! USE YOUR MOVES WISELY !");
+                System.out.println("     AND DON'T EVER FORGET TO ENJOY THE GAME      ");
                 System.out.println("__________________________________________________");
                 System.out.println(" ");
                 System.out.println(" Would you like to play with the game assistance ? ");
@@ -335,8 +346,10 @@ public class Player {
         System.out.println("Type /quit to leave the game at any time.");
         if (assisted) {
             System.out.println("Assistance is on");
+            System.out.println("You can use /trap to go back.");
         } else {
             System.out.println("Assistance is off");
+            System.out.println("You can't use /trap to go back.");
         }
         System.out.println("_________________________________________________________________");
     }

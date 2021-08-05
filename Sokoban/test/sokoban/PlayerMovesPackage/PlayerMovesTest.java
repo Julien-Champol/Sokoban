@@ -120,29 +120,89 @@ public class PlayerMovesTest {
     @Test
     public void testMoveBack() throws GamePlayerLeavesException {
         System.out.println("moveBack");
-        Board theBoard = new Board("moveBackTestBoard", 8, 8);
-        theBoard.addHorizontalWall(0, 0, 8);
-        theBoard.addHorizontalWall(0, 8, 8);
-        theBoard.addVerticalWall(7, 0, 8);
-        theBoard.addTarget(0, 2);
-        theBoard.addBox(3, 3);
-        theBoard.addBox(3, 2);
-        theBoard.addBox(3, 1);
-        Point newPosition = new Point(3, 4);
+        Board theBoard = new Board("moveBackTestBoard", 12, 12);
+        theBoard.addHorizontalWall(0, 0, 12);
+        theBoard.addHorizontalWall(11, 0, 12);
+        theBoard.addVerticalWall(0, 11, 12);
+        theBoard.addVerticalWall(0, 0, 12);
+        theBoard.addVerticalWall(9, 1, 0);
+
+        //Left
+        theBoard.addBox(5, 4);
+        theBoard.addBox(5, 3);
+        theBoard.addBox(5, 2);
+        //Right
+        theBoard.addBox(5, 6);
+        theBoard.addBox(5, 7);
+        //Down
+        theBoard.addBox(6, 5);
+        theBoard.addBox(7, 5);
+        theBoard.addBox(8, 5);
+        //Up   
+        theBoard.addBox(3, 5);
+        theBoard.addBox(4, 5);
+        //
+
+        Point newPosition = new Point(5, 5);
         theBoard.setPlayerPosition(newPosition);
         theBoard.displayBoard();
+
         PlayerMoves.moveLeft(theBoard);
         theBoard.displayBoard();
         PlayerMoves.moveBack(theBoard);
         theBoard.displayBoard();
-        Point valid = new Point(3, 4);
+        Point valid = new Point(5, 5);
         assertEquals(theBoard.getPlayerPosition(), valid);
-        valid = new Point(3, 3);
+        valid = new Point(5, 4);
         assertTrue(theBoard.getBoxPositions().contains(valid));
-        valid = new Point(3, 2);
+        valid = new Point(5, 3);
         assertTrue(theBoard.getBoxPositions().contains(valid));
-        valid = new Point(3, 1);
+        valid = new Point(5, 2);
         assertTrue(theBoard.getBoxPositions().contains(valid));
+
+        PlayerMoves.moveRight(theBoard);
+        theBoard.displayBoard();
+        PlayerMoves.moveBack(theBoard);
+        theBoard.displayBoard();
+        valid = new Point(5, 5);
+        assertEquals(theBoard.getPlayerPosition(), valid);
+        valid = new Point(5, 7);
+        assertTrue(theBoard.getBoxPositions().contains(valid));
+        valid = new Point(5, 6);
+        assertTrue(theBoard.getBoxPositions().contains(valid));
+
+        PlayerMoves.moveDown(theBoard);
+        theBoard.displayBoard();
+        PlayerMoves.moveBack(theBoard);
+        theBoard.displayBoard();
+        valid = new Point(5, 5);
+        assertEquals(theBoard.getPlayerPosition(), valid);
+        valid = new Point(6, 5);
+        assertTrue(theBoard.getBoxPositions().contains(valid));
+        valid = new Point(7, 5);
+        assertTrue(theBoard.getBoxPositions().contains(valid));
+        valid = new Point(8, 5);
+        assertTrue(theBoard.getBoxPositions().contains(valid));
+
+        PlayerMoves.moveUp(theBoard);
+        theBoard.displayBoard();
+        PlayerMoves.moveBack(theBoard);
+        theBoard.displayBoard();
+        valid = new Point(5, 5);
+        assertEquals(theBoard.getPlayerPosition(), valid);
+        valid = new Point(3, 5);
+        assertTrue(theBoard.getBoxPositions().contains(valid));
+        valid = new Point(4, 5);
+        assertTrue(theBoard.getBoxPositions().contains(valid));
+
+        newPosition = new Point(10, 1);
+        theBoard.setPlayerPosition(newPosition);
+        theBoard.displayBoard();
+        PlayerMoves.moveRight(theBoard);
+        theBoard.displayBoard();
+        PlayerMoves.moveBack(theBoard);
+        theBoard.displayBoard();
+        assertEquals(theBoard.getPlayerPosition(), newPosition);
     }
 
 }
