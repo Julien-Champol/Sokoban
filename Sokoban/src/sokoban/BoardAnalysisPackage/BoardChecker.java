@@ -6,10 +6,7 @@
 package sokoban.BoardAnalysisPackage;
 
 import java.awt.Point;
-import java.util.ArrayList;
 import sokoban.BoardBuildingPackage.Board;
-import sokoban.ExceptionsPackage.GamePlayerLeavesException;
-import sokoban.PlayerMovesPackage.PlayerMoves;
 import sokoban.PlayerMovesPackage.PlayerMoves.Moves;
 
 /**
