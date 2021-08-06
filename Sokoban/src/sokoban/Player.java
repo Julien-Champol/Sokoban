@@ -101,24 +101,46 @@ public class Player {
                  * Welcome message
                  */
                 System.out.println("_________________________________________________________________");
-                System.out.println("Welcome in Sokoban ! ");
-                System.out.println("You have to put every boxes on the targets, walls can't be hit.");
-                System.out.println("        _______________________________");
-                System.out.println("To move a case, follow these instructions :");
-                System.out.println("The player is represented by the letter 'P'");
-                System.out.println("Put the player next to the case you want to move and try one ");
-                System.out.println("of the list's game commands, sometimes the walls will  ");
-                System.out.println("block you, here is the main challenge of the game.");
+                System.out.println("                Welcome in Sokoban ! ");
+                System.out.println("        _______________________________                            ");
+                System.out.println("     ! SOME EXPLANATIONS ABOUT THE GAME LOGIC !                    ");
+                System.out.println("   You have to put every boxes on the targets, walls can't be hit. ");
+                System.out.println("                                                                   ");
+                System.out.println("       ________________________________                     ");
+                System.out.println("      ! SOME EXPLANATIONS ABOUT SYMBOLS !                   ");
                 System.out.println("  A target is symbolized by the letter 'x'.                 ");
-                System.out.println("        _______________________________");
-                System.out.println("Type L to move left");
-                System.out.println("Type R to move right");
-                System.out.println("Type U to move up");
-                System.out.println("Type D to move down");
-                System.out.println("Type /quit to leave the game at any time.");
-                System.out.println("Type /info to read the rules at any time.");
-                System.out.println("Type /abort to leave the party at any time.");
-                System.out.println("Enjoy your game !");
+                System.out.println("  The player is symbolized by the letter 'P'                ");
+                System.out.println("  A case is symbolized by the letter 'C'.                   ");
+                System.out.println("  A wall is symbolized by the letter '#'.                   ");
+                System.out.println("  An empty place is symbolized by the symbol '.'.           ");
+                System.out.println("       ________________________________                     ");
+                System.out.println("       ! SOME EXPLANATIONS ABOUT MOVES !                    ");
+                System.out.println("    Type L to move left                                         ");
+                System.out.println("    Type R to move right                                        ");
+                System.out.println("    Type U to move up                                           ");
+                System.out.println("    Type D to move down                                         ");
+                System.out.println("       ________________________________                            ");
+                System.out.println("            ! GAME MECHANIC EXAMPLE !                              ");
+                System.out.println("   To move a case, follow these instructions :                     ");
+                System.out.println("   The player is represented by the letter 'P'                     ");
+                System.out.println("   Put the player next to the case you want to move in a place     ");
+                System.out.println("   such that he is in the opposite direction of the one where      ");
+                System.out.println("   he wants to go. Here is a quick example :                       ");
+                System.out.println("                                                                   ");
+                System.out.println("   If you want to move the box to the LEFT, place the player on    ");
+                System.out.println("     the RIGHT side of the box, as it is shown below :             ");
+                System.out.println("        x . . . C P .                                              ");
+                System.out.println("     here, if you type L, you will have the following result :     ");
+                System.out.println("        x . . C P . .                                              ");
+                System.out.println("                                                                   ");
+                System.out.println("          sometimes the walls will                                 ");
+                System.out.println("   block you, here is the main challenge of the game.              ");
+                System.out.println("       ________________________________                            ");
+                System.out.println("     ! SOME EXPLANATIONS ABOUT THE COMMANDS !                    ");
+                System.out.println("    Type /quit to leave the game at any time.                    ");
+                System.out.println("    Type /info to read the rules at any time.                    ");
+                System.out.println("    Type /abort to leave the party at any time.                  ");
+                System.out.println("    Enjoy your game !                                            ");
                 System.out.println("_________________________________________________________________");
                 startingMenu = false;
                 settingGame = true;
@@ -142,8 +164,10 @@ public class Player {
                     currentBoard.displayBoard();
                 }
             }
-        } catch (GamePlayerLeavesException | NullPointerException e) {
-            e.toString();
+        } catch (GamePlayerLeavesException e) {
+            System.out.println("Thanks for playing, bye.");
+        } catch (NullPointerException e) {
+            System.out.println("Try again please.");
         }
     }
 
@@ -248,7 +272,7 @@ public class Player {
                         System.out.println("Invalid entry, try again please.");
                 }
             } catch (GamePlayerLeavesException e) {
-                System.out.println(e.toString());
+                System.out.println("Thanks for playing, bye.");
                 choosingAssistance = false;
                 startingMenu = false;
                 inGame = false;
@@ -274,13 +298,16 @@ public class Player {
                 System.out.println("       BOARD CHOOSING INTERFACE");
                 System.out.println("___________________________________________");
                 System.out.println("1. List boards and choose");
-                System.out.println("Type '1' to enter the menu and choose your board.");
+                System.out.println("Type 'start or '1' ('1' not 'I') to enter the menu and choose your board.");
 
                 String entry = readPlayerEntry();
                 switch (entry) {
+                    case "start":
                     case "1":
                         myDatabase.listBoards();
-                        System.out.println("The Board id is displayed in the first column.");
+                        System.out.println("The Board id is displayed in the first column ");
+                        System.out.println("of the info rectangle displayed above the ");
+                        System.out.println("board, here, 'simplo' is one of the possible choices. ");
                         System.out.println("Board id ?");
                         String boardId = readPlayerEntry();
                         currentBoard = myDatabase.get(boardId);
@@ -289,10 +316,9 @@ public class Player {
                         choosing = false;
                 }
             } catch (SQLiteException | NullPointerException e) {
-                System.out.println(e.toString());
-                System.out.println("Board not found try again please");
+                System.out.println("Board not found try again please,");
             } catch (GamePlayerLeavesException e) {
-                System.out.println(e.toString());
+                System.out.println("Thanks for playing, bye");
                 choosing = false;
                 choosingAssistance = false;
                 startingMenu = false;
@@ -329,21 +355,50 @@ public class Player {
      * Method used to display the rules of the sokoban game.
      */
     public static void displayInfo() {
-        System.out.println("_________________________________________________________________");
-        System.out.println("You have to put every boxes on the targets, walls can't be hit.");
-        System.out.println("        _______________________________");
-        System.out.println("To move a case, follow these instructions :");
-        System.out.println("The player is represented by the letter 'P'");
-        System.out.println("Put the player next to the case you want to move and try one ");
-        System.out.println("of the list's game commands, sometimes the walls will  ");
-        System.out.println("block you, here is the main challenge of the game.");
+        System.out.println("        _______________________________                            ");
+        System.out.println("     ! QUICK REMINDER ABOUT THE GAME LOGIC !                       ");
+        System.out.println("   You have to put every boxes on the targets, walls can't be hit. ");
+        System.out.println("                                                                   ");
+        System.out.println("       ________________________________                     ");
+        System.out.println("       ! QUICK REMINDER ABOUT SYMBOLS !                     ");
         System.out.println("  A target is symbolized by the letter 'x'.                 ");
-        System.out.println("        _______________________________");
-        System.out.println("Type L to move left");
-        System.out.println("Type R to move right");
-        System.out.println("Type U to move up");
-        System.out.println("Type D to move down");
-        System.out.println("Type /quit to leave the game at any time.");
+        System.out.println("  The player is symbolized by the letter 'P'                ");
+        System.out.println("  A case is symbolized by the letter 'C'.                   ");
+        System.out.println("  A wall is symbolized by the letter '#'.                   ");
+        System.out.println("       ________________________________                     ");
+        System.out.println("       ! QUICK REMINDER ABOUT MOVES !                       ");
+        System.out.println("    Type L to move left                                         ");
+        System.out.println("    Type R to move right                                        ");
+        System.out.println("    Type U to move up                                           ");
+        System.out.println("    Type D to move down                                         ");
+        System.out.println("    You can type your moves one by one :                        ");
+        System.out.println("    'L' then press enter, 'R' then press enetr etc ...          ");
+        System.out.println("    or you can make a sequence :                                   ");
+        System.out.println("    LRDU then press enter                                          ");
+        System.out.println("    Both typing modes are working in the same way.                 ");
+        System.out.println("       ________________________________                            ");
+        System.out.println("          ! GAME MECHANIC REMINDER !                               ");
+        System.out.println("   To move a case, follow these instructions :                     ");
+        System.out.println("   The player is represented by the letter 'P'                     ");
+        System.out.println("   Put the player next to the case you want to move in a place     ");
+        System.out.println("   such that he is in the opposite direction of the one where      ");
+        System.out.println("   he wants to go. Here is a quick example :                       ");
+        System.out.println("                                                                   ");
+        System.out.println("   If you want to move the box to the LEFT, place the player on    ");
+        System.out.println("     the RIGHT side of the box, as it is shown below :             ");
+        System.out.println("        x . . . C P .                                              ");
+        System.out.println("     here, if you type L, you will have the following result :     ");
+        System.out.println("        x . . C P . .                                              ");
+        System.out.println("                                                                   ");
+        System.out.println("          sometimes the walls will                                 ");
+        System.out.println("   block you, here is the main challenge of the game.              ");
+        System.out.println("       ________________________________                            ");
+        System.out.println("      ! QUICK REMINDER ABOUT THE COMMANDS !                      ");
+        System.out.println("    Type /quit to leave the game at any time.                    ");
+        System.out.println("    Type /info to read the rules at any time.                    ");
+        System.out.println("    Type /abort to leave the party at any time.                  ");
+        System.out.println("    Enjoy your game !                                            ");
+        System.out.println("_________________________________________________________________");
         if (assisted) {
             System.out.println("Assistance is on");
             System.out.println("You can use /trap to go back.");
