@@ -82,3 +82,6 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
     Retrait de case contre mur possible à nouveau. Possible après un seul force push.
     Code trop problématique, reconstruction d'un fonctionnement plus simple à partir d'une version antérieure.
     Code fonctionnel et mieux optimisé.
+
+16/08
+    Script batch pour appel depuis ligne de commande et ajout du chemin absolu au code.

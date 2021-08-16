@@ -27,7 +27,7 @@ public class DataBase {
     /**
      * The path to the database.
      */
-    private final String PATH = "data\\librairie.sqlite3";
+    private final String PATH = "D:\\DUT\\Informatique\\AlgoProg\\sokobanchampol\\Sokoban\\data\\librairie.sqlite3";
 
     private final String URL = "jdbc:sqlite:" + PATH;
 
