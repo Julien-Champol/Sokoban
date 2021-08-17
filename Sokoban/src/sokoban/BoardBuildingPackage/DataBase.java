@@ -168,7 +168,7 @@ public class DataBase {
                 if (r.getString(1) != null) {
                     System.out.println("_______________________________________________________________________________");
                     System.out.println("Board id : " + "     Name : " + "    nb_rows: " + " nb_cols: ");
-                    System.out.println(r.getString(1) + "    |  " + r.getString(2) + "  |  " + r.getInt(3) + "         | " + r.getInt(4));
+                    System.out.println(r.getString(1) + "      " + r.getString(2) + "    " + r.getInt(3) + "          " + r.getInt(4));
                     showBoard(r.getString(1));
                 }
 

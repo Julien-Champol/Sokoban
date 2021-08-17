@@ -5,6 +5,7 @@
  */
 package sokoban;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -140,6 +141,7 @@ public class Player {
                 System.out.println("    Type /quit to leave the game at any time.                    ");
                 System.out.println("    Type /info to read the rules at any time.                    ");
                 System.out.println("    Type /abort to leave the party at any time.                  ");
+                System.out.println("    Type /clear to clear the screen at any time.                 ");
                 System.out.println("    Enjoy your game !                                            ");
                 System.out.println("_________________________________________________________________");
                 startingMenu = false;
@@ -164,10 +166,10 @@ public class Player {
                     currentBoard.displayBoard();
                 }
             }
+        } catch (NullPointerException e) {
+
         } catch (GamePlayerLeavesException e) {
             System.out.println("Thanks for playing, bye.");
-        } catch (NullPointerException e) {
-            System.out.println("Try again please.");
         }
     }
 
@@ -197,6 +199,9 @@ public class Player {
                 System.out.println("Assistance has not been turnt on.");
                 System.out.println(" ");
             }
+        } else if (returned.equalsIgnoreCase("/CLEAR")) {
+            returned = "";
+            clear();
         }
         return returned;
     }
@@ -257,6 +262,7 @@ public class Player {
                 switch (entry) {
                     case "y":
                     case "yes":
+                        clear();
                         assisted = true;
                         choosingAssistance = false;
                         settingGame = false;
@@ -264,6 +270,7 @@ public class Player {
 
                     case "n":
                     case "no":
+                        clear();
                         assisted = false;
                         choosingAssistance = false;
                         settingGame = false;
@@ -298,25 +305,33 @@ public class Player {
                 System.out.println("       BOARD CHOOSING INTERFACE");
                 System.out.println("___________________________________________");
                 System.out.println("1. List boards and choose");
-                System.out.println("Type 'start or '1' ('1' not 'I') to enter the menu and choose your board.");
+                System.out.println("Type 'start' or '1' ('1' not 'I') to enter the menu and choose your board.");
 
                 String entry = readPlayerEntry();
                 switch (entry) {
                     case "start":
                     case "1":
+                        clear();
+                        showExampleBoard();
                         myDatabase.listBoards();
                         System.out.println("The Board id is displayed in the first column ");
                         System.out.println("of the info rectangle displayed above the ");
-                        System.out.println("board, here, 'simplo' is one of the possible choices. ");
+                        System.out.println("board, here, 'exampleId' is an example of a boardId. ");
+                        System.out.println("Don't try to pull it this board isn't playable. ");
                         System.out.println("Board id ?");
                         String boardId = readPlayerEntry();
-                        currentBoard = myDatabase.get(boardId);
-                        choosingAssistance = true;
-                        inGame = true;
-                        choosing = false;
+                        if (boardId.equals("exampleId")) {
+                            System.out.println("This board is not playable.");
+                        } else {
+                            currentBoard = myDatabase.get(boardId);
+                            clear();
+                            choosingAssistance = true;
+                            inGame = true;
+                            choosing = false;
+                        }
                 }
             } catch (SQLiteException | NullPointerException e) {
-                System.out.println("Board not found try again please,");
+                System.out.println("Board not found try again please.");
             } catch (GamePlayerLeavesException e) {
                 System.out.println("Thanks for playing, bye");
                 choosing = false;
@@ -397,6 +412,7 @@ public class Player {
         System.out.println("    Type /quit to leave the game at any time.                    ");
         System.out.println("    Type /info to read the rules at any time.                    ");
         System.out.println("    Type /abort to leave the party at any time.                  ");
+        System.out.println("    Type /clear to clear the screen at any time.                 ");
         System.out.println("    Enjoy your game !                                            ");
         System.out.println("_________________________________________________________________");
         if (assisted) {
@@ -416,5 +432,33 @@ public class Player {
     public static void goBackToMenu() {
         inGame = false;
         settingGame = true;
+    }
+
+    /**
+     * Method used to clear the console using the windows "cls" command.
+     */
+    public static void clear() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (IOException | InterruptedException e) {
+            System.out.println("Not able to clear the screen ...");
+        }
+    }
+
+    /**
+     * Method used to print an example of board such that the player as an idea
+     * of what the Board id is.
+     */
+    public static void showExampleBoard() {
+        System.out.println("_____________________________!EXAMPLE!_________________________________________");
+        System.out.println("Board id : " + "     Name : " + "    nb_rows: " + " nb_cols: ");
+        System.out.println("exampleId " + "   exampleBoard  " + "   4 " + "       5 ");
+        System.out.println("_______________________________________________________________________________");
+        System.out.println("exampleBoard");
+        System.out.println("  0 1 2 3 4\n"
+                + "0 # # # # #\n"
+                + "1 # # . P #\n"
+                + "2 # x C . #\n"
+                + "3 # # # # #");
     }
 }

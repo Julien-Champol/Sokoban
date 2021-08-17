@@ -6,6 +6,9 @@
 :: Date : 08/16/2021 
 :: Author : Julien CHAMPOL
 ECHO Launching sokoban.
-cd Sokoban\dist\
-java -jar Sokoban.jar
+IF EXIST "Sokoban\dist\Sokoban.jar" (
+    java -jar  Sokoban\dist\Sokoban.jar
+) ELSE (
+    ECHO Not able to launch.
+)
 PAUSE
