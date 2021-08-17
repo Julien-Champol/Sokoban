@@ -71,7 +71,7 @@
       <x>1155</x>
       <y>902</y>
       <w>297</w>
-      <h>352</h>
+      <h>374</h>
     </coordinates>
     <panel_attributes>Player
 --
@@ -92,7 +92,8 @@ _+ boardChoosingInterface()_
 _+ winOrNotDialog() : void_
 _+ quitWithDialog() : void_
 _+ displayInfo() : void_
-
+_+ clear() : void_
+_+ showExampleBoard() : void_
 
 bg=blue</panel_attributes>
     <additional_attributes/>
@@ -308,8 +309,8 @@ bg=magenta</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1441</x>
-      <y>1276</y>
+      <x>1452</x>
+      <y>1298</y>
       <w>319</w>
       <h>99</h>
     </coordinates>
@@ -550,7 +551,7 @@ r1=myDataBase</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;throws&gt;&gt;</panel_attributes>
-    <additional_attributes>80.0;10.0;10.0;10.0;10.0;690.0;1070.0;690.0;1070.0;640.0</additional_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0;10.0;690.0;1070.0;690.0;1070.0;660.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -562,7 +563,7 @@ r1=myDataBase</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;throws&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;510.0;1000.0;510.0;1000.0;470.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;510.0;1000.0;510.0;1000.0;490.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
