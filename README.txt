@@ -85,3 +85,6 @@ Avant le 12/05/ Pas de journalisation, réalisation du diagramme de classe.
 
 16/08
     Script batch pour appel depuis ligne de commande et ajout du chemin absolu au code.
+
+19/08 
+    Problème de lancement sur amchine distante, tentative résolution problème + modification chemins d'accès.
